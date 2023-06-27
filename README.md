@@ -5,5 +5,6 @@
 - Estrada, Cintia Belèn
 - Gregorio, Gastón Yamil
 - Rojas Araya, Joel
--  
+-  Jonathan R. Mascareño
+-  Federico Nicolas Burgos
 ## Programación Visual
