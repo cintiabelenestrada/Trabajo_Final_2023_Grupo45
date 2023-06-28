@@ -2,9 +2,10 @@
 
 **Integrantes**:
 
+- Burgos, Federico Nicolas
 - Estrada, Cintia Belèn
 - Gregorio, Gastón Yamil
+- Mascareño, Jonathan
 - Rojas Araya, Joel
--  Jonathan R. Mascareño
--  Federico Nicolas Burgos
+
 ## Programación Visual
