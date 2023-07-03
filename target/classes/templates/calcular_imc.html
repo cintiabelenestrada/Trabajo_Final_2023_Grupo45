@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" th:href="@{/css/estilos.css}" />
+
+
+<title>Calcule su IMC</title>
+</head>
+<body>
+
+	<div class="container-fluid">
+
+		<!-- Integración del Header -->
+		<!-- 			<header th:replace="~{layouts/header :: header}"></header> -->
+		<!-- Integración del Nav -->
+		<nav th:replace="~{layouts/nav :: nav}"></nav>
+
+		<div class="row">
+			<section class="row col-8 bg-info ms-1">
+				<div class="col-5 bg-info">
+					<p>Seccion de Usuario</p>
+				</div>
+
+				<div class="col-7 bg-success">
+					<p class="text-end">Seccion de IMC</p>
+				</div>
+			</section>
+
+			<aside class="col-4 bg-dark">
+			<p class="text-light text-center">Seccion Aside</p>
+			</aside>
+
+
+
+	<!-- Integración del Footer -->
+				<footer class="row fila justify-content-center"
+					th:replace="~{layouts/footer :: footer}"></footer>
+		</div>
+		<!-- Div que envuelve las secciones -->
+
+	
+
+	</div>
+	<!-- Div que envuelve toda la pagina -->
+
+	<!-- Scripts utilizados -->
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/popper.js/2.9.3/umd/popper.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.min.js}"></script>
+</body>
+</html>
