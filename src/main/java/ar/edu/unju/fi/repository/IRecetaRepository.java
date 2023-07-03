@@ -1,4 +1,4 @@
-package src.main.java.ar.edu.unju.fi.tp_final_grupo_45.repository;
+package ar.edu.unju.fi.repository;
 
 import org.springframework.stereotype.Repository;
 
