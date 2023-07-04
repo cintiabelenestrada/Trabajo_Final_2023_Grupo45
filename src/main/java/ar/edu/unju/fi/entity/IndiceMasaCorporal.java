@@ -16,7 +16,7 @@ import jakarta.persistence.Table;
 
 
 /**
- * Hace referencia al calculo de IMC para un usuario
+ * Hace referencia al calculo de IMC para un usuario determinado
  * @author Jonathan R. Mascareño
  * @version 1.0 3/7/2023
  * */
@@ -36,7 +36,7 @@ public class IndiceMasaCorporal {
 	@Column(name = "imc_fechaimc")
 	private LocalDate fechaImc;
 	
-	
+	@Column(name ="imc_estado")
 	private boolean estado;
 
 	

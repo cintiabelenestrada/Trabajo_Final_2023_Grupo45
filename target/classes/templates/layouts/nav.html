@@ -1,6 +1,6 @@
 <!-- nav.html es una fragmento de codigo que se repite en todas las paginas, por eso se la vuelve un layaut-->
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
 <meta charset="UTF-8">
 </head>
@@ -24,9 +24,9 @@
 				<button class="btn btn-sm btn-outline-secondary me-1 dropdown-toggle" type="button"
 					data-bs-toggle="dropdown" aria-expanded="false">Servicios</button>
 				<ul class="dropdown-menu">
-					<li><a class="dropdown-item" href="#">Action</a></li>
-					<li><a class="dropdown-item" href="#">Another action</a></li>
-					<li><a class="dropdown-item" href="#">Something else here</a></li>
+					<li><a class="dropdown-item" th:href="@{/calculoimc}">Calcular IMC</a></li>
+					<li><a class="dropdown-item" href="#">Tu peso ideal</a></li>
+				
 				</ul>
 			</div>
 			<a class="btn btn-sm btn-outline-secondary me-1" type="button"
