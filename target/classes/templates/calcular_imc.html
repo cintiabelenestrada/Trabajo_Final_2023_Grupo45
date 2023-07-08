@@ -16,23 +16,19 @@
 <title>Calcule su IMC</title>
 </head>
 <body>
+	<nav th:replace="~{layouts/nav :: nav}"></nav>
 
-	<div class="container-fluid">
+	<div class="container-fluid m-0 p-0">
 
-		<!-- Integración del Header -->
-		<!-- 			<header th:replace="~{layouts/header :: header}"></header> -->
-		<!-- Integración del Nav -->
-		<nav th:replace="~{layouts/nav :: nav}"></nav>
+		<div class="d-flex row ms-2 me-2">
 
-		<div class="row">
-			<section class="row col-9 bg-info ">
-				<div class="col-5 bg-info">
-					<p>Seccion de Usuario</p>
-					
-					<div class="col-12 bg-dark">
+			<section class="col-9 bg-dark text-light">
 
-						<!-- DIV QUE ENVUELVE ICONO Y TEXTO TUS DATOS -->
-						<div class="d-flex border-bottom">
+				<div class="d-flex">
+
+					<div class="col-5">
+
+						<div class="d-flex servicios-izquierda-bottom ">
 							<i class="fa-solid fa-user text-light fa-2xl pt-5 ps-5 pe-4"></i>
 							<div class="row">
 								<p></p>
@@ -40,10 +36,10 @@
 								<p></p>
 							</div>
 
+
 						</div>
 
-						<!-- DIV QUE ENVUELVE LOS CAMPOS CON DATOS DEL USUARIO -->
-						<div class="text-light ps-4 pt-3 bg-dark p-3">
+						<div class="col-12 text-light ps-4 pt-3  p-3 ">
 							<div class="card-body">
 
 								<div class="d-flex">
@@ -71,61 +67,78 @@
 								</p>
 							</div>
 						</div>
-						
-								<div class="d-flex border-top">
-						
+
+						<div class="servicios-izquierda-top">
+
 							<div class="row">
 								<p></p>
-								<p class="text-light mt-3 ms-4 fw-bold">Tus IMC: </p>
-										<div>
-										<!-- COLOCAR AQUI LOS IMC POR FECHA DESCENDENTE -->
-										</div>
-								
+								<p class="text-light mt-3 ms-4 fw-bold">Tus IMC:</p>
+								<div>
+									<!-- COLOCAR AQUI LOS IMC POR FECHA DESCENDENTE -->
+								</div>
+
 								<p></p>
 							</div>
+
+
 
 						</div>
 
 					</div>
-				</div>
+					<div class="d-flex col-7 text-light servicios-izquierda-left">
 
-				<div class="col-7 bg-success">
-					<p class="text-end">Seccion de IMC</p>
-					
-					<div class="col-12 bg-warning">
-					<p>Calculo de imc</p>
-					<p></p>
-					<p></p>
-					
-					
-					
-					<div class="d-flex justify-content-center">
-					
-					<p>Ingrese su peso actual</p>
-					<button type="button" class="btn btn-success mb-2">Calcular IMC</button>
+
+
+						<div class="row col-12 justify-content-center">
+							<div class="col-3 text-center"></div>
+
+							<div class="col-6 text-center">
+								<div class="container ">
+									<div class="row">
+										<div class="col-12 align-self-start p-5">
+											<p class="fs-5 text-center fw-bold">Calcule su IMC</p>
+										</div>
+										<div class="col-12 align-self-center p-5">
+
+											<p class="text-start">Ingrese su peso actual</p>
+
+											<div class="input-group mb-3">
+
+
+												<input type="text" id="peso" placeholder="00"
+													aria-label="Peso" aria-describedby="Peso"
+													class="form-control"> <label for="peso"
+													class="input-group-text">Kg</label>
+											</div>
+										</div>
+										<div class="col align-self-end p-5">
+											<button type="button" class="btn btn-success mb-2">Calcular
+												IMC</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-3 text-center"></div>
+						</div>
+
+
 					</div>
-					
-					</div>
-					
 				</div>
 			</section>
 
-			<aside class="col-3 bg-dark">
-				<p class="text-light text-center">Seccion Aside</p>
+			<aside class="col-3 bg-dark text-light servicios-izquierda-left">
+				<p>Seccion Aside</p>
 			</aside>
 
-
-
-			<!-- Integración del Footer -->
-			<footer class="row fila justify-content-center"
-				th:replace="~{layouts/footer :: footer}"></footer>
 		</div>
-		<!-- Div que envuelve las secciones -->
-
-
-
 	</div>
-	<!-- Div que envuelve toda la pagina -->
+
+
+	<!-- Integración del Footer -->
+	<footer th:replace="~{layouts/footer :: footer}"></footer>
+
+
 
 	<!-- Scripts utilizados -->
 	<script type="text/javascript"

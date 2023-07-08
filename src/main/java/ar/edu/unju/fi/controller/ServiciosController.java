@@ -24,5 +24,11 @@ public class ServiciosController {
 	        
 	        return "calcular_imc";
 	    }
+	 
+//	 @GetMapping("/calculoimc2")
+//	    public String getServicios2Page( Model model) {
+//	        
+//	        return "calcular_imc2";
+//	    }
 
 }
