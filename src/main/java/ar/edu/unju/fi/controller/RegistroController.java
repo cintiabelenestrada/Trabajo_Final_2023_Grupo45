@@ -1,4 +1,4 @@
-package src.main.java.ar.edu.unju.fi.tp_final_grupo_45.controller;
+package ar.edu.unju.fi.controller;
 
 
 
@@ -19,8 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 //import ar.edu.unju.fi.entify.Articulo;
 //import ar.edu.unju.fi.service.imp.ProductoServiceImp;
 import jakarta.validation.Valid;
-import src.main.java.ar.edu.unju.fi.tp_final_grupo_45.entity.Usuario;
-import src.main.java.ar.edu.unju.fi.tp_final_grupo_45.service.IRegistroService;
+import ar.edu.unju.fi.entity.Usuario;
+import ar.edu.unju.fi.service.IRegistroService;
 
 /**
  * 

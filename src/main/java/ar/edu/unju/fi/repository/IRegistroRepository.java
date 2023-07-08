@@ -1,11 +1,11 @@
-package src.main.java.ar.edu.unju.fi.tp_final_grupo_45.repository;
+package ar.edu.unju.fi.repository;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
-import src.main.java.ar.edu.unju.fi.tp_final_grupo_45.entity.Usuario;
+import ar.edu.unju.fi.entity.Usuario;
 
 public interface IRegistroRepository extends CrudRepository<Usuario,Long> {
 	/**
