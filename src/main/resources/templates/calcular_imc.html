@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" th:href="@{/css/estilos.css}" />
+
+
+<title>Calcule su IMC</title>
+</head>
+<body>
+
+	<div class="container-fluid">
+
+		<!-- Integración del Header -->
+		<!-- 			<header th:replace="~{layouts/header :: header}"></header> -->
+		<!-- Integración del Nav -->
+		<nav th:replace="~{layouts/nav :: nav}"></nav>
+
+		<div class="row">
+			<section class="row col-9 bg-info ">
+				<div class="col-5 bg-info">
+					<p>Seccion de Usuario</p>
+					
+					<div class="col-12 bg-dark">
+
+						<!-- DIV QUE ENVUELVE ICONO Y TEXTO TUS DATOS -->
+						<div class="d-flex border-bottom">
+							<i class="fa-solid fa-user text-light fa-2xl pt-5 ps-5 pe-4"></i>
+							<div class="row">
+								<p></p>
+								<p class="text-light mt-4 fw-bold">Tus datos</p>
+								<p></p>
+							</div>
+
+						</div>
+
+						<!-- DIV QUE ENVUELVE LOS CAMPOS CON DATOS DEL USUARIO -->
+						<div class="text-light ps-4 pt-3 bg-dark p-3">
+							<div class="card-body">
+
+								<div class="d-flex">
+									<p class="card-text">
+										<strong>Nombre:</strong> Juan
+									</p>
+									<p class="card-text ms-4">
+										<strong>Apellido:</strong> Pérez
+									</p>
+								</div>
+								<p class="card-text">
+									<strong>Email:</strong> juan@example.com
+								</p>
+								<p class="card-text">
+									<strong>Fecha de nacimiento:</strong> 15 de enero de 1990
+								</p>
+								<p class="card-text">
+									<strong>Teléfono:</strong> 555-1234
+								</p>
+								<p class="card-text">
+									<strong>Sexo:</strong> Masculino
+								</p>
+								<p class="card-text">
+									<strong>Estatura:</strong> 1.75 metros
+								</p>
+							</div>
+						</div>
+						
+								<div class="d-flex border-top">
+						
+							<div class="row">
+								<p></p>
+								<p class="text-light mt-3 ms-4 fw-bold">Tus IMC: </p>
+										<div>
+										<!-- COLOCAR AQUI LOS IMC POR FECHA DESCENDENTE -->
+										</div>
+								
+								<p></p>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+
+				<div class="col-7 bg-success">
+					<p class="text-end">Seccion de IMC</p>
+					
+					<div class="col-12 bg-warning">
+					<p>Calculo de imc</p>
+					<p></p>
+					<p></p>
+					
+					
+					
+					<div class="d-flex justify-content-center">
+					
+					<p>Ingrese su peso actual</p>
+					<button type="button" class="btn btn-success mb-2">Calcular IMC</button>
+					</div>
+					
+					</div>
+					
+				</div>
+			</section>
+
+			<aside class="col-3 bg-dark">
+				<p class="text-light text-center">Seccion Aside</p>
+			</aside>
+
+
+
+			<!-- Integración del Footer -->
+			<footer class="row fila justify-content-center"
+				th:replace="~{layouts/footer :: footer}"></footer>
+		</div>
+		<!-- Div que envuelve las secciones -->
+
+
+
+	</div>
+	<!-- Div que envuelve toda la pagina -->
+
+	<!-- Scripts utilizados -->
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/popper.js/2.9.3/umd/popper.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.min.js}"></script>
+</body>
+</html>
