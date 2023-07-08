@@ -1,9 +1,9 @@
-package src.main.java.ar.edu.unju.fi.tp_final_grupo_45.service;
+package ar.edu.unju.fi.service;
 
 import java.util.List;
 import java.util.Optional;
 
-import src.main.java.ar.edu.unju.fi.tp_final_grupo_45.entity.Usuario;
+import ar.edu.unju.fi.entity.Usuario;
  
 /**
  * Interfaz que define los métodos para el servicio de registro.

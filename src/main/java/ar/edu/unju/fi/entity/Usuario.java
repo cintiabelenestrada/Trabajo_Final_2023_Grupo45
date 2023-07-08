@@ -1,4 +1,4 @@
-package src.main.java.ar.edu.unju.fi.tp_final_grupo_45.entity;
+package ar.edu.unju.fi.entity;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

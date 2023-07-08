@@ -1,4 +1,4 @@
-package src.main.java.ar.edu.unju.fi.tp_final_grupo_45.service.imp;
+package ar.edu.unju.fi.service.imp;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,9 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import src.main.java.ar.edu.unju.fi.tp_final_grupo_45.entity.Usuario;
-import src.main.java.ar.edu.unju.fi.tp_final_grupo_45.repository.IRegistroRepository;
-import src.main.java.ar.edu.unju.fi.tp_final_grupo_45.service.IRegistroService;
+import ar.edu.unju.fi.entity.Usuario;
+import ar.edu.unju.fi.repository.IRegistroRepository;
+import ar.edu.unju.fi.service.IRegistroService;
 
 /**
  * Implementación del servicio de productos que utiliza MySQL como base de datos.
