@@ -10,10 +10,10 @@ public interface IServicioService {
 //	void calcularIMC(String codigoUsuario);
 	
 //	IndiceMasaCorporal calcularIMC(Usuario usuario, double peso);
-	Usuario getUsuarioPorCodigo(int codigoUsuario);
+//	Usuario getUsuarioPorCodigo(int codigoUsuario);
 //	void guardarIMC(IndiceMasaCorporal imc);
 	
-	void calcularIMC(double estatura, double peso);
+//	void calcularIMC(double estatura, double peso);
 //	 void agregarIndiceMasaCorporal(IndiceMasaCorporal imcCalculado);
 
 }

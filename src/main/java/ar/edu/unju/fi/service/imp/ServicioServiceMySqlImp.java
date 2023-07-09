@@ -25,27 +25,27 @@ public class ServicioServiceMySqlImp implements IServicioService {
     
  
 
-    @Override
-    public Usuario getUsuarioPorCodigo(int codigoUsuario) {
-        // Implementación para obtener el usuario por código utilizando el repositorio
-        return registroRepository.findByCodigoUsuario(codigoUsuario);
-    }
+//    @Override
+//    public Usuario getUsuarioPorCodigo(int codigoUsuario) {
+//        // Implementación para obtener el usuario por código utilizando el repositorio
+//        return registroRepository.findByCodigoUsuario(codigoUsuario);
+//    }
 
-    @Override
-    public void calcularIMC(double estatura, double peso) {
-
-        double imc = peso / (estatura * estatura);
-
-        IndiceMasaCorporal imcEntity = new IndiceMasaCorporal();
-        imcEntity.setFechaImc(LocalDate.now());
-        imcEntity.setImc(imc);
-
-        // Guardar el IMC en el repositorio
-        servicioRepository.guardarIMC(imcEntity);
-
-        return imcEntity;
-    }
-
+//    @Override
+//    public void calcularIMC(double estatura, double peso) {
+//
+//        double imc = peso / (estatura * estatura);
+//
+//        IndiceMasaCorporal imcEntity = new IndiceMasaCorporal();
+//        imcEntity.setFechaImc(LocalDate.now());
+//        imcEntity.setImc(imc);
+//
+//        // Guardar el IMC en el repositorio
+//        servicioRepository.guardarIMC(imcEntity);
+//
+//        return imcEntity;
+//    }
+//
 
 
 }
