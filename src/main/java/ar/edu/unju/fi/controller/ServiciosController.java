@@ -32,7 +32,7 @@ public class ServiciosController {
 	
 	
 	@GetMapping("/datosusuarioimc")
-    public String mostrarCalculoIMC(Model model) {
+    public String getCalculoImcPage(Model model) {
         model.addAttribute("usuario", new Usuario());
         return "calcular_imc";
     }
@@ -42,12 +42,29 @@ public class ServiciosController {
 		
 	 @GetMapping("/pesoideal")
 	    public String getPesoIdealPage( Model model) {
-	        
-	        return "peso_ideal";
+		  model.addAttribute("usuario", new Usuario());
+	            return "peso_ideal";
+	        }
+	  
+	 @PostMapping("/pesoideal")
+	    public String getPesoIdealPage(@RequestParam("codigoUsuario") int codigoUsuario, Model model) {
+	        Usuario usuario = registroRepository.findByCodigoUsuario(codigoUsuario);
+	        if (usuario != null) {
+	            model.addAttribute("usuario", usuario);
+	            // Agrega aquí la lógica para obtener los cálculos de IMC asociados al usuario
+	            // y agregarlos al modelo como "calculosIMC"
+
+	            return "peso_ideal";
+	        } else {
+	            // Código de usuario no válido, manejar el caso según tus necesidades
+	            return "error";
+	        }
 	    }
 	 
+	 
+	 
 	 @PostMapping("/datosusuarioimc")
-	    public String calcularIMC(@RequestParam("codigoUsuario") int codigoUsuario, Model model) {
+	    public String getCalcuImcPage(@RequestParam("codigoUsuario") int codigoUsuario, Model model) {
 	        Usuario usuario = registroRepository.findByCodigoUsuario(codigoUsuario);
 	        if (usuario != null) {
 	            model.addAttribute("usuario", usuario);

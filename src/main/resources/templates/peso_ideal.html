@@ -10,13 +10,13 @@
 	th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
 <link rel="stylesheet" type="text/css"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" th:href="@{/css/estilos.css}" />
-
-
+	<link th:rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+		<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
+		<link th:rel="stylesheet" type="text/css" th:href="@{/css/animate.css}">
 <title>Peso ideal</title>
 </head>
 <body>
-	<nav th:replace="~{layouts/nav :: nav}"></nav>
+	<header th:replace="~{layouts/header :: header}"></header>
 
 	<div class="container-fluid m-0 p-0">
 
@@ -39,32 +39,45 @@
 
 						</div>
 
-						<div class="col-12 text-light ps-4 pt-3  p-3 ">
+									<div class="col-12 text-light ps-4 pt-3  p-3 ">
 							<div class="card-body">
-
-								<div class="d-flex">
+								<div
+									>
+									<form th:action="@{/pesoideal}" method="post">
+										<p>Ingrese su código de usuario:</p>
+									<input type="text" th:field="*{usuario.codigoUsuario}" />
+								<button type="submit" class="btn btn-success">Aceptar</button>
+									</form>
+								</div>
+								<div
+									th:if="${usuario.codigoUsuario != null and usuario.codigoUsuario != ''}">
+									<div class="d-flex">
+										<p class="card-text">
+											<strong>Nombre:</strong> <span th:text="${usuario.nombre}"></span>
+										</p>
+										<p class="card-text ms-4">
+											<strong>Apellido:</strong> <span
+												th:text="${usuario.apellido}"></span>
+										</p>
+									</div>
 									<p class="card-text">
-										<strong>Nombre:</strong> Juan
+										<strong>Email:</strong> <span th:text="${usuario.email}"></span>
 									</p>
-									<p class="card-text ms-4">
-										<strong>Apellido:</strong> Pérez
+									<p class="card-text">
+										<strong>Fecha de nacimiento:</strong> <span
+											th:text="${usuario.fecha_nacimiento}"></span>
+									</p>
+									<p class="card-text">
+										<strong>Teléfono:</strong> <span th:text="${usuario.telefono}"></span>
+									</p>
+									<p class="card-text">
+										<strong>Sexo:</strong> <span th:text="${usuario.sexo}"></span>
+									</p>
+									<p class="card-text">
+										<strong>Estatura:</strong> <span th:text="${usuario.estatura}"></span>
+										metros
 									</p>
 								</div>
-								<p class="card-text">
-									<strong>Email:</strong> juan@example.com
-								</p>
-								<p class="card-text">
-									<strong>Fecha de nacimiento:</strong> 15 de enero de 1990
-								</p>
-								<p class="card-text">
-									<strong>Teléfono:</strong> 555-1234
-								</p>
-								<p class="card-text">
-									<strong>Sexo:</strong> Masculino
-								</p>
-								<p class="card-text">
-									<strong>Estatura:</strong> 1.75 metros
-								</p>
 							</div>
 						</div>
 
@@ -194,11 +207,11 @@
 
 
 	<!-- Scripts utilizados -->
-	<script type="text/javascript"
-		th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
-	<script type="text/javascript"
-		th:src="@{/webjars/popper.js/2.9.3/umd/popper.min.js}"></script>
-	<script type="text/javascript"
-		th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.min.js}"></script>
+	<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script type="text/javascript" th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<!--<script src="/js/jquery.min.js"></script>-->
+  	<script src="/js/popper.js"></script>
+  	<script src="/js/main.js"></script>
 </body>
 </html>
