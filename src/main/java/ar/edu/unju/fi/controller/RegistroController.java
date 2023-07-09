@@ -44,35 +44,34 @@ public class RegistroController {
 	
     
     // Muestra la página para agregar un nuevo producto
-    @GetMapping("/usuario")
-    public String getNuevoProductoPage(Model model) {
-    //	boolean edicion = false;
-    	model.addAttribute("usuario", new Usuario());
-   // 	model.addAttribute("edicion", edicion);
-    	return "registro";
-    }
-    
-    // Guarda un nuevo producto en la lista
-    @PostMapping("/guardar")
-    public String getguardarProductoPage(@Valid @ModelAttribute("usuario") Usuario usuario, BindingResult result) {
-    	
-    	//return "redirect:/productos/listado";
-    	ModelAndView modelView = new ModelAndView("usuarios");
-   	if(result.hasErrors()) {
-    		modelView.setViewName("index");
-   		modelView.addObject("usuario", usuario);
-    		modelView=new ModelAndView("index");
-    		//return modelView;
-    		return "registro";
-    		
-    	}else {
-    		
-    		iregisUs.save(usuario);
-    		final Long CD = usuario.getId();
-    		String Cc="Cc";
-    		return "redirect:/index/idusuario/"+CD;
-    	}
-    }   
+	 @GetMapping("/usuario")
+	    public String getNuevoProductoPage(Model model) {
+	    	boolean edicion = false;
+	    	model.addAttribute("usuario", new Usuario());
+	   // 	model.addAttribute("edicion", edicion);
+	    	return "registro";
+	    }
+	    
+	    // Guarda un nuevo producto en la lista
+	    @PostMapping("/guardar")
+	    public String getguardarProductoPage(@Valid @ModelAttribute("usuario") Usuario usuario, BindingResult result) {
+	    	
+	    	//return "redirect:/productos/listado";
+	    	ModelAndView modelView = new ModelAndView("usuarios");
+	   	if(result.hasErrors()) {
+	    		modelView.setViewName("index");
+	   		modelView.addObject("usuario", usuario);
+	    		modelView=new ModelAndView("index");
+	    		//return modelView;
+	    		return "registro";
+	    		
+	    	}else {
+	    		
+	    		iregisUs.save(usuario);
+	    		final Long CD = usuario.getId();
+	    		return "redirect:/index/idusuar/"+CD;
+	    	}
+	    }   
     @GetMapping("/idusuario/{CD}")
     // public String getListaProductoPage(Model model) {
      public String listar(@PathVariable("CD") Long CD,Model model) {

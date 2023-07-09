@@ -1,103 +1,129 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Nuevo_Articulo</title>
-    <!-- Incluye el archivo css de Bootstrap -->
-    <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
-    <!-- Incluye el archivo css del grupo -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link th:rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
-	<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
-	<link th:rel="stylesheet" type="text/css" th:href="@{/css/animate.css}">
+<meta charset="UTF-8">
+<title>Nuevo_Articulo</title>
+<!-- Incluye el archivo css de Bootstrap -->
+<link th:rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<!-- Incluye el archivo css del grupo -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link th:rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
+<link th:rel="stylesheet" type="text/css" th:href="@{/css/animate.css}">
 </head>
 <body>
-    <div class="container">
-    	<header th:replace="~{layouts/header :: header}"></header>
-		<nav class="col-xs-12 col-sm-12 col-md-4 col-lg-4" th:replace="~{layouts/nav2 :: section}"></nav>
-        <!-- Título de la página -->
-        <h1 class="mt-4"></h1>
+	<div class="container">
+		<header th:replace="~{layouts/header :: header}"></header>
+		<nav class="col-xs-12 col-sm-12 col-md-4 col-lg-4"
+			th:replace="~{layouts/nav2 :: section}"></nav>
+		<!-- Título de la página -->
+		<h1 class="mt-4"></h1>
 
-        <div class="row">
-            <div class="col-md-7">
-                <!-- Formulario para crear o modificar un artículo -->
-                <form th:action="${edicion} ? @{/index/modificar} : @{/index/guardar}" th:object="${usuario}" method="post" id="mi-tabla">
-                    <!-- Rellenar nombre-->
+		<div class="row">
+			<div class="col-md-7">
+				<!-- Formulario para crear o modificar un artículo -->
+				<form
+					th:action="${edicion} ? @{/index/modificar} : @{/index/guardar}"
+					th:object="${usuario}" method="post" id="mi-tabla">
+					
+					     <!-- Rellenar codigo de usuario-->
                     <div class="form-group">
-                        <label for="nombre">Nombre o nombres:</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombre}">
-                        <!-- Muestra mensajes de error para el campo "nombre" -->
-                        <div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+                        <label for="apellido">Codigo de usuario:</label>
+                        <input type="number" class="form-control" id="codigo" name="codigo" th:field="*{codigoUsuario}">
+                        <!-- Muestra mensajes de error para el campo "codigoUsuario" -->
+                        <div class="text-danger" th:if="${#fields.hasErrors('codigoUsuario')}" th:errors="*{codigoUsuario}"></div>
                     </div>
+					
+					
+					<!-- Rellenar nombre-->
+					<div class="form-group">
+						<label for="nombre">Nombre o nombres:</label> <input type="text"
+							class="form-control" id="nombre" name="nombre"
+							th:field="*{nombre}">
+						<!-- Muestra mensajes de error para el campo "nombre" -->
+						<div class="text-danger" th:if="${#fields.hasErrors('nombre')}"
+							th:errors="*{nombre}"></div>
+					</div>
 
-                    <!-- Rellenar apellido-->
-                    <div class="form-group">
-                        <label for="apellido">Apellido:</label>
-                        <input type="text" class="form-control" id="apellido" name="apellido" th:field="*{apellido}">
-                        <!-- Muestra mensajes de error para el campo "apellido" -->
-                        <div class="text-danger" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></div>
-                    </div>
+					<!-- Rellenar apellido-->
+					<div class="form-group">
+						<label for="apellido">Apellido:</label> <input type="text"
+							class="form-control" id="apellido" name="apellido"
+							th:field="*{apellido}">
+						<!-- Muestra mensajes de error para el campo "apellido" -->
+						<div class="text-danger" th:if="${#fields.hasErrors('apellido')}"
+							th:errors="*{apellido}"></div>
+					</div>
 
-                    <!-- Rellenar email-->
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="text" class="form-control" id="email" name="email" th:field="*{email}">
-                        <!-- Muestra mensajes de error para el campo "email" -->
-                        <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
-                    </div> 
+					<!-- Rellenar email-->
+					<div class="form-group">
+						<label for="email">Email:</label> <input type="text"
+							class="form-control" id="email" name="email" th:field="*{email}">
+						<!-- Muestra mensajes de error para el campo "email" -->
+						<div class="text-danger" th:if="${#fields.hasErrors('email')}"
+							th:errors="*{email}"></div>
+					</div>
 
-                    <!-- Rellenar fecha de nacimiento-->
-                    <div class="form-group">
-                        <label for="fecha_nacimiento">Fecha de nacimiento:</label>
-                        <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" th:field="*{fecha_nacimiento}">
-                        <!-- Mostrar mensajes de error para el campo "fecha_nacimiento" -->
-                        <div class="text-danger" th:if="${#fields.hasErrors('fecha_nacimiento')}" th:errors="*{fecha_nacimiento}"></div>
-                    </div>
+					<!-- Rellenar fecha de nacimiento-->
+					<div class="form-group">
+						<label for="fecha_nacimiento">Fecha de nacimiento:</label> <input
+							type="date" class="form-control" id="fecha_nacimiento"
+							name="fecha_nacimiento" th:field="*{fecha_nacimiento}">
+						<!-- Mostrar mensajes de error para el campo "fecha_nacimiento" -->
+						<div class="text-danger"
+							th:if="${#fields.hasErrors('fecha_nacimiento')}"
+							th:errors="*{fecha_nacimiento}"></div>
+					</div>
 
-                    <!-- Rellenar telefono-->
-                    <div class="form-group">
-                        <label for="telefono">Telefono:</label>
-                        <input type="text" class="form-control" id="telefono" name="telefono" th:field="*{telefono}">
-                        <!-- Muestra mensajes de error para el campo "telefono" -->
-                        <div class="text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
-                    </div>
+					<!-- Rellenar telefono-->
+					<div class="form-group">
+						<label for="telefono">Telefono:</label> <input type="text"
+							class="form-control" id="telefono" name="telefono"
+							th:field="*{telefono}">
+						<!-- Muestra mensajes de error para el campo "telefono" -->
+						<div class="text-danger" th:if="${#fields.hasErrors('telefono')}"
+							th:errors="*{telefono}"></div>
+					</div>
 
-                    <!-- Rellenar sexo -->
-                    <div class="form-group">
-                        <label for="sexo">Sexo:</label>
-                        <select class="form-control" id="sexo" name="sexo" th:field="*{sexo}">
-                            <!-- Opciones de sexo -->
-                            <option value=""></option>
-                            <option value="masculino">Masculino</option>
-                            <option value="femenino">Femenino</option>
-                        </select>
-                        <div class="text-danger" th:if="${#fields.hasErrors('sexo')}" th:errors="*{sexo}"></div>
-                    </div>
+					<!-- Rellenar sexo -->
+					<div class="form-group">
+						<label for="sexo">Sexo:</label> <select class="form-control"
+							id="sexo" name="sexo" th:field="*{sexo}">
+							<!-- Opciones de sexo -->
+							<option value=""></option>
+							<option value="masculino">Masculino</option>
+							<option value="femenino">Femenino</option>
+						</select>
+						<div class="text-danger" th:if="${#fields.hasErrors('sexo')}"
+							th:errors="*{sexo}"></div>
+					</div>
+					<!-- Rellenar Estatura-->
+					<label for="telefono">Estatura:</label>
+					<div class="input-group">
 
-                    <!-- Rellenar Estatura-->
-                    <div class="form-group">
-                        <label for="estatura">Estatura:</label>
-                        <input type="number" class="form-control" id="estatura" name="estatura" th:field="*{estatura}">
-                        <!-- Muestra mensajes de error para el campo "estatura" -->
-                        <div class="text-danger" th:if="${#fields.hasErrors('estatura')}" th:errors="*{estatura}"></div>
-                    </div>  
-                    <!-- Rellenar Estatura-->                      
 
-                    <br></br>
+						<input type="text" id="estatura" th:field="*{estatura}"
+							placeholder="0.00" class="form-control"> <span
+							class="input-group-text text-dark">Metros</span>
+					</div>
+					<!-- Rellenar Estatura-->
+					<br></br>
 
-                    <!-- Botón para enviar el formulario -->
-                    <div class="mb-3 row">
-                        <div class="col-sm-12 text-center">
-                            <a class="btn btn-secondary">Cancelar</a>
+					<!-- Botón para enviar el formulario -->
+					<div class="mb-3 row">
+						<div class="col-sm-12 text-center">
+							<a class="btn btn-secondary">Cancelar</a>
 
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                Enviar datos
-                            </button>
-                        </div>
-                    </div>
-                    <!-- Botón para enviar el formulario -->
-                    
-                     <!-- Rellenar tipo de usuario
+							<button type="button" class="btn btn-primary"
+								data-bs-toggle="modal" data-bs-target="#exampleModal">
+								Enviar datos</button>
+						</div>
+					</div>
+					<!-- Botón para enviar el formulario -->
+
+					<!-- Rellenar tipo de usuario
                      
                     <div class="form-group">
                     <label for="usuario">¿Es usuario Admnistrador?:</label>
@@ -110,99 +136,114 @@
                         <!-- Muestra mensajes de error para el campo "estatura" s
                         <div class="text-danger" th:if="${#fields.hasErrors('userAdmin')}" th:errors="*{userAdmin}"></div>
                     </div>  
-                    <!-- Rellenar tipo de usuario-->                      
+                    <!-- Rellenar tipo de usuario-->
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Venta de confirmacion</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            <p>¿Confirma enviar datos?</p>
-                            <p>Nombre: <span id="nombreModal"></span></p>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <input type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal2" value="Registrarse en la pagina" >
-                             
-                            
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- Ventana modal 1 -->
-                    <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="modal1Label">Ventana modal 1</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    Contenido de la ventana modal 1
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal2">Siguiente</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Ventana modal 2 -->
-                    <div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="modal2Label" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="modal2Label">Ventana modal 2</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    Contenido de la ventana modal 2
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal3">Siguiente</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Ventana modal 3 -->
-                    <div class="modal fade" id="modal3" tabindex="-1" aria-labelledby="modal3Label" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="modal3Label">Ventana modal 3</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    Contenido de la ventana modal 3
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                </form>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Incluye el archivo JavaScript de Bootstrap -->
-   
-    <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
-    
-    <script>
+					<!-- Modal -->
+					<div class="modal fade" id="exampleModal" data-bs-backdrop="static"
+						tabindex="-1" aria-labelledby="exampleModalLabel"
+						aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h1 class="modal-title fs-5" id="staticBackdropLabel">Venta
+										de confirmacion</h1>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"
+										aria-label="Close"></button>
+								</div>
+								<div class="modal-body">
+									<p>¿Confirma enviar datos?</p>
+									<p>
+										Nombre: <span id="nombreModal"></span>
+									</p>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary"
+										data-bs-dismiss="modal">Cerrar</button>
+									<input type="submit" class="btn btn-primary"
+										data-bs-toggle="modal" data-bs-target="#modal2"
+										value="Registrarse en la pagina">
+
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Ventana modal 1 -->
+					<div class="modal fade" id="modal1" tabindex="-1"
+						aria-labelledby="modal1Label" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="modal1Label">Ventana modal 1</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"
+										aria-label="Close"></button>
+								</div>
+								<div class="modal-body">Contenido de la ventana modal 1</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary"
+										data-bs-dismiss="modal">Cerrar</button>
+									<button type="button" class="btn btn-primary"
+										data-bs-toggle="modal" data-bs-target="#modal2">Siguiente</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Ventana modal 2 -->
+					<div class="modal fade" id="modal2" tabindex="-1"
+						aria-labelledby="modal2Label" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="modal2Label">Ventana modal 2</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"
+										aria-label="Close"></button>
+								</div>
+								<div class="modal-body">Contenido de la ventana modal 2</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary"
+										data-bs-dismiss="modal">Cerrar</button>
+									<button type="button" class="btn btn-primary"
+										data-bs-toggle="modal" data-bs-target="#modal3">Siguiente</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Ventana modal 3 -->
+					<div class="modal fade" id="modal3" tabindex="-1"
+						aria-labelledby="modal3Label" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="modal3Label">Ventana modal 3</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"
+										aria-label="Close"></button>
+								</div>
+								<div class="modal-body">Contenido de la ventana modal 3</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary"
+										data-bs-dismiss="modal">Cerrar</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- Incluye el archivo JavaScript de Bootstrap -->
+
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+	<script>
         // Obtener el valor del campo de nombre y asignarlo a la ventana modal
         $(document).ready(function() {
             $('#exampleModal').on('show.bs.modal', function(event) {
@@ -211,12 +252,16 @@
             });
         });
     </script>
-    <footer class="row fila justify-content-center" th:replace="~{layouts/footer :: footer}"></footer>
-	<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
-	<script type="text/javascript" th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-<!--<script src="/js/jquery.min.js"></script>-->
-  	<script src="/js/popper.js"></script>
-  	<script src="/js/main.js"></script>
+	<footer class="row fila justify-content-center"
+		th:replace="~{layouts/footer :: footer}"></footer>
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	<!--<script src="/js/jquery.min.js"></script>-->
+	<script src="/js/popper.js"></script>
+	<script src="/js/main.js"></script>
 </body>
 </html>
