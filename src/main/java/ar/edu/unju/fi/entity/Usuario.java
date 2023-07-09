@@ -87,12 +87,12 @@ public class Usuario {
 	private int codigoUsuario;
 
 	// Validación del campo estatura
-	@Positive(message = "El estatura debe ser un valor positivo y no puede ser cero.")
-	// @NotEmpty(message="el nombre no puede estar vacio.")
-	@Pattern(regexp = "([0-9]*[.])?[0-9]+", message = "Debe ingresar un número valido")
-	@Column(name = "user_estatura")
-	private String estatura;
-
+		@Positive(message = "El estatura debe ser un valor positivo y no puede ser cero.")
+		// @NotEmpty(message="el nombre no puede estar vacio.")
+		@Pattern(regexp = "([0-9]*[.])?[0-9]+", message = "Debe ingresar un número valido")
+		@Column(name = "user_estatura")
+		private String estatura;
+		
 	// Validación del campo categoría
 	@NotBlank(message = "Debe seleccion un sexo.")
 	@Column(name = "user_sexo", length = 9, nullable = false)
@@ -216,13 +216,13 @@ public class Usuario {
 		this.nombre = nombre;
 	}
 
-	public long getProdu_id() {
-		return id;
-	}
-
-	public void setProdu_id(long id) {
-		this.id = id;
-	}
+//	public long getProdu_id() {
+//		return id;
+//	}
+//
+//	public void setProdu_id(long id) {
+//		this.id = id;
+//	}
 
 	public String getApellido() {
 		return apellido;

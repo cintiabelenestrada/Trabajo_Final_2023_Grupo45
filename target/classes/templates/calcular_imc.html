@@ -13,7 +13,7 @@
 <link rel="stylesheet" th:href="@{/css/estilos.css}" />
 
 
-<title>Peso ideal</title>
+<title>Calcular IMC</title>
 </head>
 <body>
 	<nav th:replace="~{layouts/nav :: nav}"></nav>
@@ -39,36 +39,94 @@
 
 						</div>
 
+
+						<!-- ... -->
 						<div class="col-12 text-light ps-4 pt-3  p-3 ">
 							<div class="card-body">
-
-								<div class="d-flex">
+								<div
+									>
+									<form th:action="@{/datosusuarioimc}" method="post">
+										<p>Ingrese su código de usuario:</p>
+									<input type="text" th:field="*{usuario.codigoUsuario}" />
+								<button type="submit" class="btn btn-success">Aceptar</button>
+									</form>
+								</div>
+								<div
+									th:if="${usuario.codigoUsuario != null and usuario.codigoUsuario != ''}">
+									<div class="d-flex">
+										<p class="card-text">
+											<strong>Nombre:</strong> <span th:text="${usuario.nombre}"></span>
+										</p>
+										<p class="card-text ms-4">
+											<strong>Apellido:</strong> <span
+												th:text="${usuario.apellido}"></span>
+										</p>
+									</div>
 									<p class="card-text">
-										<strong>Nombre:</strong> Juan
+										<strong>Email:</strong> <span th:text="${usuario.email}"></span>
 									</p>
-									<p class="card-text ms-4">
-										<strong>Apellido:</strong> Pérez
+									<p class="card-text">
+										<strong>Fecha de nacimiento:</strong> <span
+											th:text="${usuario.fecha_nacimiento}"></span>
+									</p>
+									<p class="card-text">
+										<strong>Teléfono:</strong> <span th:text="${usuario.telefono}"></span>
+									</p>
+									<p class="card-text">
+										<strong>Sexo:</strong> <span th:text="${usuario.sexo}"></span>
+									</p>
+									<p class="card-text">
+										<strong>Estatura:</strong> <span th:text="${usuario.estatura}"></span>
+										metros
 									</p>
 								</div>
-								<p class="card-text">
-									<strong>Email:</strong> juan@example.com
-								</p>
-								<p class="card-text">
-									<strong>Fecha de nacimiento:</strong> 15 de enero de 1990
-								</p>
-								<p class="card-text">
-									<strong>Teléfono:</strong> 555-1234
-								</p>
-								<p class="card-text">
-									<strong>Sexo:</strong> Masculino
-								</p>
-								<p class="card-text">
-									<strong>Estatura:</strong> 1.75 metros
-								</p>
 							</div>
 						</div>
+						<!-- ... -->
 
-							<!-- DIV PARA CAMPO TUS IMC PANTALLA GRANDE -->
+						<!-- 						<div class="col-12 text-light ps-4 pt-3  p-3 "> -->
+
+
+
+						<!-- 							<div class="card-body"> -->
+
+						<!-- 									<div -->
+						<!-- 								> -->
+						<!-- 								<p>Ingrese su código de usuario:</p> -->
+						<!-- 								<input type="text" th:field="*{usuario.codigoUsuario}" /> -->
+						<!-- 								<button type="submit">Aceptar</button> -->
+						<!-- 							</div> -->
+
+						<!-- 								<div class="d-flex"> -->
+						<!-- 									<p class="card-text"> -->
+						<!-- 										<strong>Nombre:</strong> <span th:text="${usuario.nombre}"></span> -->
+						<!-- 									</p> -->
+						<!-- 									<p class="card-text ms-4"> -->
+						<!-- 										<strong>Apellido:</strong> <span th:text="${usuario.apellido}"></span> -->
+						<!-- 									</p> -->
+						<!-- 								</div> -->
+						<!-- 								<p class="card-text"> -->
+						<!-- 									<strong>Email:</strong> <span th:text="${usuario.email}"></span> -->
+						<!-- 								</p> -->
+						<!-- 								<p class="card-text"> -->
+						<!-- 									<strong>Fecha de nacimiento:</strong> <span -->
+						<!-- 										th:text="${usuario.fecha_nacimiento}"></span> -->
+						<!-- 								</p> -->
+						<!-- 								<p class="card-text"> -->
+						<!-- 									<strong>Teléfono:</strong> <span th:text="${usuario.telefono}"></span> -->
+						<!-- 								</p> -->
+						<!-- 								<p class="card-text"> -->
+						<!-- 									<strong>Sexo:</strong> <span th:text="${usuario.sexo}"></span> -->
+						<!-- 								</p> -->
+						<!-- 								<p class="card-text"> -->
+						<!-- 									<strong>Estatura:</strong> <span th:text="${usuario.estatura}"></span> -->
+						<!-- 									metros -->
+						<!-- 								</p> -->
+						<!-- 							</div> -->
+
+						<!-- 						</div> -->
+
+						<!-- DIV PARA CAMPO TUS IMC PANTALLA GRANDE -->
 						<div class="servicios-izquierda-top d-none d-lg-block d-xl-block ">
 
 							<div class="row">
@@ -76,17 +134,34 @@
 								<p class="text-light mt-3 ms-4 fw-bold">Tus IMC:</p>
 								<div>
 									<!-- COLOCAR AQUI LOS IMC POR FECHA DESCENDENTE -->
+									<div>
+										<h2>Listado de IMC</h2>
+										<table>
+											<thead>
+												<tr>
+													<th>Fecha</th>
+													<th>IMC</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr th:each="calculo : ${calculosIMC}">
+													<td th:text="${calculo.fechaCalculo}"></td>
+													<td th:text="${calculo.imc}"></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
 								</div>
 
-								<p></p>
+
 							</div>
 
 
 
 						</div>
-						
-							<!-- DIV PARA CAMPO TUS IMC PANTALLA PEQUEÑA -->
-							<div class="servicios-izquierda-top  d-lg-none d-xl-none">
+
+						<!-- DIV PARA CAMPO TUS IMC PANTALLA PEQUEÑA -->
+						<div class="servicios-izquierda-top  d-lg-none d-xl-none">
 
 							<div class="row">
 								<p></p>
@@ -101,12 +176,13 @@
 
 
 						</div>
-						
+
 
 					</div>
-					
+
 					<!-- CAMPO TU PESO IDEAL PANTALLA GRANDE -->
-					<div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 text-light servicios-izquierda-left d-none d-lg-block d-xl-block">
+					<div
+						class="col-xl-7 col-lg-7 col-md-12 col-sm-12 text-light servicios-izquierda-left d-none d-lg-block d-xl-block">
 
 
 
@@ -133,8 +209,10 @@
 											</div>
 										</div>
 										<div class="col-12 align-self-end p-5">
-											<button type="button" class="btn btn-success mb-2">Calcular
+											<button type="button" class="btn btn-success mb-2" th:href="@{/calcularimc}">Calcular
 												IMC</button>
+												
+												
 										</div>
 									</div>
 								</div>
@@ -144,10 +222,12 @@
 						</div>
 
 
-					</div><!-- FIN DIV QUE ENVUELVE TU PESO IDEAL -->
-					
+					</div>
+					<!-- FIN DIV QUE ENVUELVE TU PESO IDEAL -->
+
 					<!-- CAMPO TU PESO IDEAL PANTALLA PEQUEÑA -->
-					<div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 text-light servicios-izquierda-top d-lg-none d-xl-none">
+					<div
+						class="col-xl-7 col-lg-7 col-md-12 col-sm-12 text-light servicios-izquierda-top d-lg-none d-xl-none">
 
 
 
@@ -185,12 +265,14 @@
 						</div>
 
 
-					</div><!-- FIN DIV QUE ENVUELVE TU PESO IDEAL -->
-					
+					</div>
+					<!-- FIN DIV QUE ENVUELVE TU PESO IDEAL -->
+
 				</div>
 			</section>
 
-			<aside class="col-xl-3 col-lg-3 col-md-12 col-sm-12 bg-dark text-light servicios-izquierda-left d-none d-lg-block d-xl-block">
+			<aside
+				class="col-xl-3 col-lg-3 col-md-12 col-sm-12 bg-dark text-light servicios-izquierda-left d-none d-lg-block d-xl-block">
 				<p>Seccion Aside</p>
 			</aside>
 
