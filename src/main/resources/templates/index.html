@@ -1,12 +1,451 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<!-- Index.html controla todo el inicio de la pagina, redireccionando a las demas a travez de
+botones e hipervinculos, algunas rutas se deben completar con lo asignado a cada miembro del grupo
+author joel rojas araya
+@version 1.0.2 date: 9/7/23 -->
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+<meta charset="UTF-8">
+<title>Inicio</title>
+<meta name="viewport" content="width=device-width, initial-scale-1">
+<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
+
+
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+    
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+ 
 </head>
+
+
 <body>
-    <h1>GRUPO 45asdfas</h1>
+
+ <!-- Inicio no necesita un heder debido a que las imagenes actuan como tal
+ para las demas paginas se es necesario incluir el header -->
+  <!-- Fragment to Header 
+  <header th:replace="~{Layouts/header :: header}"></header>-->
+  
+  <!-- Fragment to Nav -->
+  <nav th:replace="~{Layouts/nav :: nav}"></nav>  
+   
+   
+   <!-- Carousel Start -->
+    <div class="container-fluid p-0 mb-5">
+        <div id="blog-carousel" class="carousel slide overlay-bottom" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="w-100" src="imagenes/salud-y-bienestar.jpg" alt="Image">
+                    
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <h2 class="text-primary font-weight-medium m-0">Nuestro compromiso es tu salud</h2>
+                        <h1 class="display-1 text-black m-0">Salud y Bienestar</h1>
+                        <h2 class="text-black m-0">* DESDE 2022 *</h2>
+                    </div>
+                    
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100" src="imagenes/salud-y-bienestar2.jpg" alt="Image">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <h2 class="text-primary font-weight-medium m-0">Nuestro compromiso es tu salud </h2>
+                        <h1 class="display-1 text-black m-0">Salud y Bienestar</h1>
+                        <h2 class="text-black m-0">* DESDE 2022 *</h2>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#blog-carousel" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#blog-carousel" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+    </div>
+    <!-- Carousel End -->
+    
+   
+    
+     <!-- About Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="section-title">
+                <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Sobre Nosotros</h4>
+                <h1 class="display-4">Estamos desde 2022</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 py-0 py-lg-5">
+                    <h1 class="mb-3">Nuestra Historia</h1>
+                    <h5 class="mb-3">Somos un sitio con información de interés  sobre temas de Salud y Bienestar desde hace 1 año. Encontrarás contenidos sobre diferentes cuidados de la salud, consejos, rutinas, recetas, etc.</h5>
+                    <p>También ponemos a tu disposición algunos servicios. Entre ellos una práctica Calculadora de índice de Masa Corporal con la que podrás realizar el cálculo en segundos con sólo ingresar tu peso y altura, la calculadora te devuelve el resultado y lo podrás comparar contra una tabla en donde podrás visualizar los grados de obesidad (peso normal, exceso de peso, obesidad grados 1 y 2 u obesidad mórbida).</p>
+                    <a href="" class="btn btn-secondary font-weight-bold py-2 px-4 mt-2">Continuar leyendo</a>
+                </div>
+                <div class="col-lg-4 py-5 py-lg-0" style="min-height: 500px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100" src="imagenes/sobre-nosotros.png" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-4 py-0 py-lg-5">
+                    <h1 class="mb-3">Nuestra Visión</h1>
+                    <p>Queremos lograr llegar a cada persona, convertirnos en un apoyo más para su dia a dia. Con el pasar de los años trabajaremos muy duro para alcanzar ser tu pagina de preferencia.</p>
+                    <h5 class="mb-3"><i class="fa fa-check text-primary mr-3"></i>Estamos para ayudarte.</h5>
+                    <h5 class="mb-3"><i class="fa fa-check text-primary mr-3"></i>Tu salud, nuestra responsabilidad.</h5>
+                    <h5 class="mb-3"><i class="fa fa-check text-primary mr-3"></i>Tus objetivos son los nuestros.</h5>
+                    <a href="" class="btn btn-primary font-weight-bold py-2 px-4 mt-2">Continuar leyendo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+    
+     
+    <!-- Service Start -->
+    <div class="container-fluid pt-5">
+        <div class="container">
+            <div class="section-title">
+                <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Nuestros Servicios</h4>
+                <h1 class="display-4">Calculadoras y Tests</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mb-5">
+                   <div class="row align-items-center">   
+                        <div class="col-sm-5">
+                            <img class="img-fluid mb-3 mb-sm-0" src="imagenes/servicios1.jpg" alt="">
+                        </div>
+                        <div class="col-sm-7">
+                            <h4><i class="fa fa-calculator service-icon"></i>Calcular IMC (índice de masa corporal)</h4>
+                            
+                            <p class="m-0">Calculá y evaluá en segundos tu Índice de Masa Corporal. Con sólo ingresar tu peso y altura, la calculadora te devuelve el índice para que puedas evaluar tu grado de obesidad!</p>
+                            
+                            <a class="btn btn-outline-success me-2 nav-botones-color" th:href="@{/servicios/calcular_imc2}">Calcular</a>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-5">
+                    <div class="row align-items-center">
+                        <div class="col-sm-5">
+                            <img class="img-fluid mb-3 mb-sm-0" src="imagenes/servicios2.jpg" alt="">
+                        </div>
+                        <div class="col-sm-7">
+                            <h4><i class="fa fa-balance-scale service-icon"></i>Peso Ideal</h4>
+                            <p class="m-0">Calculá tu peso ideal en segundos. Con sólo ingresar tu estatura y edad, la calculadora te devuelve el peso idoneo al cual puedes aspirar a lograr. Tomalo como un punto de referencia, y semana a semana haz pequeños avances para lograr alcanzarlo!</p>
+                            
+                            <a class="btn btn-outline-success me-2 nav-botones-color" th:href="@{/servicios/peso_ideal}">Calcular</a>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-5">
+                    <div class="row align-items-center">
+                        <div class="col-sm-5">
+                            <img class="img-fluid mb-3 mb-sm-0" src="imagenes/servicios3.jpeg" alt="">
+                        </div>
+                        <div class="col-sm-7">
+                            <h4><i class="fa fa-clipboard-check service-icon"></i>Test de Salud y Estilo de Vida</h4>
+                            <p class="m-0">Test de salud y estilo de vida: Este test te permite valorar si tenés un estilo de vida saludable. Es un test fácil de realizar que te resultará muy útil a la hora de valorar si necesitas realizar ajustes en tus hábitos cotidianos.</p>
+                            
+                            <a class="btn btn-outline-success me-2 nav-botones-color" th:href="@{/ruta/que/corresponda}">Realizar Test</a>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-5">
+                    <div class="row align-items-center">
+                        <div class="col-sm-5">
+                            <img class="img-fluid mb-3 mb-sm-0" src="imagenes/servicios4.jpg" alt="">
+                        </div>
+                        <div class="col-sm-7">
+                            <h4><i class="fa fa-heartbeat  service-icon"></i>Test de Riesgo Cardiovascular</h4>
+                            <p class="m-0">Evaluá en segundos tu riesgo cardiovascular. Una de las medidas utilizadas para determinar si una persona padece obesidad es el Índice Cintura Cadera, también conocido como ICC, que representa la relación entre la circunferencia de la cintura y la circunferencia de la cadera.</p>
+                            
+                            <a class="btn btn-outline-success me-2 nav-botones-color" th:href="@{/ruta/que/corresponda}">Realizar Test</a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+    
+    
+    
+    
+    
+    <!-- Offer Start -->
+    <div class="offer container-fluid my-5 py-5 text-center position-relative overlay-top overlay-bottom" id="blocks">
+        <div class="container py-5">
+            <h1 class="display-3 text-primary mt-3">50% OFF</h1>
+            <h1 class="text-white mb-3">Oferta Especial Domingo</h1>
+            <h4 class="text-white font-weight-normal mb-4 pb-3">Cada domingo desde el 9 de julio al 30 de julio de 2023</h4>
+            <h4 class="text-white font-weight-normal mb-4 pb-3">Contamos con una línea de productos pensados para vos. ¿Te interesa? Mandanos un correo para asesorarte.</h4>
+            <form class="form-inline justify-content-center mb-4">
+                <div class="input-group">
+                    <input type="text" class="form-control p-4" placeholder="Email" style="height: 60px;">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary font-weight-bold px-4" type="submit">Ingresar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Offer End -->
+    
+    
+    
+    
+    
+    <!-- Recets Start -->
+    <div class="container-fluid pt-5">
+        <div class="container">
+            <div class="section-title">
+                <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Menu de Recetas Saludables</h4>
+                <h1 class="display-4">Deliciosas, Nutritivas y Totalmente Gratuitas...!!!</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1 class="mb-5">Durante el dia</h1>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-4 col-sm-3">
+                            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="imagenes/recetas1.jpg" alt="">
+                            <!-- <h5 class="menu-price">$5</h5> -->
+                        </div>
+                        <div class="col-8 col-sm-9">
+                            <h4>Cereales, muesli y bowls caseros</h4>
+                            <p class="m-0">Es posible tomar cereales en el desayuno de forma saludable, solo tenemos que comprar los ingredientes al natural, y combinarlos a nuestro gusto. Los copos de avena son el recurso más fácil, llenos de propiedades saludables, pero hay mucho más donde elegir.</p>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-4 col-sm-3">
+                            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="imagenes/recetas2.jpg" alt="">
+                            <!-- <h5 class="menu-price">$7</h5> -->
+                        </div>
+                        <div class="col-8 col-sm-9">
+                            <h4>Recetas de pan casero</h4>
+                            <p class="m-0">El pan industrial refinado no solo carece de valor nutricional, es que ni si quiera sabe bien. Una forma de valorar más el buen pan es elaborarlo en casa, y tampoco hay que volverse locos al principio con recetas complejas, tampoco es necesario ser un panadero para poder crear nuestros propios panes nutritivos, ideales para todo momento.</p>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-4 col-sm-3">
+                            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="imagenes/recetas3.jpg" alt="">
+                            <!-- <h5 class="menu-price">$9</h5> -->
+                        </div>
+                        <div class="col-8 col-sm-9">
+                            <h4>Merluza al horno con ajada al limón</h4>
+                            <p class="m-0">Si hay un pescado socorrido y versátil, ese es sin duda la merluza. Ya sea frita, rebozada, en cazuela o como en esta ocasión merluza al horno con ajada al limón, un plato interesante y muy sencillo que tanto nos vale de diario como para quedar bien en una ocasión especial.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h1 class="mb-5">Durante la tarde-noche</h1>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-4 col-sm-3">
+                            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="imagenes/recetas4.jpg" alt="">
+                            <!-- <h5 class="menu-price">$5</h5> -->
+                        </div>
+                        <div class="col-8 col-sm-9">
+                            <h4>Tarta de frutas al jengibre</h4>
+                            <p class="m-0">La fruta es una merienda saludable muy adecuada. Pero si quieres darle una vuelta puedes hacer este tartar con jengibre. Elaboracion fácil, rápida y sencilla, con un sabor tan exquisito que no te lo podes perder y ademas esta al alcance de todos. ¡Te va a encantar!</p>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-4 col-sm-3">
+                            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="imagenes/recetas5.jpg" alt="">
+                            <!-- <h5 class="menu-price">$7</h5> -->
+                        </div>
+                        <div class="col-8 col-sm-9">
+                            <h4>Smoothie de mango</h4>
+                            <p class="m-0">Los smoothies son una opción muy saludable y fácil de consumir frutas y verduras. Podemos acompañar un smoothie como este tanto con un desayuno saludable como una merienda. Te enseñamos un smoothie lleno de energía que aumenta las defensas, con vitamina C, A y además ayuda a hacer mejor la digestión. </p>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-4 col-sm-3">
+                            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="imagenes/recetas6.jpg" alt="">
+                            <!-- <h5 class="menu-price">$9</h5> -->
+                        </div>
+                        <div class="col-8 col-sm-9">
+                            <h4>Pizza con base de coliflor</h4>
+                            <p class="m-0">La mayoría asocia la pizza a calorías, grasa... Pero esta versión con base de coliflor es infinitamente más saludable que las recetas con masa tradicional. Puedes añadirle salmón ahumado, mozzarella y tomate natural, por ejemplo. Una receta no solo saludable, sino increíblemente deliciosa, la combinación perfecta entre sabor y nutrición. Te la vas a perder?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="d-flex justify-content-center">
+   			 <a class="btn btn-outline-success me-2 nav-botones-color" th:href="@{/recetas}"> Ver todas las Recetas</a>
+		</div>
+        
+     
+    </div>
+    <!-- Recets End -->
+    
+    
+    <!-- Registration Start -->
+    <div class="container-fluid my-5" id="blocks">
+        <div class="container">
+            <div class="reservation position-relative overlay-top overlay-bottom">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 my-5 my-lg-0">
+                        <div class="p-5">
+                            <div class="mb-4">
+                                <h1 class="display-3 text-primary">¿Aún No Eres Miembro?</h1>
+                                <h1 class="text-white">Registrate ahora...!!!</h1>
+                            </div>
+                            <p class="text-white">No te pierdas ninguna novedad de nuestra pagina. Estamos constantemente trayendo nuevo material para mantenerte al tanto sobre los cuidados para tu salud.</p>
+                            <ul class="list-inline text-white m-0">
+                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Consejos</li>
+                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Rutinas</li>
+                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Recetas</li>
+                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Y más...</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="text-center p-5" style="background: rgba(51, 33, 29, .8);">
+                            <h1 class="text-white mb-4 mt-5">Registrate</h1>
+                            <form class="mb-5">
+                                <div class="form-group">
+                                    <input type="text" class="form-control bg-transparent border-primary p-4 text-white" placeholder="Nombre"
+                                        required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control bg-transparent border-primary p-4 text-white" placeholder="Apellido"
+                                        required="required" />
+                                </div>
+                                
+                                <div class="form-group">
+                                    <input type="number" class="form-control bg-transparent border-primary p-4 text-white" placeholder="Número de contacto"
+                                        required="required" />
+                                </div>
+                                
+                                <div class="form-group">
+                                    <input type="email" class="form-control bg-transparent border-primary p-4 text-white" placeholder="Email"
+                                        required="required" />
+                                </div>
+                                
+                                <!--  
+                                <div class="form-group">
+                                    <div class="date" id="date" data-target-input="nearest">
+                                        <input type="text" class="form-control bg-transparent border-primary p-4 datetimepicker-input text-white" placeholder="Date" data-target="#date" data-toggle="datetimepicker"/>
+                                    </div>
+                                </div> -->
+                                
+                                <div>
+                                    <button class="btn btn-primary btn-block font-weight-bold py-3" type="submit">Registrarme</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Registration End -->
+    
+    
+    
+    <!-- Testimonial Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="section-title">
+                <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Testimonios</h4>
+                <h1 class="display-4">Nuestros Clientes Dicen</h1>
+            </div>
+            <div class="owl-carousel testimonial-carousel">
+                <div class="testimonial-item">
+                    <div class="d-flex align-items-center mb-3">
+                        <img class="img-fluid" src="imagenes/testimonio1.jpg" alt="">
+                        <div class="ml-3">
+                            <h4>Analia Naser</h4>
+                            <i>Escritora</i>
+                        </div>
+                    </div>
+                    <p class="m-0">Ademas de todo lo nutritivo que provee la pagina, tiene muy buenos consejos sobre rutinas de ejercicios, yoga, etc. Simplemente me encanta esta pagina.</p>
+                </div>
+                <div class="testimonial-item">
+                    <div class="d-flex align-items-center mb-3">
+                        <img class="img-fluid" src="imagenes/testimonio2.jpg" alt="">
+                        <div class="ml-3">
+                            <h4>Hernan Gutierrez</h4>
+                            <i>Abogado</i>
+                        </div>
+                    </div>
+                    <p class="m-0">El dia a dia me tiene demasiado ocupado en el trabajo, no suelo tener tiempo para cocinar de manera saludable. Gracias a esta pagina he podido cambiar eso, ya que sus recetas son sencillas, nutritivas y no llevan mucho tiempo.</p>
+                </div>
+                <div class="testimonial-item">
+                    <div class="d-flex align-items-center mb-3">
+                        <img class="img-fluid" src="imagenes/testimonio3.jpg" alt="">
+                        <div class="ml-3">
+                            <h4>Romina Calisaya</h4>
+                            <i>Ingeniera Industrial</i>
+                        </div>
+                    </div>
+                    <p class="m-0">Es impresionante la cantidad de contenido que tiene esta pagina. Ofrece una amplia gama de productos, a muy buenos precios. Sin duda de la mejores paginas que he visitado.</p>
+                </div>
+                <div class="testimonial-item">
+                    <div class="d-flex align-items-center mb-3">
+                        <img class="img-fluid" src="imagenes/testimonio4.jpg" alt="">
+                        <div class="ml-3">
+                            <h4>Cesar Montoya</h4>
+                            <i>Contador</i>
+                        </div>
+                    </div>
+                    <p class="m-0">Desde que conozco esta pagina he cambiado todo mi estilo de vida. Sin duda muy buen contenido, lo recomiendo.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="d-flex justify-content-center">
+   			 <a class="btn btn-outline-success me-2 nav-botones-color" th:href="@{/testimonio}"> Ver todos los Testimonios</a>
+   			 
+		</div>
+        
+    </div>
+    <!-- Testimonial End -->
+   
+   <!-- Fragment to Header -->
+   <footer th:replace="~{Layouts/footer :: footer}"></footer>
+    
+    <!-- Button Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+    
+   
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    
+    
 </body>
+
+
+
 </html>
