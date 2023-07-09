@@ -11,24 +11,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ServiciosController {
 	
-	 @GetMapping("/inicio")
-	    public String getInicioPage( Model model) {
-	        
-	        return "index";
-	    }
-	
-	
+
 	
 	 @GetMapping("/calculoimc")
-	    public String getServiciosPage( Model model) {
+	    public String getCalculadoraImcPage( Model model) {
 	        
 	        return "calcular_imc";
 	    }
 	 
-//	 @GetMapping("/calculoimc2")
-//	    public String getServicios2Page( Model model) {
-//	        
-//	        return "calcular_imc2";
-//	    }
+	 
+		
+	 @GetMapping("/pesoideal")
+	    public String getPesoIdealPage( Model model) {
+	        
+	        return "peso_ideal";
+	    }
+	 
 
 }

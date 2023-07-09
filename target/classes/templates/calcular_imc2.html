@@ -13,7 +13,7 @@
 <link rel="stylesheet" th:href="@{/css/estilos.css}" />
 
 
-<title>Peso ideal</title>
+<title>Calcule su IMC</title>
 </head>
 <body>
 	<nav th:replace="~{layouts/nav :: nav}"></nav>
@@ -22,11 +22,11 @@
 
 		<div class="d-flex row ms-2 me-2">
 
-			<section class="col-xl-9 col-lg-9 col-md-12 bg-dark text-light">
+			<section class="col-9 bg-dark text-light">
 
-				<div class="row">
+				<div class="d-flex">
 
-					<div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
+					<div class="col-5">
 
 						<div class="d-flex servicios-izquierda-bottom ">
 							<i class="fa-solid fa-user text-light fa-2xl pt-5 ps-5 pe-4"></i>
@@ -68,8 +68,7 @@
 							</div>
 						</div>
 
-							<!-- DIV PARA CAMPO TUS IMC PANTALLA GRANDE -->
-						<div class="servicios-izquierda-top d-none d-lg-block d-xl-block ">
+						<div class="servicios-izquierda-top">
 
 							<div class="row">
 								<p></p>
@@ -84,77 +83,16 @@
 
 
 						</div>
-						
-							<!-- DIV PARA CAMPO TUS IMC PANTALLA PEQUEÑA -->
-							<div class="servicios-izquierda-top  d-lg-none d-xl-none">
-
-							<div class="row">
-								<p></p>
-								<p class="text-light mt-3 ms-4 fw-bold">Tus IMC:</p>
-								<div>
-									<!-- COLOCAR AQUI LOS IMC POR FECHA DESCENDENTE -->
-								</div>
-
-								<p></p>
-							</div>
-
-
-
-						</div>
-						
 
 					</div>
-					
-					<!-- CAMPO TU PESO IDEAL PANTALLA GRANDE -->
-					<div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 text-light servicios-izquierda-left d-none d-lg-block d-xl-block">
+					<div class="d-flex col-7 text-light servicios-izquierda-left">
 
 
 
 						<div class="row col-12 justify-content-center">
-							<div class="col-lg-3  text-center"></div>
-
-							<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 text-center">
-								<div class="container ">
-									<div class="row">
-										<div class="col-12 align-self-start p-5">
-											<p class="fs-5 text-center fw-bold">Calcule su IMC</p>
-										</div>
-										<div class="col-12 align-self-center p-5">
-
-											<p class="text-start">Ingrese su peso actual</p>
-
-											<div class="input-group mb-3">
-
-
-												<input type="text" id="peso" placeholder="00"
-													aria-label="Peso" aria-describedby="Peso"
-													class="form-control"> <label for="peso"
-													class="input-group-text">Kg</label>
-											</div>
-										</div>
-										<div class="col-12 align-self-end p-5">
-											<button type="button" class="btn btn-success mb-2">Calcular
-												IMC</button>
-										</div>
-									</div>
-								</div>
-							</div>
-
 							<div class="col-3 text-center"></div>
-						</div>
 
-
-					</div><!-- FIN DIV QUE ENVUELVE TU PESO IDEAL -->
-					
-					<!-- CAMPO TU PESO IDEAL PANTALLA PEQUEÑA -->
-					<div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 text-light servicios-izquierda-top d-lg-none d-xl-none">
-
-
-
-						<div class="row col-12 justify-content-center">
-							<div class="col-lg-3  text-center"></div>
-
-							<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 ctext-center">
+							<div class="col-6 text-center">
 								<div class="container ">
 									<div class="row">
 										<div class="col-12 align-self-start p-5">
@@ -185,12 +123,11 @@
 						</div>
 
 
-					</div><!-- FIN DIV QUE ENVUELVE TU PESO IDEAL -->
-					
+					</div>
 				</div>
 			</section>
 
-			<aside class="col-xl-3 col-lg-3 col-md-12 col-sm-12 bg-dark text-light servicios-izquierda-left d-none d-lg-block d-xl-block">
+			<aside class="col-3 bg-dark text-light servicios-izquierda-left">
 				<p>Seccion Aside</p>
 			</aside>
 
