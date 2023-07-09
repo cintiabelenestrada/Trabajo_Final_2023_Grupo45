@@ -13,7 +13,7 @@ public interface IServicioService {
 	Usuario getUsuarioPorCodigo(int codigoUsuario);
 //	void guardarIMC(IndiceMasaCorporal imc);
 	
-//	double calcularIMC(double peso, double estatura);
+	void calcularIMC(double estatura, double peso);
 //	 void agregarIndiceMasaCorporal(IndiceMasaCorporal imcCalculado);
 
 }

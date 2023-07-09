@@ -60,20 +60,21 @@ public class ServiciosController {
 	            return "error";
 	        }
 	    }
-//	 
-//	 @PostMapping("/calcularimc")
-//	    public String calcularIMC(@RequestParam("codigoUsuario") int codigoUsuario, @RequestParam("pesoActual") double pesoActual, Model model) {
-//	        Usuario usuario = servicioService.getUsuarioPorCodigo(codigoUsuario);
-//	        if (usuario != null) {
-////	            double estatura = registroRepository.findEstaturaByCodigoUsuario(codigoUsuario);
-//	            IndiceMasaCorporal imcCalculado = servicioService.calcularIMC(usuario, pesoActual);
+	 
+	 @PostMapping("/calcularimc")
+	    public String calcularIMC(@RequestParam("codigoUsuario") int codigoUsuario, @RequestParam("pesoActual") double pesoActual, Model model) {
+	        Usuario usuario = servicioService.getUsuarioPorCodigo(codigoUsuario);
+	        if (usuario != null) {
+	            String estatura = registroRepository.findEstaturaByCodigoUsuario(codigoUsuario);
+	            double estaturaNumerica = Double.parseDouble(estatura);
+	             servicioService.calcularIMC(estaturaNumerica, pesoActual);
 //	            model.addAttribute("usuario", usuario);
 //	            model.addAttribute("imcCalculado", imcCalculado);
-//	            return "calcular_imc";
-//	        } else {
-//	            // Código de usuario no válido, manejar el caso según tus necesidades
-//	            return "error";
-//	        }
-//	    }
+	            return "calcular_imc";
+	        } else {
+	            // Código de usuario no válido, manejar el caso según tus necesidades
+	            return "error";
+	        }
+	    }
 
 }

@@ -38,6 +38,9 @@ public class IndiceMasaCorporal {
 	  @Column(name = "imc_fecha")
 	    private LocalDate fechaImc;
 	  
+	  @Column(name = "imc_peso")
+	  private int pesoActual;
+	  
 	  private double imc;
 	
 	@Column(name ="imc_estado")

@@ -24,6 +24,7 @@ public interface IRegistroRepository extends CrudRepository<Usuario,Long> {
 	 * @author Jonathan R. Mascareño date: 9/7/23
 	 * */
 	Usuario findByCodigoUsuario(int codigoUsuario);
+	
 	 @Query("SELECT u.estatura FROM Usuario u WHERE u.codigoUsuario = :codigoUsuario")
-	    double findEstaturaByCodigoUsuario(@Param("codigoUsuario") int codigoUsuario);
+	    String findEstaturaByCodigoUsuario(@Param("codigoUsuario") int codigoUsuario);
 }
