@@ -10,9 +10,9 @@ import ar.edu.unju.fi.entity.Usuario;
 @Controller
 @RequestMapping("/")
 public class IndexController {
-	@GetMapping("/index2")
+	@GetMapping("/index")
     public String getNuevoProductoPage(Model model) {
     	model.addAttribute("usuario", new Usuario());
-    	return "index2";
+    	return "index";
     }
 }
