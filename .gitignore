@@ -1,3 +1,6 @@
+# Carpeta de dependencias de Maven
+target/
+
 # Compiled class file
 *.class
 
