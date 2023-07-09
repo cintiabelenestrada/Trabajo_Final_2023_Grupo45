@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" th:href="@{/css/estilos.css}" />
+
+
+<title>Calcule su IMC</title>
+</head>
+<body>
+	<nav th:replace="~{layouts/nav :: nav}"></nav>
+
+	<div class="container-fluid m-0 p-0">
+
+		<div class="d-flex row ms-2 me-2">
+
+			<section class="col-9 bg-dark text-light">
+
+				<div class="d-flex">
+
+					<div class="col-5">
+
+						<div class="d-flex servicios-izquierda-bottom ">
+							<i class="fa-solid fa-user text-light fa-2xl pt-5 ps-5 pe-4"></i>
+							<div class="row">
+								<p></p>
+								<p class="text-light mt-4 fw-bold">Tus datos</p>
+								<p></p>
+							</div>
+
+
+						</div>
+
+						<div class="col-12 text-light ps-4 pt-3  p-3 ">
+							<div class="card-body">
+
+								<div class="d-flex">
+									<p class="card-text">
+										<strong>Nombre:</strong> Juan
+									</p>
+									<p class="card-text ms-4">
+										<strong>Apellido:</strong> Pérez
+									</p>
+								</div>
+								<p class="card-text">
+									<strong>Email:</strong> juan@example.com
+								</p>
+								<p class="card-text">
+									<strong>Fecha de nacimiento:</strong> 15 de enero de 1990
+								</p>
+								<p class="card-text">
+									<strong>Teléfono:</strong> 555-1234
+								</p>
+								<p class="card-text">
+									<strong>Sexo:</strong> Masculino
+								</p>
+								<p class="card-text">
+									<strong>Estatura:</strong> 1.75 metros
+								</p>
+							</div>
+						</div>
+
+						<div class="servicios-izquierda-top">
+
+							<div class="row">
+								<p></p>
+								<p class="text-light mt-3 ms-4 fw-bold">Tus IMC:</p>
+								<div>
+									<!-- COLOCAR AQUI LOS IMC POR FECHA DESCENDENTE -->
+								</div>
+
+								<p></p>
+							</div>
+
+
+
+						</div>
+
+					</div>
+					<div class="d-flex col-7 text-light servicios-izquierda-left">
+
+
+
+						<div class="row col-12 justify-content-center">
+							<div class="col-3 text-center"></div>
+
+							<div class="col-6 text-center">
+								<div class="container ">
+									<div class="row">
+										<div class="col-12 align-self-start p-5">
+											<p class="fs-5 text-center fw-bold">Calcule su IMC</p>
+										</div>
+										<div class="col-12 align-self-center p-5">
+
+											<p class="text-start">Ingrese su peso actual</p>
+
+											<div class="input-group mb-3">
+
+
+												<input type="text" id="peso" placeholder="00"
+													aria-label="Peso" aria-describedby="Peso"
+													class="form-control"> <label for="peso"
+													class="input-group-text">Kg</label>
+											</div>
+										</div>
+										<div class="col align-self-end p-5">
+											<button type="button" class="btn btn-success mb-2">Calcular
+												IMC</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-3 text-center"></div>
+						</div>
+
+
+					</div>
+				</div>
+			</section>
+
+			<aside class="col-3 bg-dark text-light servicios-izquierda-left">
+				<p>Seccion Aside</p>
+			</aside>
+
+		</div>
+	</div>
+
+
+	<!-- Integración del Footer -->
+	<footer th:replace="~{layouts/footer :: footer}"></footer>
+
+
+
+	<!-- Scripts utilizados -->
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/popper.js/2.9.3/umd/popper.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.min.js}"></script>
+</body>
+</html>
