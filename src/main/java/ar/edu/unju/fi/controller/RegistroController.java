@@ -2,6 +2,8 @@ package ar.edu.unju.fi.controller;
 
 
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 //import ar.edu.unju.fi.entify.Articulo;
@@ -66,15 +69,23 @@ public class RegistroController {
     		
     		iregisUs.save(usuario);
     		final Long CD = usuario.getId();
-    		return "redirect:/index/idusuar/"+CD;
+    		String Cc="Cc";
+    		return "redirect:/index/idusuario/"+CD;
     	}
     }   
     @GetMapping("/idusuario/{CD}")
     // public String getListaProductoPage(Model model) {
-     public String listar(Model model, @PathVariable("CD") long CD) {
+     public String listar(@PathVariable("CD") Long CD,Model model) {
     	Optional<Usuario>usuarios=iregisUs.findById(CD);
-    	
-         model.addAttribute("usuarios", usuarios);
+        
+        if (usuarios.isPresent()) {
+            model.addAttribute("usuarios", Arrays.asList(usuarios.get()));
+        } else {
+            model.addAttribute("usuarios", Collections.emptyList());
+        }
+        
+        //return "codigodeusuario";
+        // model.addAttribute("usuarios", usuarios);
          return "codigodeusuario";
      }
     

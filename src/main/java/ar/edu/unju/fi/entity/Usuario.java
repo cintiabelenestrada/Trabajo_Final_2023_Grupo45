@@ -54,12 +54,12 @@ public class Usuario {
 	
 	// Validación del campo nombre
 	@NotEmpty(message="el nombre no puede estar vacio.")
-	@Size(min=5, max=100,message="El nombre del producto no puede ser inferior a 50 caracteres y mayor a 100.")
+	@Size(min=5, max=40,message="El nombre del producto no puede ser inferior a 5 caracteres y mayor a 40.")
     @Column(name="user_nombre", length=20, nullable=false)
 	private String nombre;
 	//private int codigo;
 	@NotEmpty(message="el apellido no puede estar vacio.")
-	@Size(min=5, max=100,message="El apellido no puede ser inferior a 4 caracteres y mayor a 100.")
+	@Size(min=5, max=30,message="El apellido no puede ser inferior a 5 caracteres y mayor a 30.")
     @Column(name="user_apellido", length=20, nullable=false)
 	private String apellido;
 	@Email(message="Debe ingresar un email con formato valido")
