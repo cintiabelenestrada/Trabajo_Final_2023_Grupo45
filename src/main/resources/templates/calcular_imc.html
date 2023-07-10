@@ -3,32 +3,39 @@
 
 <head>
 
-	<meta charset="UTF-8">
-	<title>Calcular_IMC</title>
-	<meta name="viewport" content="width=device-width, initial-scale-1">
-	<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
-	<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
-   
-    <meta content="Free Website Template" name="keywords">
-    <meta content="Free Website Template" name="description">
+<meta charset="UTF-8">
+<title>Calcular_IMC</title>
+<meta name="viewport" content="width=device-width, initial-scale-1">
+<link th:rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+<meta content="Free Website Template" name="keywords">
+<meta content="Free Website Template" name="description">
 
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> 
+<!-- Favicon -->
+<link href="img/favicon.ico" rel="icon">
 
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+<!-- Google Font -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Roboto:wght@400;500;700&display=swap"
+	rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+<!-- Font Awesome -->
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+	rel="stylesheet">
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.min.css" rel="stylesheet">
-    
+<!-- Libraries Stylesheet -->
+<link href="lib/owlcarousel/assets/owl.carousel.min.css"
+	rel="stylesheet">
+<link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
+	rel="stylesheet" />
+
+<!-- Customized Bootstrap Stylesheet -->
+<link href="css/style.min.css" rel="stylesheet">
+
 </head>
 
 
@@ -37,10 +44,10 @@
 
 <body>
 	<!-- Fragment to Nav -->
-  <nav th:replace="~{Layouts/nav :: nav}"></nav>
-  
-   <!--  Fragment to Header -->
-  	<header th:replace="~{Layouts/header :: header}"></header>
+	<nav th:replace="~{Layouts/nav :: nav}"></nav>
+
+	<!--  Fragment to Header -->
+	<header th:replace="~{Layouts/header :: header}"></header>
 
 	<div class="container-fluid m-0 p-0">
 
@@ -76,9 +83,9 @@
 										<input type="text" th:field="*{usuario.id}" />
 										<button type="submit" class="btn btn-success">Aceptar</button>
 
-<!-- 										<p class="form-text text-danger" -->
-<!-- 											th:if="${#fields.hasErrors('usuario.id')}" -->
-<!-- 											th:errors="*{usuario.id}" /> -->
+										<!-- 										<p class="form-text text-danger" -->
+										<!-- 											th:if="${#fields.hasErrors('usuario.id')}" -->
+										<!-- 											th:errors="*{usuario.id}" /> -->
 									</form>
 
 								</div>
@@ -220,12 +227,13 @@
 					IMC</h4>
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item bg-dark text-light"
-						th:each="imc : ${usuario.imcList}"><span
+						th:each="imc : ${imcList}" th:reverse="true"><span
 						th:with="formattedDate=${#temporals.format(imc.fechaImc, 'dd/MM/yyyy')}"
-						th:text="'Fecha:'+${formattedDate}"></span> - <span
+						th:text="'Fecha: ' + ${formattedDate}"></span> - <span
 						th:with="truncatedNumber=${#numbers.formatDecimal(imc.imcActual, 0, 'COMMA', 2, 'POINT')}"
-						th:text="'Imc: ' + ${truncatedNumber}"></span></li>
+						th:text="'IMC: ' + ${truncatedNumber}"></span></li>
 				</ul>
+
 
 			</aside>
 
@@ -234,7 +242,7 @@
 
 
 	<!-- Fragment to Header -->
-   <footer th:replace="~{Layouts/footer :: footer}"></footer>
+	<footer th:replace="~{Layouts/footer :: footer}"></footer>
 
 
 
@@ -248,25 +256,26 @@
 	<!--<script src="/js/jquery.min.js"></script>-->
 	<script src="/js/popper.js"></script>
 	<script src="/js/main.js"></script>
-	
-	
+
+
 	<!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+	<script src="lib/easing/easing.min.js"></script>
+	<script src="lib/waypoints/waypoints.min.js"></script>
+	<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+	<script src="lib/tempusdominus/js/moment.min.js"></script>
+	<script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+	<script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-    <!-- Contact Javascript File -->
-    <script src="mail/jqBootstrapValidation.min.js"></script>
-    <script src="mail/contact.js"></script>
+	<!-- Contact Javascript File -->
+	<script src="mail/jqBootstrapValidation.min.js"></script>
+	<script src="mail/contact.js"></script>
 
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
-    
+	<!-- Template Javascript -->
+	<script src="js/main.js"></script>
+
 </body>
 
 </body>
