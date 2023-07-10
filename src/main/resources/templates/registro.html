@@ -26,13 +26,7 @@
 					th:action="${edicion} ? @{/index/modificar} : @{/index/guardar}"
 					th:object="${usuario}" method="post" id="mi-tabla">
 					
-					     <!-- Rellenar codigo de usuario-->
-                    <div class="form-group">
-                        <label for="apellido">Codigo de usuario:</label>
-                        <input type="number" class="form-control" id="codigo" name="codigo" th:field="*{codigoUsuario}">
-                        <!-- Muestra mensajes de error para el campo "codigoUsuario" -->
-                        <div class="text-danger" th:if="${#fields.hasErrors('codigoUsuario')}" th:errors="*{codigoUsuario}"></div>
-                    </div>
+		
 					
 					
 					<!-- Rellenar nombre-->
