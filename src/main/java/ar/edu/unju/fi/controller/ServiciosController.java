@@ -90,6 +90,7 @@ public class ServiciosController {
 		return "peso_ideal";
 	}
 
+	
 	@PostMapping("/pesoideal")
 	public String calcularPesoIdeal(@RequestParam("id") Long id, Model model) {
 		Usuario usuario = registroRepository.findById(id).orElse(null);
