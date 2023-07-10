@@ -30,6 +30,8 @@ public class ServiciosController {
 	@Autowired
 	private IServiciosService imcPesoService;
 
+	@Autowired
+	private IServiciosRepository imcPesoRepository;
 	
 	@GetMapping("/datosusuarioimc")
 	public String getCalculoImcPage(@ModelAttribute("usuario") Usuario usuario, Model model) {
@@ -70,7 +72,8 @@ public class ServiciosController {
 			String mensaje = imcPesoService.calcularIMC(usuario, pesoActual, fechaActual);
 			model.addAttribute("mensaje", mensaje);
 
-			model.addAttribute("calculosIMC", usuario.getImcList());
+			  List<IndiceMasaCorporal> imcList = imcPesoRepository.findAllByOrderByFechaImcDesc();
+			    model.addAttribute("imcList", imcList);
 			return "calcular_imc";
 		} else {
 			// Código de usuario no válido, manejar el caso según tus necesidades
