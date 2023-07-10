@@ -9,6 +9,53 @@
 	<body>
 	<!-- header-->
 	<header th:fragment="header">
+
+		<section class="ftco-section" th:fragment="section">
+
+			<nav
+				class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
+				id="ftco-navbar">
+				<div class="container">
+					<a class="navbar-brand" href="index">Dietetica<span>Tienda</span></a>
+					<form action="#" class="searchform order-sm-start order-lg-last">
+
+					</form>
+					<button class="navbar-toggler" type="button" data-toggle="collapse"
+						data-target="#ftco-nav" aria-controls="ftco-nav"
+						aria-expanded="false" aria-label="Toggle navigation">
+						<span class="fa fa-bars"></span> Menu
+					</button>
+					<div class="collapse navbar-collapse" id="ftco-nav">
+						<ul class="navbar-nav m-auto">
+							<li class="nav-item active"><a th:href="@{/}"
+								class="nav-link">Inicio</a></li>
+							<li class="nav-item dropdown"><a
+								class="nav-link dropdown-toggle" href="#" id="dropdown04"
+								data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">Registro</a>
+								<div class="dropdown-menu" aria-labelledby="dropdown04">
+									<a class="dropdown-item" th:href="@{/index/usuario}">Registrarme</a>
+								</div></li>
+										<li class="nav-item dropdown"><a
+								class="nav-link dropdown-toggle" href="#" id="dropdown04"
+								data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">Servicios</a>
+								<div class="dropdown-menu" aria-labelledby="dropdown04">
+									<a class="dropdown-item" th:href="@{/datosusuarioimc}">Calcular IMC</a>
+									<a class="dropdown-item" th:href="@{/pesoideal}">Calcule su peso ideal</a>
+								</div></li>
+							<li class="nav-item"><a href="#" class="nav-link">Recetas</a></li>
+							<li class="nav-item"><a href="#" class="nav-link">Testimonios</a></li>
+							<li class="nav-item"><a href="#" class="nav-link">Contáctanos</a></li>
+							<li class="nav-item"><a href="#" class="nav-link">Gestión
+									de datos</a></li>
+						
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</section>
+
 	
 		<div class="container-fluid footer text-white mt-5 pt-5 px-0 position-relative overlay-top" id="blocks">
 			<!-- Page Header Start -->
@@ -23,6 +70,7 @@
     <!-- Page Header End -->
 	  </div>
 	
+
 	</header>
    	<!-- header-->
     </body>

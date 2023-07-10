@@ -1,97 +1,104 @@
 package ar.edu.unju.fi.controller;
 
-
-
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ar.edu.unju.fi.entity.IndiceMasaCorporal;
 import ar.edu.unju.fi.entity.Usuario;
+import ar.edu.unju.fi.repository.IServiciosRepository;
 import ar.edu.unju.fi.repository.IRegistroRepository;
-import ar.edu.unju.fi.service.IServicioService;
-
-
+import ar.edu.unju.fi.service.IServiciosService;
 
 @Controller
 public class ServiciosController {
-	
 
 	@Autowired
 	private IRegistroRepository registroRepository;
-	
-	
-	@Autowired IServicioService servicioService;
-	
-	
+
+//	@Autowired IImcService servicioService;
+	@Autowired
+	private IServiciosService imcPesoService;
+
 	@GetMapping("/datosusuarioimc")
-    public String getCalculoImcPage(Model model) {
-        model.addAttribute("usuario", new Usuario());
-        return "calcular_imc";
-    }
+	public String getCalculoImcPage(@ModelAttribute("usuario") Usuario usuario, Model model) {
+		model.addAttribute("usuario", new Usuario());
+		model.addAttribute("imc", new IndiceMasaCorporal());
 
-	 
-	 
+		return "calcular_imc";
+	}
+
+	@PostMapping("/datosusuarioimc")
+	public String getCalcuImcPage(@RequestParam("id") Long id, Model model) {
+		Usuario usuario = registroRepository.findById(id).orElse(null);
+		if (usuario != null) {
+			model.addAttribute("usuario", usuario);
+			model.addAttribute("imc", new IndiceMasaCorporal());
+
+			return "calcular_imc";
+		} else {
+			 model.addAttribute("usuario", new Usuario());
+			 model.addAttribute("imc", new IndiceMasaCorporal());
+			model.addAttribute("error", "No se encontró un usuario con este ID");
+			return "calcular_imc";
+		}
+
+	}
+
+	@PostMapping("/calcular_imc")
+	public String calcularIMC(@RequestParam("id") Long id, @RequestParam("pesoActual") int pesoActual, Model model) {
+		LocalDate fechaActual = LocalDate.now(); // Establecer la fecha actual
+
+		Usuario usuario = registroRepository.findById(id).orElse(null);
+		if (usuario != null) {
+			model.addAttribute("usuario", usuario);
+			model.addAttribute("imc", new IndiceMasaCorporal());
+			String mensaje = imcPesoService.calcularIMC(usuario, pesoActual, fechaActual);
+			model.addAttribute("mensaje", mensaje);
+
+			model.addAttribute("calculosIMC", usuario.getImcList());
+			return "calcular_imc";
+		} else {
+			// Código de usuario no válido, manejar el caso según tus necesidades
+			return "error";
+		}
+	}
+
+	@GetMapping("/pesoideal")
+	public String getPesoIdealPage(@ModelAttribute("usuario") Usuario usuario, Model model) {
+		model.addAttribute("usuario", new Usuario());
+		return "peso_ideal";
+	}
+
+	@PostMapping("/pesoideal")
+	public String calcularPesoIdeal(@RequestParam("id") Long id, Model model) {
+		Usuario usuario = registroRepository.findById(id).orElse(null);
 		
-	 @GetMapping("/pesoideal")
-	    public String getPesoIdealPage( Model model) {
-		  model.addAttribute("usuario", new Usuario());
-	            return "peso_ideal";
-	        }
-	  
-	 @PostMapping("/pesoideal")
-	    public String getPesoIdealPage(@RequestParam("codigoUsuario") int codigoUsuario, Model model) {
-	        Usuario usuario = registroRepository.findByCodigoUsuario(codigoUsuario);
-	        if (usuario != null) {
-	            model.addAttribute("usuario", usuario);
-	            // Agrega aquí la lógica para obtener los cálculos de IMC asociados al usuario
-	            // y agregarlos al modelo como "calculosIMC"
+		if (usuario != null) {
+			model.addAttribute("usuario", usuario);
+			 int edad = Period.between(usuario.getFecha_nacimiento(), LocalDate.now()).getYears();
+			   model.addAttribute("edad", edad);
+			double pesoIdeal = imcPesoService.calcularPesoIdeal(usuario);
 
-	            return "peso_ideal";
-	        } else {
-	            // Código de usuario no válido, manejar el caso según tus necesidades
-	            return "error";
-	        }
-	    }
-	 
-	 
-	 
-	 @PostMapping("/datosusuarioimc")
-	    public String getCalcuImcPage(@RequestParam("codigoUsuario") int codigoUsuario, Model model) {
-	        Usuario usuario = registroRepository.findByCodigoUsuario(codigoUsuario);
-	        if (usuario != null) {
-	            model.addAttribute("usuario", usuario);
-	            // Agrega aquí la lógica para obtener los cálculos de IMC asociados al usuario
-	            // y agregarlos al modelo como "calculosIMC"
+			// Agregar el resultado al modelo
+			model.addAttribute("pesoIdeal", pesoIdeal);
 
-	            return "calcular_imc";
-	        } else {
-	            // Código de usuario no válido, manejar el caso según tus necesidades
-	            return "error";
-	        }
-	    }
-	 
-//	 @PostMapping("/calcularimc")
-//	    public String calcularIMC(@RequestParam("codigoUsuario") int codigoUsuario, @RequestParam("pesoActual") double pesoActual, Model model) {
-//	        Usuario usuario = servicioService.getUsuarioPorCodigo(codigoUsuario);
-//	        if (usuario != null) {
-//	            String estatura = registroRepository.findEstaturaByCodigoUsuario(codigoUsuario);
-//	            double estaturaNumerica = Double.parseDouble(estatura);
-//	             servicioService.calcularIMC(estaturaNumerica, pesoActual);
-////	            model.addAttribute("usuario", usuario);
-////	            model.addAttribute("imcCalculado", imcCalculado);
-//	            return "calcular_imc";
-//	        } else {
-//	            // Código de usuario no válido, manejar el caso según tus necesidades
-//	            return "error";
-//	        }
-//	    }
-
+			return "peso_ideal";
+		} else {
+			 model.addAttribute("usuario", new Usuario());
+			 model.addAttribute("imc", new IndiceMasaCorporal());
+			model.addAttribute("error", "No se encontró un usuario con este ID");
+			return "peso_ideal";
+		}
+	}
 }

@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IServicioRepository extends CrudRepository <IndiceMasaCorporal, Long>{
+public interface IServiciosRepository extends CrudRepository <IndiceMasaCorporal, Long>{
 	
 //	void guardarIMC(IndiceMasaCorporal imc);
 
