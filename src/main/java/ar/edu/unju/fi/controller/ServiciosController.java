@@ -30,8 +30,12 @@ public class ServiciosController {
 	@Autowired
 	private IServiciosService imcPesoService;
 
+	
 	@GetMapping("/datosusuarioimc")
 	public String getCalculoImcPage(@ModelAttribute("usuario") Usuario usuario, Model model) {
+		String tituloPagina = "Calculo IMC";
+		model.addAttribute("tituloPagina", tituloPagina); //obtiene el titulo para el header
+		
 		model.addAttribute("usuario", new Usuario());
 		model.addAttribute("imc", new IndiceMasaCorporal());
 
@@ -76,6 +80,9 @@ public class ServiciosController {
 
 	@GetMapping("/pesoideal")
 	public String getPesoIdealPage(@ModelAttribute("usuario") Usuario usuario, Model model) {
+		String tituloPagina = "Peso Ideal";
+		model.addAttribute("tituloPagina", tituloPagina); //obtiene el titulo para el header
+		
 		model.addAttribute("usuario", new Usuario());
 		return "peso_ideal";
 	}
