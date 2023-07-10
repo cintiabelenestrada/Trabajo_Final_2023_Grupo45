@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<!-- consejos.html devuelve una pagina de texto con consejos simples a modo de ser claros.
+author joel rojas araya
+@version 1.0.2 date: 10/7/23 -->
+<head>
+
+	<meta charset="UTF-8">
+	<title>Consejos</title>
+	<meta name="viewport" content="width=device-width, initial-scale-1">
+	<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+	<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
+   
+    <meta content="Free Website Template" name="keywords">
+    <meta content="Free Website Template" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Fragment to Nav -->
+  <nav th:replace="~{Layouts/nav :: nav}"></nav>
+  
+   <!--  Fragment to Header -->
+  	<header th:replace="~{Layouts/header :: header}"></header>
+  	
+ <!--more-->
+<br>
+<h2 class="title estilo_syb">Seguí estos 20 consejos y elegí vivir con más salud</h2>
+<br>
+<div class="container-fluid pt-5">
+	<img class="img-fluid mb-3 mb-sm-0" src="imagenes/consejos1.jpg" alt="">
+</div>
+	
+<br>
+<h3>(1) Alimentate de manera saludable y con la frecuencia correcta</h3>
+<h5 class="mb-3">Recordá <span class="Bold">no saltearte las comidas</span>, hacer cuatro ingestas diarias - desayuno, almuerzo, merienda y cena- e incorporar dos colaciones entre ellas.</h5>
+<br>
+<h3>(2) Disminuí la ingesta de azúcares o harinas refinados</h3>
+<h5 class="mb-3">Es importante <span class="Bold">limitar las cantidades -no eliminarlas-</span> de: azúcar blanco, cacao instantáneo, cereales azucarados, galletas, tortas, panificados dulces y salados, gaseosas, golosinas y aderezos industriales.</h5>
+<br>
+<h3>(3) Aumentá el consumo de frutas y verduras</h3>
+<h5 class="mb-3">Este tipo de alimentos <span class="Bold">aportarán fibra, vitaminas y minerales</span>, que te ayudarán a prevenir el desarrollo de enfermedades cardiovasculares, trastornos digestivos, algunos tipos de cáncer y enfermedades neurodegenerativas. Además, <span class="Bold">permiten controlar el sobrepeso y la obesidad</span>, ya que la mayoría son bajas en calorías y ricas en agua y vitaminas.</h5>
+<br>
+<h3>(4) Reducí la incorporación de alimentos ultraelaborados</h3>
+<h5 class="mb-3">Por ejemplo, de <span class="Bold">viandas congeladas muy procesadas o alimentos “artificiales”</span>. Es decir, todos aquellos que desconocemos cómo fue su elaboración.</h5>
+<br>
+<h3>(5) Leé las etiquetas de conformación de los distintos alimentos</h3>
+<h5 class="mb-3">La idea no es solo buscar el número de <span class="Bold">calorías </span>sino revisar su composición: si contienen <span class="Bold">grasas saturadas o trans</span> -que son nocivas para la salud-, <span class="Bold">sal o hidratos de carbono.</span></h5>
+
+<div class="container-fluid pt-5">
+	<img class="img-fluid mb-3 mb-sm-0" src="imagenes/consejos2.jpg" alt="">
+</div>
+<br>
+<h3>(6) Ingerí abundante cantidad de líquido</h3>
+<h5 class="mb-3">En lo posible, agua. Se sugiere una ingesta de un litro y medio a dos litros, en situaciones normales -incluidas las infusiones o sopas-. Si te cuesta incorporar líquidos, <span class="Bold">tené siempre una botella a la vista con la cantidad necesaria</span>. Al finalizar el día, deberá haberse consumido. Y no olvidemos que los extremos no sirven: la deshidratación es tan perjudicial como la sobrehidratación. Encontrá acá más consejos para beber agua.</h5>
+<br>
+<h3>(7) Disminuí el consumo de sal</h3>
+<h5 class="mb-3">Su exceso puede tener consecuencias graves para la salud, como la hipertensión arterial. No le agregues sal a los alimentos sin haberlos probado antes. Lo ideal es cocinar sin sal, luego adicionarla. Nuestro organismo solo necesita pequeñas cantidades: <span class="Bold">la porción diaria recomendada es de 5 gramos para adultos</span>, 3 gramos para niños menores de 7 años y 4 gramos para chicos de entre 7 y 10 años.</h5>
+<br>
+<h3>(8) No fumes</h3>
+<h5 class="mb-3">Recordá que el tabaquismo es la <span class="Bold">primera causa de muerte prevenible en el mundo</span>. Si lo hacés, te acercamos estos consejos para dejar el cigarrillo. Los beneficios de su cesación son importantes, tanto para el fumador pasivo como el activo.</h5>
+<br>
+<h3>(9) Controlá la ingesta etílica</h3>
+<h5 class="mb-3"><span class="Bold">Los menores de 18 años no deberían consumir alcohol</span>. A partir de la mayoría de edad, se aconseja moderar su consumo.</h5>
+<br>
+<h3>(10) Decile NO a las drogas ilícitas</h3>
+<h5 class="mb-3">Un alto porcentaje de las personas que consultan con el médico afirma que “experimentó” con alguna de ellas. <span class="Bold">Su consumo se desaconseja</span> desde todo punto de vista.</h5>
+<br>
+<h3>(11) No te automediques</h3>
+<h5 class="mb-3"><span class="Bold">No consumas medicamentos sin prescripción médica</span>. Por ejemplo, no tomes pastillas para conciliar el sueño o antibióticos cuando te engripes.</h5>
+<br>
+<h3>(12) Adoptá un estilo de vida activo</h3>
+<h5 class="mb-3">30 minutos de caminata 5 veces por semana pueden cambiar por completo tu estado físico y anímico.</h5>
+<br>
+<h3>(13) Encontrá un momento propio</h3>
+<h5 class="mb-3">Una distracción, algo que te guste. <span class="Bold">Practicá un hobbie</span>, el que fuese, sin vergüenza.</h5>
+<div class="container-fluid pt-5">
+	<img class="img-fluid mb-3 mb-sm-0" src="imagenes/consejos3.jpg" alt="">
+</div>
+<br>
+<h3>(14) Fijá metas pequeñas en tu día a día</h3>
+<h5 class="mb-3">Por ejemplo, “hoy volveré caminando del trabajo”, “hoy comenzaré a leer un nuevo libro” u “hoy, en el almuerzo, elegiré la ensalada como guarnición”.</h5>
+<br>
+<h3>(15) Manejá de manera responsable</h3>
+<h5 class="mb-3">Recordá que, si conducís, no podés ingerir alcohol. Y, si vas a hacerlo, designá a otra persona al volante.</h5>
+<br>
+<h3>(16) Desarrollá tus relaciones interpersonales</h3>
+<h5 class="mb-3"><span class="Bold">Aumentá tu comunicación</span> familiar, laboral y social. Ponete en contacto con tus amistades y recuperá los vínculos que solían hacerte bien.</h5>
+<br>
+<h3>(17) Usá escaleras en vez de ascensores</h3>
+<h5 class="mb-3">El día tiene 24 horas y <span class="Bold">es aconsejable sumar este tipo de “pequeñas actividades físicas”</span> a lo largo del día para mantenernos en movimiento y evitar el sedentarismo. Por supuesto, es necesario ir haciéndolo en forma progresiva.</h5>
+<br>
+<h3>(18) Preferí ciertos tipos de cocción antes que otros</h3>
+<h5 class="mb-3"><span class="Bold">Cociná tus alimentos al horno, al vapor o a la plancha</span>, en vez de freírlos. Esto te ayudará a prevenir el aumento de los niveles lipídicos.</h5>
+<br>
+<h3>(19) Elegí medios de transporte sustentables</h3>
+<h5 class="mb-3">Si tenés la posibilidad, <span class="Bold">usá bicicleta -siempre, con el caso- o caminá</span> en lugar de ir a trabajar en auto o en el transporte público. No solo te mantendrás en forma, sino que contribuirás con el cuidado del medioambiente.</h5>
+<br>
+<h3>(20) Valorate</h3>
+<h5 class="mb-3"><span class="Bold">Desarrollá tu autoestima</span>. Eso influirá mucho en cómo te sentís y en cómo se dará tu relación con el entorno.</h5>
+<br>
+<blockquote>
+<h5 class="mb-3"><span class="Italic">“Recordemos que está en cada uno de nosotros el hecho de transmitir los consejos y hacerlos propios. Si logramos cuidarnos unos a otros, estaremos en vías de una sociedad que crece, aprende y progresa. <span class="Bold">Mejorar la salud depende de cambiar los malos hábitos y de hacer que los buenos persistan</span>”.</span></h5>
+</blockquote>
+<br>
+<h5 class="mb-3"><span class="Italic"><span class="Underline">Fuente</span>:<br><br>-Dra. María de las Mercedes Dabat (M.N. 70.283), médica internista. Certificada en nutrición deportológica. Especialista en trastornos alimentarios.</span></h5>
+
+
+
+	<!-- Fragment to Footer -->
+   <footer th:replace="~{Layouts/footer :: footer}"></footer>
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+</body>
+</html>

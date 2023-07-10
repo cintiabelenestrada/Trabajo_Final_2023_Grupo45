@@ -35,7 +35,7 @@ import ar.edu.unju.fi.service.IRegistroService;
  *
  */
 @Controller
-@RequestMapping("/index")
+@RequestMapping("/inicio")
 public class RegistroController {
 	@Autowired
 	//@Qualifier("registroServiceMysql")
@@ -46,6 +46,10 @@ public class RegistroController {
     // Muestra la página para agregar un nuevo producto
 	 @GetMapping("/usuario")
 	    public String getNuevoProductoPage(Model model) {
+		 
+		 	String tituloPagina = "Registro";
+			model.addAttribute("tituloPagina", tituloPagina); //obtiene el titulo para el header
+			
 	    	boolean edicion = false;
 	    	model.addAttribute("usuario", new Usuario());
 	   // 	model.addAttribute("edicion", edicion);

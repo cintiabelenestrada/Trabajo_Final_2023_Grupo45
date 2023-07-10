@@ -78,13 +78,11 @@ public class Usuario {
 	private String telefono;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@NotNull(message ="El campo no puede quedar vacio")
 	@Column(name = "user_id")
 	private Long id;
 
-	@Min(value = 5, message = "El número debe ser mayor o igual a 5")
-//    @Max(value = 16, message = "El número debe ser menor o igual a 16")
-	@Column(name = "user_codigo")
-	private int codigoUsuario;
+
 
 	// Validación del campo estatura
 		@Positive(message = "El estatura debe ser un valor positivo y no puede ser cero.")
@@ -115,9 +113,11 @@ public class Usuario {
 	/**Agregado para mapear Usuario-Servicios
 	 * @author Jonathan R. Mascareño date: 9/7/23
 	 * */
-	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<IndiceMasaCorporal> imc = new ArrayList<>();
-	
+//	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+//	private List<IndiceMasaCorporal> imc = new ArrayList<>();
+//	
+    @OneToMany(mappedBy = "usuario")
+    private List<IndiceMasaCorporal> imcList;
 	
 	
 	/**
@@ -149,7 +149,7 @@ public class Usuario {
 
 
 	public Usuario(String nombre, String apellido, String email, LocalDate fecha_nacimiento, String telefono, Long id,
-			int codigoUsuario, String estatura, String sexo, boolean estado, boolean admin, List<IndiceMasaCorporal> imc) {
+			 String estatura, String sexo, boolean estado, boolean admin, List<IndiceMasaCorporal> imcList) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -157,21 +157,15 @@ public class Usuario {
 		this.fecha_nacimiento = fecha_nacimiento;
 		this.telefono = telefono;
 		this.id = id;
-		this.codigoUsuario = codigoUsuario;
+	
 		this.estatura = estatura;
 		this.sexo = sexo;
 		this.estado = estado;
 		this.admin = admin;
-		this.imc = imc;
+		this.imcList = imcList;
 	}
 
-	public int getCodigoUsuario() {
-		return codigoUsuario;
-	}
 
-	public void setCodigoUsuario(int codigoUsuario) {
-		this.codigoUsuario = codigoUsuario;
-	}
 
 	public void setUserAdmin(boolean admin) {
 		this.admin = admin;
@@ -274,15 +268,18 @@ public class Usuario {
 
 
 
-	public List<IndiceMasaCorporal> getIMC() {
-		return imc;
+	public List<IndiceMasaCorporal> getImcList() {
+		return imcList;
 	}
 
 
 
-	public void setIMC(List<IndiceMasaCorporal> imc) {
-		this.imc = imc;
+	public void setImcList(List<IndiceMasaCorporal> imcList) {
+		this.imcList = imcList;
 	}
+
+
+
 
 
 
