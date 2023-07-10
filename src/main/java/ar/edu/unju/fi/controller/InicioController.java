@@ -17,5 +17,5 @@ public class InicioController {
 	public String getInicioPage (){
 		return "index";
 	}
-
+	
 }
