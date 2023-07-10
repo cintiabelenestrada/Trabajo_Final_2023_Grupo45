@@ -33,3 +33,19 @@ Registration Start
 	background-color: #424242;
 }
 
+/*ESTILO PARA:
+mapa
+*/
+.map-responsive{
+
+    overflow:hidden;
+
+    padding-bottom:90%;
+
+    position:relative;
+
+    height:0;
+
+}
+
+
