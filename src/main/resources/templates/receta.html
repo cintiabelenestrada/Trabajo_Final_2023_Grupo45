@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
+    <title>Receta Saludable</title>
+</head>
+    <body>
+        <div class="container">
+            <header th:replace="~{layouts/header :: header}"></header>
+
+            <a  th:if="${gestion != false}" th:href="${gestion}?@{/receta/gestion}" class="btn btn-primary"
+            th:text="${gestion}?'Volver a gestion de Receta':'  '"></a>  
+            <a th:if="${listaReceta != false}"  th:href="${listaReceta}?@{/receta/lista}" class="btn btn-primary"
+            th:text="${listaReceta}?'Volver a lista receta':'  '"></a>   
+
+            <div class="card"  th:object="${receta}" id="card-receta">
+                <h4 class="card-title text-center" th:text="*{nombre}"></h4>
+                <img th:src="@{/imagen/}+${receta.imagen}" class="card-img-top" alt="...">
+
+                <div class="card-body">
+                    <h5 class="card-title">Ingredientes:</h5>
+                
+                    <ul class="puntos" >
+                    <li th:each="ingrediente: ${receta.ingredientes}" th:text="${ingrediente.nombre}"></li>
+                    </ul>
+                    <h5 class="card-title">Preparacion</h5>
+                    <p class="card-text" th:text="${receta.preparacion}">Lorem ipsum dolor sit amet consectetur adipisicing elit. architecto ea ipsam. Minima, vel!.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer th:replace="~{layouts/footer :: footer}"></footer>
+        <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>    
+    </body>
+</html>
