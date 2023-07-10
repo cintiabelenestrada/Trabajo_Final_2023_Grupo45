@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+        <link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
+        <title>Nuevo Ingrediente</title>
+    </head>
+    <body>
+        <div class="container">
+            <header th:replace="~{layouts/header :: header}"></header>
+
+            <div class="form-container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+                            <h3 th:text="${edicion}?'Modificar Ingrediente':'Agregar Ingrediente'" class="text-center mb-3">
+                            </h3>
+                            <div class="card-body">
+                                <!--Formulario de alta/edicion ingredientes -->
+                                <form
+                                    th:action="${edicion}?@{/ingrediente/modificar/}+${ingrediente.id}:@{/ingrediente/guardar}"
+                                    th:object="${ingrediente}" method="post">
+                                    <div class="form-group">
+                                        <label for="nombre" class="form-label">Nombre del ingrediente : 
+                                        </label> <input th:field="*{nombre}" class="form-control"
+                                            type="text" name="nombres" id="nombres" placeholder="Nombre">
+                                        <div class="text-danger" th:if="${#fields.hasErrors('nombre')}"
+                                            th:errors="*{nombre}"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="receta" class="form-label">Receta:</label> <select
+                                            th:field="*{receta}" class="form-control" id="receta">
+                                            <option value="">Selecciona una receta</option>
+                                            <option th:each="receta : ${recetas}" th:value="${receta.id}"
+                                                th:text="${receta.nombre}"></option>
+                                        </select>
+                                        <div class="text-danger" th:if="${#fields.hasErrors('receta')}"
+                                            th:errors="*{receta}"></div>
+                                    </div>
+        
+                                    <br>
+                                    <div class="form-group d-flex justify-content-between">
+                                        <div class="btn-group btn-group-sm" role="group">
+                                            <a class="btn btn-secondary mx-2"
+                                                th:href="@{/ingrediente/gestion}" role="button">Cancelar</a>
+                                            <button type="submit"
+                                                th:text="${edicion}?'Modificar':'Agregar'"
+                                                class="btn btn-primary"></button>
+                                        </div>
+                                    </div>
+        
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>           
+        <footer th:replace="~{layouts/footer :: footer}"></footer>
+        <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>    
+    </body>
+</html>

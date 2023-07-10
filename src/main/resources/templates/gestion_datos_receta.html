@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+        <link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
+        <title>Gestion de Datos Receta</title>
+    </head>
+    <body>
+        <div class="container">
+            <header th:replace="~{layouts/header :: header}"></header>
+
+            <a th:href="@{/gestion/datos}" class="btn btn-primary ">Volver a menu Principal</a>
+            <div class="card" id="card-gestion">
+                <h1 class="card-title text-center">Gestion de Recetas</h1>
+                <div class="row justify-content-md-center"  >	
+                    <div class="container text-center">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <a th:href="@{/receta/nuevo}" class="btn btn-success fw-bolder py-3">Nueva Receta</a>
+                            </div>
+                            <div class="col">
+                                <a th:href="@{/ingrediente/gestion}"
+                                    class="btn btn-success fw-bolder py-3">Ingredientes</a>
+                            </div>
+                       </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table-sm table table-striped table-bordered table-hover">
+                        <thead class="bg-secondary text-white">
+                            <tr>
+                                <th>Codigo</th>
+                                <th>Nombre</th>
+                                <th>Categoria</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="receta: ${recetas}">
+                                <td th:text="${receta.id}"></td>
+                                <td th:text="${receta.nombre}"></td>
+                                <td th:text="${receta.categoria}"></td>
+                                <td><a class="btn btn-info btn-sm"
+                                    th:href="@{/receta/modificar/}+${receta.id}">Modificar</a> 
+                                    <a class="btn btn-danger btn-sm"
+                                    th:href="@{/receta/eliminar/}+${receta.id}">Eliminar</a>
+                                    <a class="btn btn-success btn-sm"
+                                    th:href="@{/receta/ver/}+${receta.id}">Ver</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <footer th:replace="~{layouts/footer :: footer}"></footer>
+        <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>    
+    </body>
+</html>

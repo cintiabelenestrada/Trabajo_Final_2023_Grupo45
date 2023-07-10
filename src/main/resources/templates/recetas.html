@@ -1,32 +1,39 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-<head>
-    <title>Recetas Saludables</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
-    <link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
-</head>
-<body>
-    <div class="container">
-        <h1>Recetas Saludables</h1>
-        <h2>Ingredientes</h2>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+        <link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
+        <title>Recetas Saludables</title>
+    </head>
+    <body>
+        <div class="container">
+            <header th:replace="~{layouts/header :: header}"></header>
+            <div class="container text-center">
+                
+                <div class="page-title">
+                    <h1>Recetas Saludables</h1>
+                </div>
 
-        <!-- <div class="row">
-            <div class="col-md-4" th:each="receta : ${recetas}">
-                <div class="card mb-4">
-                    <img th:src="${receta.imagen}" class="card-img-top" alt="Imagen Receta">
-                    <div class="card-body">
-                        <h5 class="card-title" th:text="${receta.nombre}"></h5>
-                            <p class="card-text" th:text="${receta.preparacion}"></p>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Ingredientes:</li>
-                                <li class="list-group-item" th:each="ingrediente : ${receta.ingredientes}"
-                                    th:text="${ingrediente.nombre}"></li>
-                            </ul>                        </div>
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+                    <div class="col-4" th:each="receta: ${recetas}">
+                        <div class="card card d-flex flex-column h-100" style="width: 18rem;">
+                            <img th:src="@{/imagen/}+${receta.imagen}"
+                                class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h4 class="card-title" th:text="${receta.nombre}"></h4>
+                                <h6 class="card-title"
+                                    th:text="'Recetas de '+${receta.categoria}"></h6>
+                                <a th:href="@{/receta/visualizar/}+${receta.id}"
+                                    class="btn btn-primary">Ver Receta</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div> -->
-    
-        <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>    </body>
-    </html>
+        </div>
+
+        <footer th:replace="~{layouts/footer :: footer}"></footer>
+        <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>    
+    </body>
+</html>
