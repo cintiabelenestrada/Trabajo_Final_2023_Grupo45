@@ -1,45 +1,103 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<!-- consejos.html devuelve una pagina de texto con consejos simples a modo de ser claros.
+author joel rojas araya
+@version 1.0.2 date: 10/7/23 -->
 <head>
-    <meta charset="UTF-8">
-    <title>Nuevo_Articulo</title>
-    <!-- Incluye el archivo css de Bootstrap -->
-    <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
-    <!-- Incluye el archivo css del grupo -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link th:rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+
+	<meta charset="UTF-8">
+	<title>Recetas</title>
+	<meta name="viewport" content="width=device-width, initial-scale-1">
+	<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 	<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
-	<link th:rel="stylesheet" type="text/css" th:href="@{/css/animate.css}">
+   
+    <meta content="Free Website Template" name="keywords">
+    <meta content="Free Website Template" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.min.css" rel="stylesheet">
 </head>
+
 <body>
-		<nav th:replace="~{Layouts/nav :: nav}"></nav>
-    	<header th:replace="~{layouts/header :: header}"></header>
+		<!-- Fragment to Nav -->
+  <nav th:replace="~{Layouts/nav :: nav}"></nav>
+  
+   <!--  Fragment to Header -->
+  	<header th:replace="~{Layouts/header :: header}"></header>
+  	
+  	
+  	
+  	
     <div class="container">
-    
         <!-- Título de la página -->
         <h1 class="mt-4"></h1>
 
         <div class="row">
             <div class="col-md-7">
 	        	<div class="row">
-    <div class="col-md-4" th:each="usuario : ${usuarios}">
-        <div class="card">
-            <div class="card-body">
-            	<span>Codigo de Usuario:</span>
-                <h5 class="card-title" th:text="${usuario.id}"></h5>
-                <span>Nombre de Usuario:</span>
-                <h6 class="card-subtitle mb-2 text-muted" th:text="${usuario.nombre}"></h6>
-                <span>Mail de Usuario:</span>
-                <p class="card-text" th:text="${usuario.email}"></p>
-                <!-- Add more card content for additional user properties -->
-            </div>
-        </div>
-    </div>
-</div>
+    				<div class="col-md-4" th:each="usuario : ${usuarios}">
+       					 <div class="card">
+            				<div class="card-body">
+            					<span>Codigo de Usuario:</span>
+                					<h5 class="card-title" th:text="${usuario.id}"></h5>
+                				<span>Nombre de Usuario:</span>
+                				<h6 class="card-subtitle mb-2 text-muted" th:text="${usuario.nombre}"></h6>
+                				<span>Mail de Usuario:</span>
+               				 	<p class="card-text" th:text="${usuario.email}"></p>
+                			<!-- Add more card content for additional user properties -->
+           					 </div>
+        				</div>
+    				</div>
+				</div>
 	        	
             </div>
         </div>
     </div>
+    
+    
+    
+    
+    
+    
+    <!-- Fragment to Footer -->
+   <footer th:replace="~{Layouts/footer :: footer}"></footer>
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
     
     <!-- Incluye el archivo JavaScript de Bootstrap -->
     <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
