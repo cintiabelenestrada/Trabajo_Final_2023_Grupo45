@@ -52,7 +52,6 @@ public class RegistroController {
 	    	return "registro";
 	    }
 	    
-	 
 	    // Guarda un nuevo producto en la lista
 	    @PostMapping("/guardar")
 	    public String getguardarProductoPage(@Valid @ModelAttribute("usuario") Usuario usuario, BindingResult result) {
