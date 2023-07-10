@@ -1,47 +1,100 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
-    <link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
-    <title>Receta Saludable</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link th:rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
+<title>Receta Saludable</title>
 </head>
-    <body>
-        <div class="container">
-            <header th:replace="~{layouts/header :: header}"></header>
+<body>
+	<div class="container">
+		<nav th:replace="~{Layouts/nav :: nav}"></nav>
 
-            <section class="row justify-content-center container pt-2">
-		        
-		        <div class="p-4 bg-section rounded-shadom text-center mb-4 col-8 mx-auto">
-		        	<h1 class="text-primary display-5 text-center fw-bolder">Bienvenido  Gestión de Datos</h1>
-		        	<p class="fw-bold mt-3 text-center">
-		        		Aqui podra gestionar los Datos 
-		        	</p>
-		        	<hr>
-		        	<p class="text-center">
-		        		Consulte, cree, actualice o elimine sus diferentes datos de forma facil y segura. 
-		        	</p>
-		        </div>
-	        	<div class="p-4 bg-section rounded-shadom text-center mb-4 col-8 mx-auto">
-	        		<ul class="nav flex-column">
-					  <li class="nav-item btn btn-primary m-1 fs-5 text">
-					    <a class="nav-link text-white" aria-current="page" th:href="@{/usuario/listado}">Usuario</a>
-					  </li>
-					  <li class="nav-item btn btn-primary m-1 fs-5 text">
-					    <a class="nav-link text-white" th:href="@{/receta/gestion}">Recetas</a>
-					  </li>
-					  <li class="nav-item btn btn-primary m-1 fs-5 text">
-					    <a class="nav-link text-white" th:href="@{/imc/gestion}">Indice de Masa Corporal</a>
-					  </li>
-					  <li class="nav-item btn btn-primary m-1 fs-5 text">
-					    <a class="nav-link text-white" th:href="@{/testimonio/gestion}">Testimonio</a>
-					  </li>
-					</ul>
-	        	</div>
-	   		</section>
-        </div>
+		<section class="row justify-content-center container pt-2">
 
-        <footer th:replace="~{layouts/footer :: footer}"></footer>
-        <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>    
-    </body>
+			<div
+				class="p-4 bg-section rounded-shadom text-center mb-4 col-8 mx-auto">
+
+
+							<div th:if="${error}" class="alert alert-danger">
+									<p th:text="${error}"></p>
+								</div>
+								<div>
+									<form th:action="@{/gestionar}" method="post">
+										<p>Ingrese su código de usuario:</p>
+										<input type="text" th:field="*{usuario.id}" />
+										<button type="submit" class="btn btn-success">Aceptar</button>
+
+										<!-- 										<p class="form-text text-danger" -->
+										<!-- 											th:if="${#fields.hasErrors('usuario.id')}" -->
+										<!-- 											th:errors="*{usuario.id}" /> -->
+									</form>
+
+								</div>
+
+				<div th:if="${usuario.id != null and usuario.id != ''}">
+					<h1 class="text-primary display-5 text-center fw-bolder">Bienvenido
+						Gestión de Datos</h1>
+					<p class="fw-bold mt-3 text-center">Aqui podra gestionar los
+						Datos</p>
+					<hr>
+					<p class="text-center">Consulte, cree, actualice o elimine sus
+						diferentes datos de forma facil y segura.</p>
+
+					<div
+						class="p-4 bg-section rounded-shadom text-center mb-4 col-8 mx-auto">
+						<ul class="nav flex-column">
+							<li class="nav-item btn btn-primary m-1 fs-5 text"><a
+								th:href="@{/gestionar/nuevo}"
+								class="btn btn-success fw-bolder py-3">Nueva Receta</a></li>
+							<li class="nav-item btn btn-primary m-1 fs-5 text"><a
+								class="nav-link text-white" th:href="@{/receta/gestion}">Recetas</a>
+							</li>
+							<li class="nav-item btn btn-primary m-1 fs-5 text"><a
+								class="nav-link text-white" th:href="@{/imc/gestion}">Indice
+									de Masa Corporal</a></li>
+							<li class="nav-item btn btn-primary m-1 fs-5 text"><a
+								class="nav-link text-white" th:href="@{/testimonio/gestion}">Testimonio</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<footer th:replace="~{layouts/footer :: footer}"></footer>
+	<!-- Scripts utilizados -->
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	<!--<script src="/js/jquery.min.js"></script>-->
+	<script src="/js/popper.js"></script>
+	<script src="/js/main.js"></script>
+
+
+	<!-- JavaScript Libraries -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+	<script src="lib/easing/easing.min.js"></script>
+	<script src="lib/waypoints/waypoints.min.js"></script>
+	<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+	<script src="lib/tempusdominus/js/moment.min.js"></script>
+	<script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+	<script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+	<!-- Contact Javascript File -->
+	<script src="mail/jqBootstrapValidation.min.js"></script>
+	<script src="mail/contact.js"></script>
+
+	<!-- Template Javascript -->
+	<script src="js/main.js"></script>
+
+</body>
 </html>
