@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo_Articulo</title>
+    <!-- Incluye el archivo css de Bootstrap -->
+    <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <!-- Incluye el archivo css del grupo -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link th:rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+	<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
+	<link th:rel="stylesheet" type="text/css" th:href="@{/css/animate.css}">
+</head>
+<body>
+    <div class="container">
+    	<header th:replace="~{layouts/header :: header}"></header>
+        <!-- Título de la página -->
+        <h1 class="mt-4"></h1>
+
+        <div class="row">
+            <div class="col-md-7">
+                <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <!-- Add more columns if needed -->
+        </tr>
+        <tr th:each="usuario : ${usuarios}">
+            <td th:text="${usuario.id}"></td>
+            <td th:text="${usuario.nombre}"></td>
+            <td th:text="${usuario.email}"></td>
+            <!-- Add more cells for additional user properties -->
+        </tr>
+    </table>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Incluye el archivo JavaScript de Bootstrap -->
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <footer class="row fila justify-content-center" th:replace="~{layouts/footer :: footer}"></footer>
+	<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script type="text/javascript" th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<!--<script src="/js/jquery.min.js"></script>-->
+  	<script src="/js/popper.js"></script>
+  	<script src="/js/main.js"></script>
+    
+</body>
+</html>
