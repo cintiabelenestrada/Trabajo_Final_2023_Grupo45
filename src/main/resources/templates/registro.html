@@ -48,7 +48,7 @@
 			<div class="col-md-7">
 				<!-- Formulario para crear o modificar un artículo -->
 				<form
-					th:action="${edicion} ? @{/index/modificar} : @{/index/guardar}"
+					th:action="${edicion} ? @{/inicio/modificar} : @{/inicio/guardar}"
 					th:object="${usuario}" method="post" id="mi-tabla">
 					
 		
@@ -96,7 +96,7 @@
 
 					<!-- Rellenar telefono-->
 					<div class="form-group">
-						<label for="telefono">Telefono:</label> <input type="text"
+						<label for="telefono">Telefono: Formato Ej. 0388-422-7344</label> <input type="text"
 							class="form-control" id="telefono" name="telefono"
 							th:field="*{telefono}">
 						<!-- Muestra mensajes de error para el campo "telefono" -->
@@ -126,6 +126,24 @@
 							class="input-group-text text-dark">Metros</span>
 					</div>
 					<!-- Rellenar Estatura-->
+					
+					<!-- Rellenar tipo de usuario-->
+                     
+                    <div class="form-group">
+                    <label for="usuario">¿Es usuario Admnistrador?:</label>
+                    <select class="form-control" id="admin" name="admin" th:field="*{admin}">
+                             <!--Opciones de sexo-->
+                            <option value=""> Tipo de Usuario</option>
+                            <option value="true">Admin</option>
+                            <option value="false">Comun</option>
+                        </select>
+                         <!-- Muestra mensajes de error para el campo "telefono" -->
+                        <div class="text-danger" th:if="${#fields.hasErrors('admin')}" th:errors="*{admin}"></div>
+                    </div>  
+                    <!-- Rellenar tipo de usuario-->					
+					
+					
+					
 					<br></br>
 
 					<!-- Botón para enviar el formulario -->
@@ -185,66 +203,9 @@
 							</div>
 						</div>
 					</div>
-					<!-- Ventana modal 1 -->
-					<div class="modal fade" id="modal1" tabindex="-1"
-						aria-labelledby="modal1Label" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="modal1Label">Ventana modal 1</h5>
-									<button type="button" class="btn-close" data-bs-dismiss="modal"
-										aria-label="Close"></button>
-								</div>
-								<div class="modal-body">Contenido de la ventana modal 1</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary"
-										data-bs-dismiss="modal">Cerrar</button>
-									<button type="button" class="btn btn-primary"
-										data-bs-toggle="modal" data-bs-target="#modal2">Siguiente</button>
-								</div>
-							</div>
-						</div>
-					</div>
 
-					<!-- Ventana modal 2 -->
-					<div class="modal fade" id="modal2" tabindex="-1"
-						aria-labelledby="modal2Label" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="modal2Label">Ventana modal 2</h5>
-									<button type="button" class="btn-close" data-bs-dismiss="modal"
-										aria-label="Close"></button>
-								</div>
-								<div class="modal-body">Contenido de la ventana modal 2</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary"
-										data-bs-dismiss="modal">Cerrar</button>
-									<button type="button" class="btn btn-primary"
-										data-bs-toggle="modal" data-bs-target="#modal3">Siguiente</button>
-								</div>
-							</div>
-						</div>
-					</div>
 
-					<!-- Ventana modal 3 -->
-					<div class="modal fade" id="modal3" tabindex="-1"
-						aria-labelledby="modal3Label" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="modal3Label">Ventana modal 3</h5>
-									<button type="button" class="btn-close" data-bs-dismiss="modal"
-										aria-label="Close"></button>
-								</div>
-								<div class="modal-body">Contenido de la ventana modal 3</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary"
-										data-bs-dismiss="modal">Cerrar</button>
-								</div>
-							</div>
-						</div>
-					</div>
+				
 
 
 

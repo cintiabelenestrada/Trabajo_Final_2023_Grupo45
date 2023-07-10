@@ -73,7 +73,7 @@ public class RegistroController {
 	    		
 	    		iregisUs.save(usuario);
 	    		final Long CD = usuario.getId();
-	    		return "redirect:/index/idusuar/"+CD;
+	    		return "redirect:/inicio/idusuario/"+CD;
 	    	}
 	    }   
     @GetMapping("/idusuario/{CD}")
