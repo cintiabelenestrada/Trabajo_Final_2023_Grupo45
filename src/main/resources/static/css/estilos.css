@@ -23,3 +23,13 @@ body{
 .servicios-izquierda-left{
 	border-left : 2px solid #60a65b;
 }
+
+/*ESTILO PARA:
+Navbar Start
+Offer Start
+Registration Start
+*/
+#blocks{
+	background-color: #424242;
+}
+
