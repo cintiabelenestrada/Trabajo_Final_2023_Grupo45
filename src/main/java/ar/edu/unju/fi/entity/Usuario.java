@@ -53,13 +53,12 @@ public class Usuario {
 
 	// Validación del campo nombre
 	@NotEmpty(message = "el nombre no puede estar vacio.")
-	@Size(min = 5, max = 100, message = "El nombre del producto no puede ser inferior a 50 caracteres y mayor a 100.")
+	@Size(min = 5, max = 25, message = "El nombre del usuario no puede ser inferior a 5 caracteres y mayor a 25.")
 	@Column(name = "user_nombre", length = 20, nullable = false)
 	private String nombre;
 
-	// private int codigo;
 	@NotEmpty(message = "el apellido no puede estar vacio.")
-	@Size(min = 5, max = 100, message = "El apellido no puede ser inferior a 4 caracteres y mayor a 100.")
+	@Size(min = 5, max = 25, message = "El apellido no puede ser inferior a 5 caracteres y mayor a 25.")
 	@Column(name = "user_apellido", length = 20, nullable = false)
 	private String apellido;
 
@@ -68,12 +67,14 @@ public class Usuario {
 	@Column(name = "user_email", length = 25, nullable = false)
 	private String email;
 
-	@NotNull(message = "La fecha no puede estar vacío.")
+	@NotNull(message = "La fecha no puede estar vacía.")
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	@Column(name = "user_fechanacimiento")
-	private LocalDate fecha_nacimiento;// agregar sus getters y setter
+	private LocalDate fecha_nacimiento;
+	
 	@NotEmpty(message = "el telefono no puede estar vacio.") // buscar la forma de que alerte de formato invalido
 	@Size(min = 8, max = 16, message = "El telefono no puede ser inferior a 8 caracteres y mayor a 16.")
+	@Pattern(regexp = "0388-[0-9]{3}-[0-9]{4}", message = "Ingrese un número de telefono válido")
 	@Column(name = "user_telefono", length = 16, nullable = false)
 	private String telefono;
 	@Id
@@ -81,10 +82,7 @@ public class Usuario {
 	@Column(name = "user_id")
 	private Long id;
 
-	@Min(value = 5, message = "El número debe ser mayor o igual a 5")
-//    @Max(value = 16, message = "El número debe ser menor o igual a 16")
-	@Column(name = "user_codigo")
-	private int codigoUsuario;
+
 
 	// Validación del campo estatura
 		@Positive(message = "El estatura debe ser un valor positivo y no puede ser cero.")
@@ -108,16 +106,18 @@ public class Usuario {
 	 */
 	private boolean estado;
 
-	// @NotBlank(message="el estado no puede esta vacio")
-	@Column(name = "user_admin")
-	private boolean admin =false;
+	@NotNull(message="el estado no puede esta vacio")
+	@Column(name = "user_admin", columnDefinition = "boolean default false")
+	private Boolean admin;
 	
 	/**Agregado para mapear Usuario-Servicios
 	 * @author Jonathan R. Mascareño date: 9/7/23
 	 * */
-	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<IndiceMasaCorporal> imc = new ArrayList<>();
-	
+//	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+//	private List<IndiceMasaCorporal> imc = new ArrayList<>();
+//	
+    @OneToMany(mappedBy = "usuario")
+    private List<IndiceMasaCorporal> imcList;
 	
 	
 	/**
@@ -132,14 +132,11 @@ public class Usuario {
 	/**
 	 * Constructor parametrizado.
 	 *
-	 * @param nombre       el nombre del producto
-	 * @param codigo       el código del producto
-	 * @param id           el ID del producto
-	 * @param precio       el precio del producto
+	 * @param nombre       el nombre del usuario
+	 * @param id           el ID del usuario
 	 * @param categoria    la categoría del producto
-	 * @param descuento    el descuento del producto
-	 * @param nombreImagen el nombre de la imagen del producto
-	 * @param estado       el estado del producto
+	 * @param estado       es el estado del usuario
+	 * @param admin		   es el tipo de usuario
 	 */
 
 	public Usuario() {
@@ -149,7 +146,7 @@ public class Usuario {
 
 
 	public Usuario(String nombre, String apellido, String email, LocalDate fecha_nacimiento, String telefono, Long id,
-			int codigoUsuario, String estatura, String sexo, boolean estado, boolean admin, List<IndiceMasaCorporal> imc) {
+			 String estatura, String sexo, boolean estado, Boolean admin, List<IndiceMasaCorporal> imcList) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -157,29 +154,23 @@ public class Usuario {
 		this.fecha_nacimiento = fecha_nacimiento;
 		this.telefono = telefono;
 		this.id = id;
-		this.codigoUsuario = codigoUsuario;
+	
 		this.estatura = estatura;
 		this.sexo = sexo;
 		this.estado = estado;
 		this.admin = admin;
-		this.imc = imc;
+		this.imcList = imcList;
 	}
 
-	public int getCodigoUsuario() {
-		return codigoUsuario;
-	}
 
-	public void setCodigoUsuario(int codigoUsuario) {
-		this.codigoUsuario = codigoUsuario;
-	}
 
-	public void setUserAdmin(boolean admin) {
-		this.admin = admin;
-	}
+	//public void setUserAdmin(Boolean admin) {
+//		this.admin = admin;
+//	}
 	
-	public void getUserAdmin(boolean admin) {
-		this.admin = admin;
-	}
+//	public Boolean getUserAdmin() {
+//		return admin;
+//	}
 
 	/**
 	 * Obtiene el ID del producto.
@@ -189,6 +180,18 @@ public class Usuario {
 	public Long getId() {
 		return id;
 	}
+
+	public Boolean getAdmin() {
+		return admin;
+	}
+
+
+
+	public void setAdmin(Boolean admin) {
+		this.admin = admin;
+	}
+
+
 
 	/**
 	 * Establece el ID del producto.
@@ -274,15 +277,18 @@ public class Usuario {
 
 
 
-	public List<IndiceMasaCorporal> getIMC() {
-		return imc;
+	public List<IndiceMasaCorporal> getImcList() {
+		return imcList;
 	}
 
 
 
-	public void setIMC(List<IndiceMasaCorporal> imc) {
-		this.imc = imc;
+	public void setImcList(List<IndiceMasaCorporal> imcList) {
+		this.imcList = imcList;
 	}
+
+
+
 
 
 

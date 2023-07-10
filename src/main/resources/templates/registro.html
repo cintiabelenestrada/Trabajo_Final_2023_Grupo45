@@ -1,21 +1,46 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
+
 <head>
-<meta charset="UTF-8">
-<title>Nuevo_Articulo</title>
-<!-- Incluye el archivo css de Bootstrap -->
-<link th:rel="stylesheet" type="text/css"
-	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
-<!-- Incluye el archivo css del grupo -->
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link th:rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
-<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
-<link th:rel="stylesheet" type="text/css" th:href="@{/css/animate.css}">
+
+	<meta charset="UTF-8">
+	<title>Registro</title>
+	<meta name="viewport" content="width=device-width, initial-scale-1">
+	<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+	<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
+   
+    <meta content="Free Website Template" name="keywords">
+    <meta content="Free Website Template" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.min.css" rel="stylesheet">
+
 </head>
+
 <body>
+
+	<!-- Fragment to Nav -->
+  	<nav th:replace="~{Layouts/nav :: nav}"></nav>
+	
+	<!--  Fragment to Header -->
+  	<header th:replace="~{Layouts/header :: header}"></header>
+  	
 	<div class="container">
-		<header th:replace="~{layouts/header :: header}"></header>
+		
 		<!-- Título de la página -->
 		<h1 class="mt-4"></h1>
 
@@ -23,16 +48,10 @@
 			<div class="col-md-7">
 				<!-- Formulario para crear o modificar un artículo -->
 				<form
-					th:action="${edicion} ? @{/index/modificar} : @{/index/guardar}"
+					th:action="${edicion} ? @{/inicio/modificar} : @{/inicio/guardar}"
 					th:object="${usuario}" method="post" id="mi-tabla">
 					
-					     <!-- Rellenar codigo de usuario-->
-                    <div class="form-group">
-                        <label for="apellido">Codigo de usuario:</label>
-                        <input type="number" class="form-control" id="codigo" name="codigo" th:field="*{codigoUsuario}">
-                        <!-- Muestra mensajes de error para el campo "codigoUsuario" -->
-                        <div class="text-danger" th:if="${#fields.hasErrors('codigoUsuario')}" th:errors="*{codigoUsuario}"></div>
-                    </div>
+		
 					
 					
 					<!-- Rellenar nombre-->
@@ -77,7 +96,7 @@
 
 					<!-- Rellenar telefono-->
 					<div class="form-group">
-						<label for="telefono">Telefono:</label> <input type="text"
+						<label for="telefono">Telefono: Formato Ej. 0388-422-7344</label> <input type="text"
 							class="form-control" id="telefono" name="telefono"
 							th:field="*{telefono}">
 						<!-- Muestra mensajes de error para el campo "telefono" -->
@@ -107,6 +126,24 @@
 							class="input-group-text text-dark">Metros</span>
 					</div>
 					<!-- Rellenar Estatura-->
+					
+					<!-- Rellenar tipo de usuario-->
+                     
+                    <div class="form-group">
+                    <label for="usuario">¿Es usuario Admnistrador?:</label>
+                    <select class="form-control" id="admin" name="admin" th:field="*{admin}">
+                             <!--Opciones de sexo-->
+                            <option value=""> Tipo de Usuario</option>
+                            <option value="true">Admin</option>
+                            <option value="false">Comun</option>
+                        </select>
+                         <!-- Muestra mensajes de error para el campo "telefono" -->
+                        <div class="text-danger" th:if="${#fields.hasErrors('admin')}" th:errors="*{admin}"></div>
+                    </div>  
+                    <!-- Rellenar tipo de usuario-->					
+					
+					
+					
 					<br></br>
 
 					<!-- Botón para enviar el formulario -->
@@ -114,8 +151,7 @@
 						<div class="col-sm-12 text-center">
 							<a class="btn btn-secondary">Cancelar</a>
 
-							<button type="button" class="btn btn-primary"
-								data-bs-toggle="modal" data-bs-target="#exampleModal">
+							<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
 								Enviar datos</button>
 						</div>
 					</div>
@@ -166,66 +202,9 @@
 							</div>
 						</div>
 					</div>
-					<!-- Ventana modal 1 -->
-					<div class="modal fade" id="modal1" tabindex="-1"
-						aria-labelledby="modal1Label" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="modal1Label">Ventana modal 1</h5>
-									<button type="button" class="btn-close" data-bs-dismiss="modal"
-										aria-label="Close"></button>
-								</div>
-								<div class="modal-body">Contenido de la ventana modal 1</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary"
-										data-bs-dismiss="modal">Cerrar</button>
-									<button type="button" class="btn btn-primary"
-										data-bs-toggle="modal" data-bs-target="#modal2">Siguiente</button>
-								</div>
-							</div>
-						</div>
-					</div>
 
-					<!-- Ventana modal 2 -->
-					<div class="modal fade" id="modal2" tabindex="-1"
-						aria-labelledby="modal2Label" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="modal2Label">Ventana modal 2</h5>
-									<button type="button" class="btn-close" data-bs-dismiss="modal"
-										aria-label="Close"></button>
-								</div>
-								<div class="modal-body">Contenido de la ventana modal 2</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary"
-										data-bs-dismiss="modal">Cerrar</button>
-									<button type="button" class="btn btn-primary"
-										data-bs-toggle="modal" data-bs-target="#modal3">Siguiente</button>
-								</div>
-							</div>
-						</div>
-					</div>
 
-					<!-- Ventana modal 3 -->
-					<div class="modal fade" id="modal3" tabindex="-1"
-						aria-labelledby="modal3Label" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="modal3Label">Ventana modal 3</h5>
-									<button type="button" class="btn-close" data-bs-dismiss="modal"
-										aria-label="Close"></button>
-								</div>
-								<div class="modal-body">Contenido de la ventana modal 3</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary"
-										data-bs-dismiss="modal">Cerrar</button>
-								</div>
-							</div>
-						</div>
-					</div>
+				
 
 
 
@@ -236,6 +215,10 @@
 		</div>
 	</div>
 
+	<!-- Fragment to Footer -->
+   <footer th:replace="~{Layouts/footer :: footer}"></footer>
+   
+   
 	<!-- Incluye el archivo JavaScript de Bootstrap -->
 
 	<script type="text/javascript"
@@ -250,8 +233,7 @@
             });
         });
     </script>
-	<footer class="row fila justify-content-center"
-		th:replace="~{layouts/footer :: footer}"></footer>
+   
 	<script type="text/javascript"
 		th:src="@{/webjars/jquery/jquery.min.js}"></script>
 	<script type="text/javascript"
@@ -261,5 +243,24 @@
 	<!--<script src="/js/jquery.min.js"></script>-->
 	<script src="/js/popper.js"></script>
 	<script src="/js/main.js"></script>
+	
+	
+	
+	<!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
 </body>
 </html>

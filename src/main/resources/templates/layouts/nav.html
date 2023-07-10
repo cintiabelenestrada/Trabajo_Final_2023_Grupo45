@@ -5,40 +5,69 @@
 <meta charset="UTF-8">
 </head>
 <body>
+<!-- nav.html se modifico se cambio de modo que sea armonico con la vista de la pagina Inicio
+Responsable de la Modificacion: joel rojas araya -->
+	<!-- Navbar Start -->
+    <div class="container-fluid p-0 nav-bar" id="blocks"> 
+     
+        <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3" th:fragment="nav" id="blocks">
+            <a th:href="@{/index}" class="navbar-brand px-lg-4 m-0"> 
+                <h1 class="m-0 display-4 text-uppercase text-white"> Salud y Bienestar</h1>
+            </a>
+            
+			
+            
+        </nav>
+        
+    </div>
+   <!-- Navbar End -->  
+   
+   
+   <section class="ftco-section" th:fragment="section">
 
-	<nav class="navbar bg-body-tertiary  d-none d-lg-block"
-		th:fragment="nav">
-		<!-- Navbar content -->
-		<form class="container-fluid justify-content-start">
-			<a class="btn btn-outline-success me-2 nav-botones-color"
-				th:href="@{/index}">Inicio</a> <a
-				class="btn btn-sm btn-outline-secondary me-1 " type="button"
-				th:href="@{/productos/listado}">Registrarme</a> <a
-				class="btn btn-sm btn-outline-secondary me-1" type="button"
-				th:href="@{/consejos}">Consejos</a>
+			<nav
+				class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
+				id="ftco-navbar">
+				<div class="container">
+		<!--  			<a class="navbar-brand" href="index">Dietetica<span>Tienda</span></a>-->
+					<form action="#" class="searchform order-sm-start order-lg-last">
 
-			<div class="dropdown">
-				<button
-					class="btn btn-sm btn-outline-secondary me-1 dropdown-toggle"
-					type="button" data-bs-toggle="dropdown" aria-expanded="false">Servicios</button>
-				<ul class="dropdown-menu">
-					<li><a class="dropdown-item" th:href="@{/calculoimc}">Calculadora de IMC</a></li>
-					<li><a class="dropdown-item" th:href="@{/pesoideal}">Descubre tu peso
-							ideal</a></li>
-
-				</ul>
-			</div>
-
-			<a class="btn btn-sm btn-outline-secondary me-1" type="button"
-				th:href="@{/contacto}">Contacto</a>  <a
-				class="btn btn-sm btn-outline-secondary me-1" type="button"
-				th:href="@{/receta/lista}">Recetas</a> <a
-				class="btn btn-sm btn-outline-secondary me-1" type="button"
-				th:href="@{/n2}">Testimonios</a> <a
-				class="btn btn-sm btn-outline-secondary me-1" type="button"
-				th:href="@{/n3}">Gestion</a>
-		</form>
-	</nav>
-
+					</form>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav"
+						aria-expanded="false" aria-label="Toggle navigation">
+						<span class="fa fa-bars"></span> Menu
+					</button>
+					<div class="collapse navbar-collapse" id="ftco-nav">
+						<ul class="navbar-nav m-auto">
+							<li class="nav-item active"><a th:href="@{/inicio}" class="nav-link">Inicio</a></li>
+							<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Registro</a>
+								<div class="dropdown-menu" aria-labelledby="dropdown04">
+									<!--<a th:href="@{/registro}" class="nav-link">Registrarme</a>-->
+									 <a class="dropdown-item" th:href="@{/inicio/usuario}">Registrarme</a> 
+								</div>
+							</li>
+							<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Servicios</a>
+								<div class="dropdown-menu" aria-labelledby="dropdown04">
+									<a class="dropdown-item" th:href="@{/datosusuarioimc}">Calcular IMC</a>
+									<a class="dropdown-item" th:href="@{/pesoideal}">Calcule su peso ideal</a>
+								</div>
+							</li>
+							
+							<li class="nav-item active"><a th:href="@{/consejos}" class="nav-link">Consejos</a></li>
+							<li class="nav-item active"><a th:href="@{/recetas}" class="nav-link">Recetas</a></li>
+							<li class="nav-item active"><a th:href="@{/testimonios}" class="nav-link">Testimonios</a></li>
+							<li class="nav-item active"><a th:href="@{/contacto}" class="nav-link">Contáctanos</a></li>
+							<li class="nav-item active"><a th:href="@{/gestion}" class="nav-link">Gestión de datos</a></li>
+							
+						
+						</ul>
+					
+					</div>
+				</div>
+			</nav>
+		</section>
+	<!-- <a class="btn btn-sm btn-outline-secondary me-1" type="button" th:href="@{/recetas}" >Recetas</a>
+    				<a class="btn btn-sm btn-outline-secondary me-1" type="button" th:href="@{/gestion}" >Gestion</a> -->
+	
 </body>
 </html>

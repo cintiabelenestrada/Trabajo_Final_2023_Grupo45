@@ -7,149 +7,123 @@
 </head>
 <body>
 
+<!-- footer.html se modifico ya que surgian algunos conflictos debido a la constantes modificaciones de Inicio
+Responsable de la Modificacion: joel rojas araya -->
+	<!-- Footer Start -->
 	<div th:fragment="footer">
-		<!-- Comienzo del Footer -->
-		<footer class="row text-center text-lg-start  footer-fondo-estilo-1 ms-2 me-2 ">
+    <div class="container-fluid footer text-white mt-5 pt-5 px-0 position-relative overlay-top" id="blocks">
+        <div class="row mx-0 pt-5 px-sm-3 px-lg-5 mt-4">
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Contáctanos</h4>
+                <p><i class="fa fa-map-marker-alt mr-2"></i>Ing. Mario Italo Palanca 10 , Jujuy, Arg</p>
+                <p><i class="fa fa-phone-alt mr-2"></i> +549388 422-1580</p>
+                <p class="m-0"><i class="fa fa-envelope mr-2"></i>info@fi.unju.edu.ar</p>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Síguenos en nuestras redes sociales</h4>
+                <p>No te pierdas ninguna novedad...!!!</p>
+                <div class="d-flex justify-content-start">
+                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-lg btn-outline-light btn-lg-square" href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Nuestros Horarios</h4>
+                <div>
+                    <h6 class="text-white text-uppercase">Lunes - Viernes</h6>
+                    <p>8.00 AM - 8.00 PM</p>
+                    <h6 class="text-white text-uppercase">Sábados - Domingos</h6>
+                    <p>2.00 PM - 8.00 PM</p>
+                </div>
+            </div>
+            
+            
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">¿Quieres dejar tu testiomonio?</h4>
+                <p>Ingresa para compartir tu experiencia con nosotros.</p>
+                <div class="w-100">
+                    <div class="input-group">
+                        <input type="text" class="form-control border-light" style="padding: 25px;" placeholder="Email">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary font-weight-bold px-3">Ingresar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+		
+		<section class="text-light">
+    		<div class="container text-center text-md-start mt-3">
+        		<div class="row mt-3">
+           			 <!-- Primer columna -->
+            		<div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4">
+               			 <!-- Inicio Usuarios -->
+               			 <div>
+                   			 <h6 class="text-uppercase fw-bold mb-4">Usuarios</h6>
+                    		 <ul class="list-unstyled">
+                        	 <li><a href="#!" class="text-reset">Inicio</a></li>
+                        	 <li><a href="#!" class="text-reset">Registrarse</a></li>
+                        	 <li><a href="#!" class="text-reset">Login</a></li>
+                   			 </ul>
+                		</div>
+                		<!-- Fin Usuarios -->
+            		</div>
 
-			<section
-				class="d-flex justify-content-center justify-content-lg-between p-3 border-bottom">
-				<!-- Parte izquierda -->
-				<div class="me-5 d-none d-lg-block text-light">
-					<span>Nuestras redes sociales</span>
-				</div>
+           			 <!-- Segunda columna -->
+            		<div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4">
+               			 <!-- Inicio Testimonios -->
+                		<div>
+                   			<h6 class="text-uppercase fw-bold mb-4">Testimonios</h6>
+                    		<ul class="list-unstyled">
+                        	<li><a href="#!" class="text-reset">Ver testimonios</a></li>
+                    		</ul>
+                		</div>
+                		<!-- Fin Testimonios -->
+            		</div>
 
-				<!-- Parte derecha -->
-				<!-- redes sociales -->
-				<div class="">
-					<a href="" class="me-4 link-secondary"> <i
-						class="fab fa-facebook-f text-light"></i>
-					</a> <a href="" class="me-4 link-secondary"> <i
-						class="fab fa-twitter text-light"></i>
-					</a> <a href="" class="me-4 link-secondary"> <i
-						class="fab fa-google text-light"></i>
-					</a> <a href="" class="me-4 link-secondary"> <i
-						class="fab fa-instagram text-light"></i>
-					</a> <a href="" class="me-4 link-secondary"> <i
-						class="fab fa-linkedin text-light"></i>
-					</a> <a href="" class="me-4 link-secondary"> <i
-						class="fab fa-github text-light"></i>
-					</a>
-				</div>
-				<!-- Right -->
-			</section>
-			<!-- Fin redes sociales -->
+            		<!-- Tercer columna -->
+            		<div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4">
+               			 <!-- Inicio Servicios -->
+                		<div>
+                    		<h6 class="text-uppercase fw-bold mb-4">Servicios</h6>
+                    		<ul class="list-unstyled">
+                        	<li><a href="#!" class="text-reset">Calcular IMC</a></li>
+                        	<li><a href="#!" class="text-reset">Peso ideal</a></li>
+                    		</ul>
+               			 </div>
+                		<!-- Fin Servicios -->
+            		</div>
 
+            		<!-- Cuarta columna -->
+            		<div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4">
+               		 <!-- Inicio Recetas -->
+                		<div>
+                   			<h6 class="text-uppercase fw-bold mb-4">Recetas</h6>
+                    		<ul class="list-unstyled">
+                        	<li><a href="#!" class="text-reset">Carnes</a></li>
+                        	<li><a href="#!" class="text-reset">Ensaladas</a></li>
+                        	<li><a href="#!" class="text-reset">Dulces</a></li>
+                    		</ul>
+                		</div>
+                	<!-- Fin Recetas -->
+            		</div>
+       			 </div>
+    		</div>
+		</section>
+			
 
-			<section class="text-light">
-				<div class="container text-center text-md-start mt-3">
-
-					<div class="row mt-3">
-
-						<!-- Primer columna -->
-						<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-
-							<!-- Inicio Usuarios -->
-							<div>
-								<h6 class="text-uppercase fw-bold mb-4">Usuarios</h6>
-								<p>
-									<a href="#!" class="text-reset">Inicio</a>
-								</p>
-								<p>
-									<a href="#!" class="text-reset">Registrarse</a>
-								</p>
-								<p>
-									<a href="#!" class="text-reset">Login</a>
-								</p>
-							</div>
-
-							<!-- Fin Usuarios -->
-
-						</div>
-
-						<!-- Segunda columna -->
-						<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-							<!-- Inicio Testimonios -->
-
-							<div>
-								<h6 class="text-uppercase fw-bold mb-4">testimonios</h6>
-								<p>
-									<a href="#!" class="text-reset">Ver testimonios</a>
-								</p>
-								<p>
-									<a href="#!" class="text-reset">......</a>
-								</p>
-							</div>
-
-							<!-- Fin Testimonios -->
-							<!-- Inicio Servicios -->
-							<div>
-
-								<h6 class="text-uppercase fw-bold mb-4">servicios</h6>
-								<p>
-									<a href="#!" class="text-reset">Calcular IMC</a>
-								</p>
-								<p>
-									<a href="#!" class="text-reset">Peso ideal</a>
-								</p>
-
-							</div>
-							<!-- Fin Servicios -->
-
-						</div>
-
-						<!-- Tercer columna -->
-
-						<!-- Inicio Recetas -->
-						<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-							
-							<h6 class="text-uppercase fw-bold mb-4">recetas</h6>
-							<p>
-								<a href="#!" class="text-reset">Carnes</a>
-							</p>
-							<p>
-								<a href="#!" class="text-reset">Ensaladas</a>
-							</p>
-							<p>
-								<a href="#!" class="text-reset">Dulces</a>
-							</p>
-
-						</div>
-						<!-- Fin Recetas-->
-
-						<!-- Cuarta columna -->
-
-						<!-- Inicio Contacto -->
-						<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-							
-							<h6 class="text-uppercase text-light fw-bold mb-4">Contacto</h6>
-							<p>
-								<a href="#!" class="text-reset">Formulario</a>
-							</p>
-							<!--             <i class="fas fa-envelope text-light me-3 "></i> -->
-							<!--            tudieta@gmail.com -->
-							<!-- 		<p></p> -->
-							<!--           <p><i class="fas fa-phone text-light me-3 "></i> + 549388123456</p> -->
-
-						</div>
-						<!--Fin Contacto -->
-					</div>
-
-
-				</div>
-			</section>
-
-
-			<!-- Derechos footer -->
-			<div class="text-center p-2 bg-dark text-light fin-footer-estilo">
-				<p>Todos los derechos reservados 2023 - Programación Visual:
-					Grupo45</p>
-			</div>
-			<!-- Fin Derechos footer -->
-		</footer>
-		<!-- Fin del Footer -->
-
-	</div>
-	<!-- Div que envuelve todo el Footer -->
+        <div class="container-fluid text-center text-white border-top mt-4 py-4 px-sm-3 px-md-5" style="border-color: rgba(256, 256, 256, .1) !important;">
+            <p class="mb-2 text-white">Copyright &copy; <a class="font-weight-bold" href="#">Bienestar y Salud</a>. Todos los derechos reservados.</a></p>
+            <p class="m-0 text-white">Diseñado por <a class="font-weight-bold" href="https://grupo45.com">Grupo45</a></p>
+        </div>
+    </div>
+    
+    </div>
+   
+    <!-- Footer End -->
 
 </body>
 </html>

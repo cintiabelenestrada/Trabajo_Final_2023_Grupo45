@@ -15,6 +15,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+
 import java.util.ArrayList;
 
 /**
@@ -38,16 +42,19 @@ public class IndiceMasaCorporal {
 	  @Column(name = "imc_fecha")
 	    private LocalDate fechaImc;
 	  
+	  @NotNull(message="El peso no puede quedar vacio")
+	  @Positive(message = "El peso debe ser mayor a 0")
 	  @Column(name = "imc_peso")
 	  private int pesoActual;
 	  
-	  private double imc;
+	  private double imcActual;
 	
 	@Column(name ="imc_estado")
 	private boolean estado;
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
+	@Valid
 	private Usuario usuario;
 	
 	
@@ -67,11 +74,14 @@ public IndiceMasaCorporal() {
 
 
 
-public IndiceMasaCorporal(Long id, LocalDate fechaImc, boolean estado) {
+public IndiceMasaCorporal(Long id, LocalDate fechaImc, int pesoActual,boolean estado, double imcActual,Usuario usuario) {
 		super();
 		this.id = id;
 		this.fechaImc = fechaImc;
 		this.estado = estado;
+		this.pesoActual = pesoActual;
+		this.imcActual = imcActual;
+		this.usuario = usuario;
 	}
 
 //public void calcularIMC(float alt,float pes) {
@@ -140,13 +150,15 @@ public IndiceMasaCorporal(Long id, LocalDate fechaImc, boolean estado) {
 	}
 
 
-	public double getImc() {
-		return imc;
+
+
+	public double getImcActual() {
+		return imcActual;
 	}
 
 
-	public void setImc(double imc) {
-		this.imc = imc;
+	public void setImcActual(double imcActual) {
+		this.imcActual = imcActual;
 	}
 
 
@@ -157,6 +169,16 @@ public IndiceMasaCorporal(Long id, LocalDate fechaImc, boolean estado) {
 
 	public void setFechaImc(LocalDate fechaImc) {
 		this.fechaImc = fechaImc;
+	}
+
+
+	public int getPesoActual() {
+		return pesoActual;
+	}
+
+
+	public void setPesoActual(int pesoActual) {
+		this.pesoActual = pesoActual;
 	}
 
 
