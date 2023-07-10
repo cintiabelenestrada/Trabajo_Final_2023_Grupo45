@@ -19,6 +19,7 @@ import ar.edu.unju.fi.entity.Usuario;
 import ar.edu.unju.fi.repository.IServiciosRepository;
 import ar.edu.unju.fi.repository.IRegistroRepository;
 import ar.edu.unju.fi.service.IServiciosService;
+import jakarta.validation.Valid;
 
 @Controller
 public class ServiciosController {
@@ -36,7 +37,7 @@ public class ServiciosController {
 	@GetMapping("/datosusuarioimc")
 	public String getCalculoImcPage(@ModelAttribute("usuario") Usuario usuario, Model model) {
 		String tituloPagina = "Calculo IMC";
-		model.addAttribute("tituloPagina", tituloPagina); //obtiene el titulo para el header
+		model.addAttribute("tituloPagina", tituloPagina);
 		
 		model.addAttribute("usuario", new Usuario());
 		model.addAttribute("imc", new IndiceMasaCorporal());
@@ -47,6 +48,7 @@ public class ServiciosController {
 	@PostMapping("/datosusuarioimc")
 	public String getCalcuImcPage(@RequestParam("id") Long id, Model model) {
 		Usuario usuario = registroRepository.findById(id).orElse(null);
+	
 		if (usuario != null) {
 			model.addAttribute("usuario", usuario);
 			model.addAttribute("imc", new IndiceMasaCorporal());
@@ -63,7 +65,7 @@ public class ServiciosController {
 
 	@PostMapping("/calcular_imc")
 	public String calcularIMC(@RequestParam("id") Long id, @RequestParam("pesoActual") int pesoActual, Model model) {
-		LocalDate fechaActual = LocalDate.now(); // Establecer la fecha actual
+		LocalDate fechaActual = LocalDate.now(); 
 
 		Usuario usuario = registroRepository.findById(id).orElse(null);
 		if (usuario != null) {
@@ -76,7 +78,7 @@ public class ServiciosController {
 			    model.addAttribute("imcList", imcList);
 			return "calcular_imc";
 		} else {
-			// Código de usuario no válido, manejar el caso según tus necesidades
+		
 			return "error";
 		}
 	}

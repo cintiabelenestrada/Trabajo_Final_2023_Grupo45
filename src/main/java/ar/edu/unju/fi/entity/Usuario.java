@@ -80,6 +80,7 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_id")
+	@NotNull(message="Este campo no puede quedar vacio")
 	private Long id;
 
 
