@@ -1,15 +1,12 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-	<body>
-	<!-- header-->
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
 	<header th:fragment="header">
-
 		<section class="ftco-section" th:fragment="section">
 
 			<nav
@@ -55,23 +52,16 @@
 				</div>
 			</nav>
 		</section>
-
-	
-		<div class="container-fluid footer text-white mt-5 pt-5 px-0 position-relative overlay-top" id="blocks">
-			<!-- Page Header Start -->
-    		<div class="container-fluid page-header mb-5 position-relative overlay-bottom">
-    
-        		<div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5">
-           			<!-- Logra hacer que el header cambie de nombre por la opcion seleccionada en inicio -->
-           			 <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase" th:text="${tituloPagina}"></h1>
-           			
-       		  </div>
-    	</div>
-    <!-- Page Header End -->
-	  </div>
-	
-
 	</header>
-   	<!-- header-->
-    </body>
+
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/popper.js"></script>
+	<script src="/js/main.js"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+</body>
 </html>

@@ -5,51 +5,40 @@
 <meta charset="UTF-8">
 </head>
 <body>
-<!-- nav.html se modifico se cambio de modo que sea armonico con la vista de la pagina Inicio
-Responsable de la Modificacion: joel rojas araya -->
-	<!-- Navbar Start -->
-    <div class="container-fluid p-0 nav-bar" id="blocks"> 
-     
-        <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3" th:fragment="nav" id="blocks">
-            <a th:href="@{/index}" class="navbar-brand px-lg-4 m-0"> 
-                <h1 class="m-0 display-4 text-uppercase text-white"> Salud y Bienestar</h1>
-            </a>
-            
-			
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                <div class="navbar-nav ml-auto p-4">
-                
-                
-                    <a class="btn btn-outline-success me-2 nav-botones-color" th:href="@{/inicio}">Inicio</a>
-    				<a class="btn btn-sm btn-outline-secondary me-1 " type="button" th:href="@{/registro}" >Registrarme</a>
-    				<!--<a class="btn btn-sm btn-outline-secondary me-1 " type="button" th:href="@{/productos/listado}">Registrarme</a> -->
-    				<a class="btn btn-sm btn-outline-secondary me-1" type="button" th:href="@{/consejos}" >Consejos</a>
-    				<a class="btn btn-sm btn-outline-secondary me-1" type="button" th:href="@{/servicio}" >Servicios</a>
-    				
-    				<a class="btn btn-sm btn-outline-secondary me-1" type="button" th:href="@{/recetas}" >Recetas</a>
-    				<a class="btn btn-sm btn-outline-secondary me-1" type="button" th:href="@{/gestion}" >Gestion</a>
-    				
-    			
-                    <div class="nav-item dropdown">
-                       
-                        <div class="dropdown-menu text-capitalize">
-                            <a class="btn btn-sm btn-outline-secondary me-1" type="button" th:href="@{/testimonio}" >Testimonios</a>
-                        </div>
-                    </div>
-                   
-                    <a class="btn btn-sm btn-outline-secondary me-1" th:href="@{/contacto}">Contacto</a>
-                    
-                </div>
-            </div>
-        </nav>
-        
-    </div>
-   <!-- Navbar End -->  
-	
-	
+
+	<nav class="navbar bg-body-tertiary  d-none d-lg-block"
+		th:fragment="nav">
+		<!-- Navbar content -->
+		<form class="container-fluid justify-content-start">
+			<a class="btn btn-outline-success me-2 nav-botones-color"
+				th:href="@{/index}">Inicio</a> <a
+				class="btn btn-sm btn-outline-secondary me-1 " type="button"
+				th:href="@{/productos/listado}">Registrarme</a> <a
+				class="btn btn-sm btn-outline-secondary me-1" type="button"
+				th:href="@{/consejos}">Consejos</a>
+
+			<div class="dropdown">
+				<button
+					class="btn btn-sm btn-outline-secondary me-1 dropdown-toggle"
+					type="button" data-bs-toggle="dropdown" aria-expanded="false">Servicios</button>
+				<ul class="dropdown-menu">
+					<li><a class="dropdown-item" th:href="@{/calculoimc}">Calculadora de IMC</a></li>
+					<li><a class="dropdown-item" th:href="@{/pesoideal}">Descubre tu peso
+							ideal</a></li>
+
+				</ul>
+			</div>
+
+			<a class="btn btn-sm btn-outline-secondary me-1" type="button"
+				th:href="@{/contacto}">Contacto</a>  <a
+				class="btn btn-sm btn-outline-secondary me-1" type="button"
+				th:href="@{/n1}">Recetas</a> <a
+				class="btn btn-sm btn-outline-secondary me-1" type="button"
+				th:href="@{/n2}">Testimonios</a> <a
+				class="btn btn-sm btn-outline-secondary me-1" type="button"
+				th:href="@{/n3}">Gestion</a>
+		</form>
+	</nav>
+
 </body>
 </html>
