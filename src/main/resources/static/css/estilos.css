@@ -24,6 +24,21 @@ body{
 	border-left : 2px solid #60a65b;
 }
 
+/* Estilo Seccion Recetas */
+#card-receta{
+	max-width: 600px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    padding: 20px;
+}
+.recetas{
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+.recetas h1 {
+	margin-bottom: 30px;
+}
+
 /*ESTILO PARA:
 Navbar Start
 Offer Start
@@ -31,21 +46,15 @@ Registration Start
 */
 #blocks{
 	background-color: #424242;
+	/*background-color: #60a65b;*/
 }
 
 /*ESTILO PARA:
 mapa
 */
 .map-responsive{
-
     overflow:hidden;
-
     padding-bottom:90%;
-
     position:relative;
-
     height:0;
-
 }
-
-

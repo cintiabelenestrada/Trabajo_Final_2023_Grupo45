@@ -129,8 +129,9 @@ author joel rojas araya
                             
                             <p class="m-0">Calculá y evaluá en segundos tu Índice de Masa Corporal. Con sólo ingresar tu peso y altura, la calculadora te devuelve el índice para que puedas evaluar tu grado de obesidad!</p>
                             
-                            <a class="btn btn-outline-success me-2 nav-botones-color" th:href="@{/servicios/calcular_imc2}">Calcular</a>
+                            <a class="btn btn-outline-success me-2 nav-botones-color" th:href="@{/datosusuarioimc}">Calcular</a>
                             
+									
                         </div>
                     </div>
                 </div>
@@ -143,7 +144,7 @@ author joel rojas araya
                             <h4><i class="fa fa-balance-scale service-icon"></i>Peso Ideal</h4>
                             <p class="m-0">Calculá tu peso ideal en segundos. Con sólo ingresar tu estatura y edad, la calculadora te devuelve el peso idoneo al cual puedes aspirar a lograr. Tomalo como un punto de referencia, y semana a semana haz pequeños avances para lograr alcanzarlo!</p>
                             
-                            <a class="btn btn-outline-success me-2 nav-botones-color" th:href="@{/servicios/peso_ideal}">Calcular</a>
+                            <a class="btn btn-outline-success me-2 nav-botones-color" th:href="@{/pesoideal}">Calcular</a>
                             
                         </div>
                     </div>
@@ -317,6 +318,7 @@ author joel rojas araya
                     <div class="col-lg-6">
                         <div class="text-center p-5" style="background: rgba(51, 33, 29, .8);">
                             <h1 class="text-white mb-4 mt-5">Registrate</h1>
+                            <!-- 
                             <form class="mb-5">
                                 <div class="form-group">
                                     <input type="text" class="form-control bg-transparent border-primary p-4 text-white" placeholder="Nombre"
@@ -337,17 +339,23 @@ author joel rojas araya
                                         required="required" />
                                 </div>
                                 
-                                <!--  
+                                 
                                 <div class="form-group">
                                     <div class="date" id="date" data-target-input="nearest">
                                         <input type="text" class="form-control bg-transparent border-primary p-4 datetimepicker-input text-white" placeholder="Date" data-target="#date" data-toggle="datetimepicker"/>
                                     </div>
-                                </div> -->
-                                
+                                </div> 
+                              </form>  -->
                                 <div>
-                                    <button class="btn btn-primary btn-block font-weight-bold py-3" type="submit">Registrarme</button>
+                                  <!--<button class="btn btn-primary btn-block font-weight-bold py-3" type="submit" th:href="@{registro}">Registrarme
+                                    	
+                                    </button>-->
+                                    <form action="/inicio/usuario" method="get">
+  										<button class="btn btn-primary btn-block font-weight-bold py-3" type="submit">Registrarme</button>
+									</form>
+                                    
                                 </div>
-                            </form>
+                            
                         </div>
                     </div>
                 </div>
@@ -355,7 +363,6 @@ author joel rojas araya
         </div>
     </div>
     <!-- Registration End -->
-    
     
     
     <!-- Testimonial Start -->
@@ -409,10 +416,12 @@ author joel rojas araya
             </div>
         </div>
         
-        <div class="d-flex justify-content-center">
-   			 <a class="btn btn-outline-success me-2 nav-botones-color" th:href="@{/testimonio}"> Ver todos los Testimonios</a>
-   			 
+        
+		
+		<div class="d-flex justify-content-center">
+   			 <a class="btn btn-outline-success me-2 nav-botones-color" th:href="@{/testimonios}"> Ver todos los Testimonios</a>
 		</div>
+        
         
     </div>
     <!-- Testimonial End -->

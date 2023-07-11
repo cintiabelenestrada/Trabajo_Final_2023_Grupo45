@@ -10,12 +10,6 @@ import ar.edu.unju.fi.entity.Usuario;
 import ar.edu.unju.fi.repository.IRegistroRepository;
 import ar.edu.unju.fi.service.IRegistroService;
 
-/**
- * Implementación del servicio de productos que utiliza MySQL como base de datos.
- *
- * @author Federico Nicolas Burgos
- * @version 1.0.1 Date:30/06/2023
- */
 @Service
 public class RegistroServiceMysqlImp implements IRegistroService{
 	@Autowired
@@ -35,9 +29,4 @@ public class RegistroServiceMysqlImp implements IRegistroService{
 		return regisRepo.findById(id);
 	
 	}
-
-
-	
-	
-	
 }

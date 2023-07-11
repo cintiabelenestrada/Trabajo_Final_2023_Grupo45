@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+		<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
+		<title>Nueva Receta</title>
+	</head>
+	<body>
+		<div class="container">
+			
+			<nav th:replace="~{layouts/nav :: nav}"></nav>
+
+			<div class="form-container">
+				<div class="container">
+					<div class="row">
+						<div
+							class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+							<h3 th:text="${edicion}?'Modificar Receta':'Agregar Receta'"
+								class="text-center mb-3"></h3>
+							<div class="card-body">
+								<form
+									th:action="${edicion}?@{/receta/modificar/}+${receta.id}:@{/receta/guardar}"
+									th:object="${receta}" method="post"
+									enctype="multipart/form-data">
+									<div class="form-group">
+										<label for="nombre" class="form-label">Nombre de
+											Receta:</label> <input th:field="*{nombre}" class="form-control"
+											type="text" name="nombres" id="nombres" placeholder="Nombre">
+										<div class="text-danger" th:if="${#fields.hasErrors('nombre')}"
+											th:errors="*{nombre}"></div>
+									</div>
+
+									<div class="form-group">
+										<label for="idPreparacion" class="form-label">Preparación
+											de Receta:</label>
+										<textarea th:field="*{preparacion}" class="form-control"
+											name="preparacion" id="idPreparacion" rows="8"
+											placeholder="Preparación de la receta"></textarea>
+
+										<div class="text-danger"
+											th:if="${#fields.hasErrors('preparacion')}"
+											th:errors="*{preparacion}"></div>
+									</div>
+
+
+									<div class="form-group">
+										<label for="idCategoria" class="form-label">Seleccione
+											categoría de comida:</label> <select class="form-select"
+											id="idCategoria" th:field="*{categoria}" name="categoria">
+											<option value="0" selected>Seleccione una opción...</option>
+											<option value="Carnes">Carnes</option>
+											<option value="Pan">Pan</option>
+											<option value="Dulces">Dulces</option>
+											<option value="Ensaladas">Ensaladas</option>
+											<option value="Legumbres y Cereales">Legumbres y
+												Cereales</option>
+											<option value="Pescados">Pescados</option>
+											
+											<option value="Bebidas">Bebidas</option>
+											<option value="Sopas y Cremas">Sopas y Cremas</option>
+										</select>
+										<div class="text-danger"
+											th:if="${#fields.hasErrors('categoria')}"
+											th:errors="*{categoria}"></div>
+									</div>
+
+									<div class="form-group">
+										<label for="file" class="form-label">Subir Imagen:</label>
+										<div class="input-group">
+											<input type="file" class="form-control" id="file" name="file"
+												th:text="${receta.imagen}">
+										</div>
+									</div>
+
+									<div class="form-group d-flex justify-content-end mt-3">
+										<a class="btn btn-secondary mx-2" th:href="@{/receta/gestion}"
+											role="button">Cancelar</a>
+										<button type="submit"
+											th:text="${edicion}?'Modificar':'Agregar'"
+											class="btn btn-primary"></button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer th:replace="~{layouts/footer :: footer}"></footer>
+		<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	</body>
+</html>
