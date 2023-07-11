@@ -1,11 +1,10 @@
 package ar.edu.unju.fi.controller;
 
-
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -16,42 +15,52 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
+import ar.edu.unju.fi.util.UploadFile;
 import ar.edu.unju.fi.entity.Receta;
+import ar.edu.unju.fi.entity.Usuario;
+import ar.edu.unju.fi.repository.IRecetaRepository;
 import ar.edu.unju.fi.service.IIngredienteService;
 import ar.edu.unju.fi.service.IRecetaService;
-import ar.edu.unju.fi.util.UploadFile;
 import jakarta.validation.Valid;
 
-@Controller
-@RequestMapping("/receta")
-public class RecetaController {
 
+@Controller
+public class GestionController {
+	
+	
 	@Autowired
-	@Qualifier("recetaServiceMysqlImp")
+	private IRecetaRepository recetaRepository;
+	
+	@Autowired
 	private IRecetaService recetaService;
 	
 	@Autowired
-	@Qualifier("ingredienteServiceMysqlImp")
 	private IIngredienteService ingredienteService;
 	
 	@Autowired
 	private UploadFile uploadFile;
 	
-	/**
-	 * Obtiene la página de gestión de datos de receta.
-	 *
-	 * @param model El objeto Model para pasar datos a la vista.
-	 * @return El nombre de la vista gestion_datos_receta.html.
-	 */
-	@GetMapping("/gestion")
-	public String obtenerPaginaGestionDatosReceta(Model model) {
+	/*#######################SECCION RECETAS###########################*/
+	@GetMapping("/gestionar")
+	public String getGestionPage(@ModelAttribute("usuario") Usuario usuario,Model model) {
+		model.addAttribute("usuario", new Usuario());
 		model.addAttribute("recetas", recetaService.obtenerRecetas());
-		return "gestion_datos_receta";
+		
+
+	    return "gestion_datos";
+	}
+	
+	
+	
+	@PostMapping("/gestionar")
+	public String getGestionUPage(@RequestParam("id") Long id,Model model) {
+		 model.addAttribute("usuario", new Usuario());
+			model.addAttribute("recetas", recetaService.obtenerRecetas());
+			model.addAttribute("error", "No se encontró un usuario con este ID");			
+			return "gestion_datos";
 	}
 	
 	/**
@@ -60,7 +69,7 @@ public class RecetaController {
 	 * @param model El objeto Model para pasar datos a la vista.
 	 * @return El nombre de la vista nueva_receta.html.
 	 */
-	@GetMapping("/nuevo")
+	@GetMapping("/gestionar/nuevo")
 	public String obtenerPaginaNuevaReceta(Model model) {
 		boolean edicion=false;
 		model.addAttribute("receta", recetaService.obtenerReceta());
@@ -77,7 +86,7 @@ public class RecetaController {
 	 * @param imagen La imagen asociada a la receta.
 	 * @return El objeto ModelAndView para la vista redirect:/receta/gestion.
 	 */
-	@PostMapping("/guardar")
+	@PostMapping("/gestionar/guardar")
 	public ModelAndView postGuardarIngredientePage(@Valid @ModelAttribute("receta") Receta receta, BindingResult result,
 			@RequestParam("file")MultipartFile imagen) throws IOException {
 		ModelAndView mav = new ModelAndView("redirect:/receta/gestion");
@@ -98,7 +107,7 @@ public class RecetaController {
 	 * @param id El ID de la receta a modificar.
 	 * @return El nombre de la vista nueva_receta.html.
 	 */
-	@GetMapping("/modificar/{id}")
+	@GetMapping("/gestionar/modificar/{id}")
 	public String getModificarIngredientePage(Model model, @PathVariable(value = "id")Long id) {
 		boolean edicion=true;
 
@@ -118,7 +127,7 @@ public class RecetaController {
 	 * @param model El objeto Model para pasar datos a la vista.
 	 * @return El nombre de la vista nueva_receta.html.
 	 */
-	@PostMapping("/modificar/{id}")
+	@PostMapping("/gestionar/modificar/{id}")
 	public String modificarIngrediente(@Valid @ModelAttribute("receta")Receta recetaModificada, BindingResult result,
 			@RequestParam("file")MultipartFile imagen,Model  model) throws IOException {
 
@@ -131,13 +140,13 @@ public class RecetaController {
 		return "redirect:/receta/gestion";
 	}
 	
-	@GetMapping("/eliminar/{id}")
+	@GetMapping("/gestionar/eliminar/{id}")
 	public String eliminarIngrediente(@PathVariable(value="id")Long id) {
 		recetaService.eliminarReceta(id);
 		return "redirect:/receta/gestion";
 	}
 	
-	@GetMapping("/cargar/{imagen}")
+	@GetMapping("/gestionar/cargar/{imagen}")
 	 public ResponseEntity<Resource> goImage(@PathVariable String imagen){
 		Resource resource = null;
 		try {
@@ -151,7 +160,7 @@ public class RecetaController {
 		
 	}
 	
-	@GetMapping("/ver/{id}")
+	@GetMapping("/gestionar/ver/{id}")
 	public ModelAndView mostrarReceta(@PathVariable(value = "id")Long id){
 		ModelAndView modelAndView = new ModelAndView("receta");
 		modelAndView.addObject("receta", recetaService.buscarReceta(id));
@@ -176,4 +185,6 @@ public class RecetaController {
 		return modelAndView;
 	}
 	
+	
+
 }

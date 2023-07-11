@@ -64,9 +64,9 @@ Responsable de la Modificacion: joel rojas araya -->
                			 <div>
                    			 <h6 class="text-uppercase fw-bold mb-4">Usuarios</h6>
                     		 <ul class="list-unstyled">
-                        	 <li><a href="#!" class="text-reset">Inicio</a></li>
-                        	 <li><a href="#!" class="text-reset">Registrarse</a></li>
-                        	 <li><a href="#!" class="text-reset">Login</a></li>
+                        	 <li><a th:href="@{/inicio}" class="text-reset">Inicio</a></li>
+                        	 <li><a th:href="@{/inicio/usuario}" class="text-reset">Registrarse</a></li>
+<!--                         	 <li><a href="#!" class="text-reset">Login</a></li> -->
                    			 </ul>
                 		</div>
                 		<!-- Fin Usuarios -->
@@ -76,9 +76,9 @@ Responsable de la Modificacion: joel rojas araya -->
             		<div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4">
                			 <!-- Inicio Testimonios -->
                 		<div>
-                   			<h6 class="text-uppercase fw-bold mb-4">Testimonios</h6>
+<!--                    			<h6 class="text-uppercase fw-bold mb-4">Testimonios</h6> -->
                     		<ul class="list-unstyled">
-                        	<li><a href="#!" class="text-reset">Ver testimonios</a></li>
+<!--                         	<li><a href="#!" class="text-reset">Ver testimonios</a></li> -->
                     		</ul>
                 		</div>
                 		<!-- Fin Testimonios -->
@@ -90,8 +90,8 @@ Responsable de la Modificacion: joel rojas araya -->
                 		<div>
                     		<h6 class="text-uppercase fw-bold mb-4">Servicios</h6>
                     		<ul class="list-unstyled">
-                        	<li><a href="#!" class="text-reset">Calcular IMC</a></li>
-                        	<li><a href="#!" class="text-reset">Peso ideal</a></li>
+                        	<li><a th:href="@{/datosusuarioimc}" class="text-reset">Calcular IMC</a></li>
+                        	<li><a th:href="@{/pesoideal}"  class="text-reset">Peso ideal</a></li>
                     		</ul>
                			 </div>
                 		<!-- Fin Servicios -->
@@ -101,7 +101,7 @@ Responsable de la Modificacion: joel rojas araya -->
             		<div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4">
                		 <!-- Inicio Recetas -->
                 		<div>
-                   			<h6 class="text-uppercase fw-bold mb-4">Recetas</h6>
+                   			<h6 th:href="@{/receta/gestion}" class="text-uppercase fw-bold mb-4">Recetas</h6>
                     		<ul class="list-unstyled">
                         	<li><a href="#!" class="text-reset">Carnes</a></li>
                         	<li><a href="#!" class="text-reset">Ensaladas</a></li>
