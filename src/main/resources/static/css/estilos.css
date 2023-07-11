@@ -24,6 +24,13 @@ body{
 	border-left : 2px solid #60a65b;
 }
 
+.listado-estilo{
+/* 	  background-color: lightblue; */
+  width: 20vw;
+  height: 100vh;;
+  overflow: clip;
+}
+
 /* Estilo Seccion Recetas */
 #card-receta{
 	max-width: 600px;
