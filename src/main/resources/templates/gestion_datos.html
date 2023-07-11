@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div class="container">
-		<nav th:replace="~{Layouts/nav :: nav}"></nav>
+		<nav th:replace="~{layouts/nav :: nav}"></nav>
 
 		<section class="row justify-content-center container pt-2">
 
@@ -47,8 +47,8 @@
 						class="p-4 bg-section rounded-shadom text-center mb-4 col-8 mx-auto">
 						<ul class="nav flex-column">
 							<li class="nav-item btn btn-primary m-1 fs-5 text"><a
-								th:href="@{/gestionar/nuevo}"
-								class="btn btn-success fw-bolder py-3">Nueva Receta</a></li>
+								class="nav-link text-white" th:href="@{/gestionar/nuevo}">Nueva Receta</a>
+							</li>
 							<li class="nav-item btn btn-primary m-1 fs-5 text"><a
 								class="nav-link text-white" th:href="@{/receta/gestion}">Recetas</a>
 							</li>
