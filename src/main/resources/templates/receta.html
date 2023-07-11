@@ -8,7 +8,7 @@
 </head>
     <body>
         <div class="container">
-            <header th:replace="~{layouts/header :: header}"></header>
+            <nav th:replace="~{layouts/nav :: nav}"></nav>
 
             <a  th:if="${gestion != false}" th:href="${gestion}?@{/receta/gestion}" class="btn btn-primary"
             th:text="${gestion}?'Volver a gestion de Receta':'  '"></a>  
