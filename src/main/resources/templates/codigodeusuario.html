@@ -35,10 +35,10 @@ author joel rojas araya
 
 <body>
 		<!-- Fragment to Nav -->
-  <nav th:replace="~{Layouts/nav :: nav}"></nav>
+  <nav th:replace="~{layouts/nav :: nav}"></nav>
   
    <!--  Fragment to Header -->
-  	<header th:replace="~{Layouts/header :: header}"></header>
+<!--   	<header th:replace="~{layouts/header :: header}"></header> -->
   	
   	
   	
@@ -48,13 +48,14 @@ author joel rojas araya
         <h1 class="mt-4"></h1>
 
         <div class="row">
-            <div class="col-md-7">
-	        	<div class="row">
-    				<div class="col-md-4" th:each="usuario : ${usuarios}">
-       					 <div class="card">
+            <div class="col-md-12">
+	        	<div class="row justify-content-center">
+    				<div class="col-md-4 " th:each="usuario : ${usuarios}">
+       					 <div class="card ">
             				<div class="card-body">
-            					<span>Codigo de Usuario:</span>
-                					<h5 class="card-title" th:text="${usuario.id}"></h5>
+            				<p class="text-success">Registro realizado correctamente</p>
+            					<span>Id de Usuario:</span>
+                					<h5 class="card-title fw-bold text-success  fs-3" th:text="${usuario.id}"></h5>
                 				<span>Nombre de Usuario:</span>
                 				<h6 class="card-subtitle mb-2 text-muted" th:text="${usuario.nombre}"></h6>
                 				<span>Mail de Usuario:</span>
@@ -75,7 +76,7 @@ author joel rojas araya
     
     
     <!-- Fragment to Footer -->
-   <footer th:replace="~{Layouts/footer :: footer}"></footer>
+   <footer th:replace="~{layouts/footer :: footer}"></footer>
 
 
     <!-- Back to Top -->
