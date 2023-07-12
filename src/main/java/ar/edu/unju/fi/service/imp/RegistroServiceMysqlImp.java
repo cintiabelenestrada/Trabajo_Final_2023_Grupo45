@@ -34,4 +34,18 @@ public class RegistroServiceMysqlImp implements IRegistroService{
 		return regisRepo.findById(id);
 		
 	}
+	
+	@Override
+	public void eliminar(Long id, boolean esta){
+		
+		Optional<Usuario> objetoOptional = regisRepo.findById(id);
+
+        if (objetoOptional.isPresent()) {
+        	Usuario objeto = objetoOptional.get();
+            objeto.setEstado(esta);
+            regisRepo.save(objeto);
+        } else {
+            throw new IllegalArgumentException("El objeto con el ID " + id + " no existe.");
+        }
+    }
 }

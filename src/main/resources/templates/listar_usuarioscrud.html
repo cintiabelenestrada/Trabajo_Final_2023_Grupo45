@@ -53,7 +53,8 @@
 					<div class="card-body">
 						<h5 class="card-title" th:text="${usuario.nombre} + ' ' + ${usuario.apellido}"></h5>
 						<!-- Agrega otros detalles relevantes del usuario -->
-						 <a class="btn btn-primary" th:href="@{/gestion/modificar/usuarios/{id}/(id=${usuario.id})}">Ver más</a>
+						 <a class="btn btn-primary" th:href="@{/gestion/modificar/usuarios/{id}/(id=${usuario.id})}">Modificar</a>
+						 <a class="btn btn-primary" th:href="@{/gestion/modificar/usuarios/eliminar/{id}/(id=${usuario.id})}">Eliminar</a>
 					</div>
 				</div>
 			</div>

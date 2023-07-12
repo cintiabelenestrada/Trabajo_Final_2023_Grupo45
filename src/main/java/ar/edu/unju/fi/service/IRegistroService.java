@@ -27,5 +27,7 @@ public interface IRegistroService {
 	public Optional<Usuario> findById(Long id);
 	Optional<Usuario> listarId(Long id);
 	
+	public void eliminar(Long id, boolean esta);
+	
 	
 }

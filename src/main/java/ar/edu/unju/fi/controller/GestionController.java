@@ -263,4 +263,14 @@ public class GestionController {
 		    	return"registro";
 		    
 	}
+	@GetMapping("/gestion/modificar/usuarios/eliminar/{id}")
+	public String getEliminar(Model model, @PathVariable(value = "id") Long id) {
+		
+		iregisUs.eliminar(id, false);
+		Iterable<Usuario> usuarios = registroRepository.findAll();
+		model.addAttribute("usuarios", usuarios);
+		return"listar_usuarioscrud";
+		    
+	}
+	
 }
