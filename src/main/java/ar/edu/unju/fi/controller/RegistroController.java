@@ -46,8 +46,12 @@ public class RegistroController {
     // Muestra la página para agregar un nuevo producto
 	 @GetMapping("/usuario")
 	    public String getNuevoProductoPage(Model model) {
-		 
-		 	String tituloPagina = "Registro";
+		// Si en Inicio se selecciona esta opcion, el header cambiara el titulo por la opcion seleccionada
+		    String tituloPagina = "Registro"; // Establece el valor por defecto que se vera en el header
+		    // Se realiza el cambio de valor de `tituloPagina`
+		    model.addAttribute("tituloPagina", tituloPagina);
+		    
+		 	
 			model.addAttribute("tituloPagina", tituloPagina); //obtiene el titulo para el header
 			
 	    	boolean edicion = false;
@@ -58,8 +62,12 @@ public class RegistroController {
 	    
 	    /* Guarda un nuevo producto en la lista*/
 	    @PostMapping("/guardar")
-	    public String getguardarProductoPage(@Valid @ModelAttribute("usuario") Usuario usuario, BindingResult result) {
+	    public String getguardarProductoPage(@Valid @ModelAttribute("usuario") Usuario usuario, BindingResult result, Model model) {
 	    	
+	    	// Si en Inicio se selecciona esta opcion, el header cambiara el titulo por la opcion seleccionada
+		    String tituloPagina = "Registro"; // Establece el valor por defecto que se vera en el header
+		    // Se realiza el cambio de valor de `tituloPagina`
+		    model.addAttribute("tituloPagina", tituloPagina);
 	    	//return "redirect:/productos/listado";
 	    	ModelAndView modelView = new ModelAndView("usuarios");
 	   	if(result.hasErrors()) {
@@ -79,6 +87,12 @@ public class RegistroController {
     @GetMapping("/idusuario/{CD}")
     // muestra un usuario segun
      public String listar(@PathVariable("CD") Long CD,Model model) {
+    	
+    	// Si en Inicio se selecciona esta opcion, el header cambiara el titulo por la opcion seleccionada
+	    String tituloPagina = "Registro"; // Establece el valor por defecto que se vera en el header
+	    // Se realiza el cambio de valor de `tituloPagina`
+	    model.addAttribute("tituloPagina", tituloPagina);
+	    
     	Optional<Usuario>usuarios=iregisUs.findById(CD);
         
         if (usuarios.isPresent()) {
