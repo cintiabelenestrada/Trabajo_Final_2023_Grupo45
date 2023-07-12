@@ -4,11 +4,14 @@ import ar.edu.unju.fi.service.IServiciosService;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import ar.edu.unju.fi.entity.IndiceMasaCorporal;
+import ar.edu.unju.fi.entity.Receta;
 import ar.edu.unju.fi.entity.Usuario;
 import ar.edu.unju.fi.repository.IRegistroRepository;
 import ar.edu.unju.fi.repository.IServiciosRepository;
@@ -24,6 +27,23 @@ public class ServiciosServiceMySqlImp implements IServiciosService {
 //    @Autowired
 //    private IRegistroRepository registroRepository;
     
+    
+	@Override
+	public List<IndiceMasaCorporal> getImcs() {
+		return imcRepository.findByEstado(true);
+	}
+    
+	@Override
+	public IndiceMasaCorporal getImcById(Long id) {
+		return imcRepository.findById(id).get();
+		
+	}
+	
+	@Override
+	public void guardarImc(IndiceMasaCorporal indiceMasaCorporal) {
+		imcRepository.save(indiceMasaCorporal);
+
+	}
  
 
     @Override
@@ -77,7 +97,7 @@ public class ServiciosServiceMySqlImp implements IServiciosService {
         int edad = Period.between(usuario.getFecha_nacimiento(), LocalDate.now()).getYears(); // Calcular la edad en años
         double estatura = Double.parseDouble(usuario.getEstatura()) *100;
        
-        // Aplicar la fórmula de Perrault para calcular el peso ideal
+        /** Aplicar la fórmula de Perrault para calcular el peso ideal*/
         double pesoIdeal = estatura - 100 + ((double) edad / 10 * 0.9);
 //        System.out.println("estatura cm"+estaturaCm);
         System.out.println("estatura cm: "+estatura);
@@ -86,6 +106,15 @@ public class ServiciosServiceMySqlImp implements IServiciosService {
 
         return pesoIdeal;
     }
+    
+	@Override
+	public void eliminarImc(Long id) {
+		IndiceMasaCorporal unImc= new IndiceMasaCorporal();
+		unImc = getImcById(id);
+		unImc.setEstado(false);
+		imcRepository.save(unImc);
+	}
+
 
 }
 
