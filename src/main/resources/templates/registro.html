@@ -55,6 +55,12 @@
 					
 					
 					<!-- Rellenar nombre-->
+					<div class="form-group" hidden>
+                        <label for="id">Código:</label>
+                        <input type="number" class="form-control" id="id" name="id" th:field="*{id}">
+                        <!-- Mostrar mensajes de error para el campo "codigo" -->
+                       
+                    </div>
 					<div class="form-group">
 						<label for="nombre">Nombre o nombres:</label> <input type="text"
 							class="form-control" id="nombre" name="nombre"
