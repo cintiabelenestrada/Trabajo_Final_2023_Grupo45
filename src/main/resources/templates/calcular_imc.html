@@ -3,38 +3,33 @@
 
 <head>
 
-<meta charset="UTF-8">
-<title>Calcular_IMC</title>
-<meta name="viewport" content="width=device-width, initial-scale-1">
-<link th:rel="stylesheet" type="text/css"
-	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
-<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
+	<meta charset="UTF-8">
+	<title>Calcular_IMC</title>
+	<meta name="viewport" content="width=device-width, initial-scale-1">
+	<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+	<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
 
-<meta content="Free Website Template" name="keywords">
-<meta content="Free Website Template" name="description">
+	<meta content="Free Website Template" name="keywords">
+	<meta content="Free Website Template" name="description">
 
-<!-- Favicon -->
-<link href="img/favicon.ico" rel="icon">
+	<!-- Favicon -->
+	<link href="img/favicon.ico" rel="icon">
 
-<!-- Google Font -->
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link
-	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Roboto:wght@400;500;700&display=swap"
-	rel="stylesheet">
+	<!-- Google Font -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Roboto:wght@400;500;700&display=swap"
+		rel="stylesheet">
 
-<!-- Font Awesome -->
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-	rel="stylesheet">
+	<!-- Font Awesome -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
-<!-- Libraries Stylesheet -->
-<link href="lib/owlcarousel/assets/owl.carousel.min.css"
-	rel="stylesheet">
-<link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
-	rel="stylesheet" />
+	<!-- Libraries Stylesheet -->
+	<link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+	<link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
-<!-- Customized Bootstrap Stylesheet -->
-<link href="css/style.min.css" rel="stylesheet">
+	<!-- Customized Bootstrap Stylesheet -->
+	<link href="css/style.min.css" rel="stylesheet">
 
 </head>
 
@@ -62,8 +57,8 @@
 						<div class="d-flex servicios-izquierda-bottom ">
 							<!-- 						<i class="fa-solid fa-user text-light fa-2xl pt-5 ps-5 pe-4"></i> -->
 							<div class="row me-3">
-								<img src="imagen/user-solid.svg" class="card-img-top" alt="..."
-									style="width: 50px" width="50px">
+								<img src="imagen/user-solid.svg" class="card-img-top" alt="..." style="width: 50px"
+									width="50px">
 							</div>
 							<!-- 							<i class="fas fa-user text-dark fa- pt-5 ps-5 pe-4"></i> -->
 							<div class="row">
@@ -104,8 +99,7 @@
 											<strong>Nombre:</strong> <span th:text="${usuario.nombre}"></span>
 										</p>
 										<p class="card-text ms-4">
-											<strong>Apellido:</strong> <span
-												th:text="${usuario.apellido}"></span>
+											<strong>Apellido:</strong> <span th:text="${usuario.apellido}"></span>
 										</p>
 									</div>
 									<p class="card-text">
@@ -173,12 +167,14 @@
 										<div class="mt-4">
 											<p class="fw-bold text-dark" th:text="${mensaje}"></p>
 										</div>
-										<form th:action="@{/calcular_imc}" method="post" >
+										<form th:action="@{/calcular_imc}" method="post">
 											<div></div>
 											<div class="col-12 align-self-center p-5">
 
-												<div class="row input-group mb-3"
-													th:if="${usuario.id == null}">
+												<div class="row input-group mb-3" th:if="${usuario.id == null}">
+													<div th:if="${errorPeso}" class="alert alert-danger">
+														<p th:text="${errorPeso}"></p>
+													</div>
 													<p class="text-center text-dark fw-bold">Por favor
 														ingrese con su codigo</p>
 												</div>
@@ -188,17 +184,16 @@
 
 													<p class="text-center text-dark">Ingrese su peso actual</p>
 													<div class=" d-flex">
-														<input type="text" id="peso" name="pesoActual"
-															placeholder="00" aria-label="Peso"
-															aria-describedby="Peso" class="form-control"
-															th:field="*{imc.pesoActual}"> <label for="peso"
-															class="input-group-text">Kg</label>
-															
-															
+														<input type="text" id="peso" name="pesoActual" placeholder="00"
+															aria-label="Peso" aria-describedby="Peso"
+															class="form-control" th:field="*{imc.pesoActual}"> <label
+															for="peso" class="input-group-text">Kg</label>
+
+
 													</div>
-<!--													<p class="form-text text-danger"-->
-<!--														th:if="${#fields.hasErrors('imc.pesoActual')}"-->
-<!--														th:errors="*{imc.pesoActual}" />-->
+													<!--													<p class="form-text text-danger"-->
+													<!--														th:if="${#fields.hasErrors('imc.pesoActual')}"-->
+													<!--														th:errors="*{imc.pesoActual}" />-->
 												</div>
 												<input type="hidden" name="id" th:value="${usuario.id}" />
 											</div>
@@ -235,51 +230,27 @@
 			<aside
 				class="col-xl-3 col-lg-3 col-md-12 col-sm-12  text-light servicios-izquierda-left d-none d-lg-block d-xl-block">
 
-				<h4
-					class="text-dark text-center fw-bold mt-2 servicios-izquierda-bottom">Historial
-					de IMC</h4>
-				<div class="table-responsive"
-					style="max-height: 400px; overflow-y: auto;">
-					<table
-						class="table-sm table table-striped table-bordered table-hover">
+				<h4 class="text-dark text-center fw-bold mt-2">Historial de IMC</h4>
+				<div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+					<table class="table-sm table table-striped table-bordered table-hover">
 						<thead class="bg-secondary text-white text-center">
 							<tr>
 								<th>Fecha</th>
-								<th>Imc</th>
-
-								<!--                                     <th>Acciones</th> -->
+								<th>IMC</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="imc: ${imcList}">
-								<td
-									th:with="formattedDate=${#temporals.format(imc.fechaImc, 'dd/MM/yyyy')}"
+							<tr th:each="imc: ${imcList}" th:if="${imc.usuario == usuario}">
+								<td th:with="formattedDate=${#temporals.format(imc.fechaImc, 'dd/MM/yyyy')}"
 									th:text="${formattedDate}"></td>
-								<td
-									th:with="truncatedNumber=${#numbers.formatDecimal(imc.imcActual, 0, 'COMMA', 2, 'POINT')}"
+								<td th:with="truncatedNumber=${#numbers.formatDecimal(imc.imcActual, 0, 'COMMA', 2, 'POINT')}"
 									th:text="${truncatedNumber}"></td>
-
-								<!--                                         <td> -->
-								<!--                                             <a class="btn btn-info btn-sm" -->
-								<!--                                                 th:href="@{/ingrediente/modificar/}+${ingrediente.id}">Modificar</a> -->
-								<!--                                             <a class="btn btn-danger btn-sm" -->
-								<!--                                                 th:href="@{/ingrediente/eliminar/}+${ingrediente.id}">Eliminar</a> -->
-								<!--                                         </td> -->
 							</tr>
 						</tbody>
+						dy>
 					</table>
 				</div>
 
-
-
-<!-- 				<ul class="list-group list-group-flush "> -->
-<!-- 					<li class="list-group-item  text-dark " th:each="imc : ${imcList}" -->
-<!-- 						th:reverse="true"><span -->
-<!-- 						th:with="formattedDate=${#temporals.format(imc.fechaImc, 'dd/MM/yyyy')}" -->
-<!-- 						th:text="'Fecha: ' + ${formattedDate}"></span> - <span -->
-<!-- 						th:with="truncatedNumber=${#numbers.formatDecimal(imc.imcActual, 0, 'COMMA', 2, 'POINT')}" -->
-<!-- 						th:text="'IMC: ' + ${truncatedNumber}"></span></li> -->
-<!-- 				</ul> -->
 
 
 			</aside>
@@ -295,8 +266,7 @@
 
 	<!-- JavaScript Libraries -->
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 	<script src="lib/easing/easing.min.js"></script>
 	<script src="lib/waypoints/waypoints.min.js"></script>
 	<script src="lib/owlcarousel/owl.carousel.min.js"></script>
@@ -315,4 +285,5 @@
 </body>
 
 </body>
+
 </html>

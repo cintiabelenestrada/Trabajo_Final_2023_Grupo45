@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 //import ar.edu.unju.fi.entity.Empleado;
 import ar.edu.unju.fi.entity.IndiceMasaCorporal;
 import ar.edu.unju.fi.entity.Usuario;
@@ -36,6 +37,11 @@ public class ServiciosController {
 	@Autowired
 	private IServiciosRepository imcPesoRepository;
 	
+	
+	
+	
+	
+	
 	@GetMapping("/datosusuarioimc")
 	public String getCalculoImcPage(@ModelAttribute("usuario") Usuario usuario, Model model) {
 		String tituloPagina = "Calculo IMC";
@@ -48,29 +54,32 @@ public class ServiciosController {
 	}
 
 
+	
+	
 	@PostMapping("/datosusuarioimc")
-	public String getCalcuImcPage(@ModelAttribute("usuario") Usuario usuario, Model model) {
+	public String getCalcuImcPage(@Valid @ModelAttribute("usuario") Usuario usuario,BindingResult usuarioResult, Model model) {
 
 	    if (usuario.getId() == null) {
 			String tituloPagina = "Calculo IMC";
-			model.addAttribute("tituloPagina", tituloPagina); //obtiene el titulo para el header
+			model.addAttribute("tituloPagina", tituloPagina);
+			
 	        model.addAttribute("usuario", new Usuario());
 	        model.addAttribute("imc", new IndiceMasaCorporal());
 	        model.addAttribute("idNulo", "No puedes dejar este campo vacio");
 	        return "calcular_imc";
 	    }
 
-	    // Resto de la lógica para obtener el usuario y redirigir a la página adecuada
+	   
 	    Usuario usuarioEncontrado = registroRepository.findById(usuario.getId()).orElse(null);
 	    if (usuarioEncontrado != null) {
 			String tituloPagina = "Calculo IMC";
-			model.addAttribute("tituloPagina", tituloPagina); //obtiene el titulo para el header
+			model.addAttribute("tituloPagina", tituloPagina); 
 	        model.addAttribute("usuario", usuarioEncontrado);
 	        model.addAttribute("imc", new IndiceMasaCorporal());
 	        return "calcular_imc";
 	    } else {
 			String tituloPagina = "Calculo IMC";
-			model.addAttribute("tituloPagina", tituloPagina); //obtiene el titulo para el header
+			model.addAttribute("tituloPagina", tituloPagina); 
 	        model.addAttribute("usuario", new Usuario());
 	        model.addAttribute("imc", new IndiceMasaCorporal());
 	        model.addAttribute("idNoExiste", "No se encontró un usuario con este ID");
@@ -79,101 +88,89 @@ public class ServiciosController {
 	}
 
 	@PostMapping("/calcular_imc")
-	public String calcularIMC(@RequestParam("id") Long id, @RequestParam("pesoActual") Integer pesoActual, Model model) {
-		IndiceMasaCorporal imc = new IndiceMasaCorporal();
-	       Integer pess = imc.getPesoActual();
-	        System.out.println("prueba 3: " + pess);
-	    LocalDate fechaActual = LocalDate.now(); // Establecer la fecha actual
+	public String calcularIMC(@RequestParam(value = "id", required = false) Long id, @RequestParam(value = "pesoActual", required = false) Integer pesoActual, Model model) {
+		LocalDate fechaActual = LocalDate.now();
+		if(pesoActual == null ||pesoActual<0 || id==null) {
+	
+			String tituloPagina = "Calculo IMC";
+			model.addAttribute("tituloPagina", tituloPagina);
+			 model.addAttribute("usuario", new Usuario());
+			 model.addAttribute("imc", new IndiceMasaCorporal());
+			model.addAttribute("errorPeso", "No puedes dejar este campo vacio. El valor debe ser positivo.");
+			return "calcular_imc";
+		
+		}else {
+			Usuario usuario = registroRepository.findById(id).orElse(null);
+			if (usuario != null) {
+				model.addAttribute("usuario", usuario);
+				model.addAttribute("imc", new IndiceMasaCorporal());
+				String mensaje = imcPesoService.calcularIMC(usuario, pesoActual, fechaActual);
+				model.addAttribute("mensaje", mensaje);
 
-	    Usuario usuario = registroRepository.findById(id).orElse(null);
-	    if (usuario != null) {
-	        model.addAttribute("usuario", usuario);
-	        model.addAttribute("imc", new IndiceMasaCorporal());
-	        
-	        
-	        String mensaje = imcPesoService.calcularIMC(usuario, pesoActual, fechaActual);
-	        model.addAttribute("mensaje", mensaje);
-System.out.println("prueba"+pesoActual);
-	        List<IndiceMasaCorporal> imcList = imcPesoRepository.findAllByOrderByFechaImcDesc();
-	        model.addAttribute("imcList", imcList);
-	        return "calcular_imc";
-	        
-	        
-	    } else {
-//	        IndiceMasaCorporal imc = new IndiceMasaCorporal();
-//	       Integer pess = imc.getPesoActual();
-//	        System.out.println("prueba 3: " + pess);
-	        return "error";
-	    }
+				  List<IndiceMasaCorporal> imcList = imcPesoRepository.findAllByOrderByFechaImcDesc();
+				    model.addAttribute("imcList", imcList);
+				return "calcular_imc";
+			} else {
+	
+				return "error";
+			}
+		}
 	}
 
 
 	@GetMapping("/pesoideal")
 	public String getPesoIdealPage(@ModelAttribute("usuario") Usuario usuario, Model model) {
 		String tituloPagina = "Peso Ideal";
-		model.addAttribute("tituloPagina", tituloPagina); //obtiene el titulo para el header
+		model.addAttribute("tituloPagina", tituloPagina);
 		
 		model.addAttribute("usuario", new Usuario());
 		return "peso_ideal";
 	}
 
 	
-//	@PostMapping("/pesoideal")
-//	public String calcularPesoIdeal(@RequestParam("id") Long id, Model model) {
-//		Usuario usuario = registroRepository.findById(id).orElse(null);
-//		
-//		if (usuario != null) {
-//			model.addAttribute("usuario", usuario);
-//			 int edad = Period.between(usuario.getFecha_nacimiento(), LocalDate.now()).getYears();
-//			   model.addAttribute("edad", edad);
-//			double pesoIdeal = imcPesoService.calcularPesoIdeal(usuario);
-//
-//			// Agregar el resultado al modelo
-//			model.addAttribute("pesoIdeal", pesoIdeal);
-//
-//			return "peso_ideal";
-//		} else {
-//			 model.addAttribute("usuario", new Usuario());
-//			 model.addAttribute("imc", new IndiceMasaCorporal());
-//			model.addAttribute("error", "No se encontró un usuario con este ID");
-//			return "peso_ideal";
-//		}
-//	}
 	
 	@PostMapping("/pesoideal")
 	public String getPesoIPage(@ModelAttribute("usuario") Usuario usuario, Model model) {
 
 	    if (usuario.getId() == null) {
 			String tituloPagina = "Peso ideal";
-			model.addAttribute("tituloPagina", tituloPagina); //obtiene el titulo para el header
+			model.addAttribute("tituloPagina", tituloPagina); 
 	        model.addAttribute("usuario", new Usuario());
 
 	        model.addAttribute("idNulo2", "No puedes dejar este campo vacio");
 	        return "peso_ideal";
 	    }
 
-	    // Resto de la lógica para obtener el usuario y redirigir a la página adecuada
+	   /**
+	    * Busca el usuario en el repositorio a traves del id
+	    * evalua si es distinto de nulo
+	    * */
 	    Usuario usuarioEncontrado = registroRepository.findById(usuario.getId()).orElse(null);
 	    if (usuarioEncontrado != null) {
 			String tituloPagina = "Peso ideal";
-			model.addAttribute("tituloPagina", tituloPagina); //obtiene el titulo para el header
+			model.addAttribute("tituloPagina", tituloPagina); 
 			model.addAttribute("usuario", usuarioEncontrado);
 			 int edad = Period.between(usuarioEncontrado.getFecha_nacimiento(), LocalDate.now()).getYears();
 			   model.addAttribute("edad", edad);
 			double pesoIdeal = imcPesoService.calcularPesoIdeal(usuarioEncontrado);
 
-			// Agregar el resultado al modelo
+			/**
+			 * Agrega el resultado al modelo
+			 * */
 			model.addAttribute("pesoIdeal", pesoIdeal);
 
 			return "peso_ideal";
 	    } else {
 			String tituloPagina = "Peso ideal";
-			model.addAttribute("tituloPagina", tituloPagina); //obtiene el titulo para el header
+			model.addAttribute("tituloPagina", tituloPagina);
 	        model.addAttribute("usuario", new Usuario());
 	    
 	        model.addAttribute("idNoExiste2", "No se encontró un usuario con este ID");
 	        return "peso_ideal";
 	    }
 	}
+	
+	
+
 
 }

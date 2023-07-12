@@ -50,11 +50,11 @@ public class IndiceMasaCorporal {
 	  private double imcActual;
 	
 	@Column(name ="imc_estado")
-	private boolean estado;
+	private boolean estado = true;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id")
-	@Valid
+	@NotNull(message="No puedes dejar vacio este campo")
 	private Usuario usuario;
 	
 	
