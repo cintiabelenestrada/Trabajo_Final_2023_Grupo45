@@ -46,13 +46,13 @@
 
 
 	<div class="container">
-		<h1 class="mt-4 servicios-izquierda-bottom">Lista de Usuarios</h1>
+		<h1 class="mt-4 servicios-izquierda-bottom">Usuarios (IMC)</h1>
 		<div class="row justify-content-center">
 			<div class="col-md-4" th:each="usuario : ${usuarios}">
 				<div class="card mb-4">
 					<div class="card-body">
 						<h5 class="card-title" th:text="${usuario.nombre} + ' ' + ${usuario.apellido}"></h5>
-						<!-- Agrega otros detalles relevantes del usuario -->
+						
 						<a class="btn btn-primary" th:href="@{/gestion/usuarios/{id}/imc(id=${usuario.id})}">Ver más</a>
 					</div>
 				</div>

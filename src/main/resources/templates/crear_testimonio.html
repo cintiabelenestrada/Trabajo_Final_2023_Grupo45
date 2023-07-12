@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+
+<head>
+
+	<meta charset="UTF-8">
+	<title>Recetas</title>
+	<meta name="viewport" content="width=device-width, initial-scale-1">
+	<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+	<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
+
+	<meta content="Free Website Template" name="keywords">
+	<meta content="Free Website Template" name="description">
+
+	<!-- Favicon -->
+	<link href="img/favicon.ico" rel="icon">
+
+	<!-- Google Font -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Roboto:wght@400;500;700&display=swap"
+		rel="stylesheet">
+
+	<!-- Font Awesome -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+	<!-- Libraries Stylesheet -->
+	<link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+	<link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+	<!-- Customized Bootstrap Stylesheet -->
+	<link href="css/style.min.css" rel="stylesheet">
+</head>
+
+<body>
+	<!-- Fragment to Nav -->
+	<nav th:replace="~{layouts/nav :: nav}"></nav>
+
+	<!--  Fragment to Header -->
+	<!--   	<header th:replace="~{layouts/header :: header}"></header> -->
+
+
+
+
+	<div class="container">
+		<!-- Título de la página -->
+		<h1 class="mt-4"></h1>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="row justify-content-center">
+					<div class="col-md-4 ">
+						<div class="card ">
+							<div class="card-body">
+								<h1>Crear Nuevo Testimonio</h1>
+								<form th:action="${editando}?@{/testimonio/modificar/}:@{/testimonio/nuevo}"
+									th:object="${testimonio}" method="post">
+									<div class="row mb-md-1  col-lg-12  col-sm-12 justify-content-start ms-3 ">
+										<div class="row mb-md-1  col-lg-12  col-sm-12 justify-content-start ms-3 ">
+
+
+
+											<div class="col-xl-9 col-lg-9 col-sm-6 align-self-center">
+												<label for="fecha" class="form-label">Fecha de inicio</label>
+												<input type="date" class="form-control" id="fecha" th:field="*{fecha}">
+												<p class="form-text text-danger" th:if="${#fields.hasErrors('fecha')}"
+													th:errors="*{fecha}" />
+											</div>
+
+										</div>
+										<div class="col-xl-9 col-lg-9 col-sm-6 align-self-center">
+											<label for="comentario" class="form-label">Comentario: </label>
+											<textarea class="form-control" id="comentario" th:field="*{comentario}"
+												rows="3"></textarea>
+											<p class="form-text text-danger" th:if="${#fields.hasErrors('comentario')}"
+												th:errors="*{comentario}" />
+										</div>
+
+									</div>
+									<div class="d-flex justify-content-center mt-lg-3 mt-md-1 mt-sm-1">
+
+									</div>
+									<div>
+										<button type="submit" class="btn btn-sm btn-success fw-bold py-3"
+											th:text="${editando}?'Modificar' : 'Guardar' "></button>
+
+										<a th:href="@{/testimonio/listar}"
+											class="btn btn-sm btn-success fw-bold py-3">Volver</a>
+									</div>
+								</form>
+
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+		<!-- Fragment to Header -->
+		<footer th:replace="~{layouts/footer :: footer}"></footer>
+
+		<!-- Button Back to Top -->
+		<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+
+
+		<!-- JavaScript Libraries -->
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+		<script src="lib/easing/easing.min.js"></script>
+		<script src="lib/waypoints/waypoints.min.js"></script>
+		<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+		<script src="lib/tempusdominus/js/moment.min.js"></script>
+		<script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+		<script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+		<!-- Contact Javascript File -->
+		<script src="mail/jqBootstrapValidation.min.js"></script>
+		<script src="mail/contact.js"></script>
+
+		<!-- Template Javascript -->
+		<script src="js/main.js"></script>
+</body>
+
+</html>
