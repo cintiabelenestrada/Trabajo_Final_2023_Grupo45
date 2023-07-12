@@ -50,6 +50,12 @@ public class RecetaController {
 	 */
 	@GetMapping("/gestion")
 	public String obtenerPaginaGestionDatosReceta(Model model) {
+		// Si en Inicio se selecciona contacto, el header cambiara el titulo por la opcion seleccionada
+	    String tituloPagina = "Recetas"; // Establece el valor por defecto que se vera en el header
+	    // Se realiza el cambio de valor de `tituloPagina`
+	    model.addAttribute("tituloPagina", tituloPagina);
+	    
+	    
 		model.addAttribute("recetas", recetaService.obtenerRecetas());
 		return "gestion_datos_receta";
 	}
@@ -62,6 +68,12 @@ public class RecetaController {
 	 */
 	@GetMapping("/nuevo")
 	public String obtenerPaginaNuevaReceta(Model model) {
+		// Si en Inicio se selecciona contacto, el header cambiara el titulo por la opcion seleccionada
+	    String tituloPagina = "Recetas"; // Establece el valor por defecto que se vera en el header
+	    // Se realiza el cambio de valor de `tituloPagina`
+	    model.addAttribute("tituloPagina", tituloPagina);
+	    
+	    
 		boolean edicion=false;
 		model.addAttribute("receta", recetaService.obtenerReceta());
 		model.addAttribute("ingredientes", ingredienteService.obtenerIngredientes());
@@ -79,7 +91,12 @@ public class RecetaController {
 	 */
 	@PostMapping("/guardar")
 	public ModelAndView postGuardarIngredientePage(@Valid @ModelAttribute("receta") Receta receta, BindingResult result,
-			@RequestParam("file")MultipartFile imagen) throws IOException {
+			@RequestParam("file")MultipartFile imagen, Model model) throws IOException {
+		// Si en Inicio se selecciona contacto, el header cambiara el titulo por la opcion seleccionada
+	    String tituloPagina = "Recetas"; // Establece el valor por defecto que se vera en el header
+		// Se realiza el cambio de valor de `tituloPagina`
+	    model.addAttribute("tituloPagina", tituloPagina);
+		
 		ModelAndView mav = new ModelAndView("redirect:/receta/gestion");
 		if (result.hasErrors()) {
 			mav.setViewName("nueva_receta");
@@ -100,6 +117,11 @@ public class RecetaController {
 	 */
 	@GetMapping("/modificar/{id}")
 	public String getModificarIngredientePage(Model model, @PathVariable(value = "id")Long id) {
+		// Si en Inicio se selecciona contacto, el header cambiara el titulo por la opcion seleccionada
+	    String tituloPagina = "Recetas"; // Establece el valor por defecto que se vera en el header
+	    // Se realiza el cambio de valor de `tituloPagina`
+	    model.addAttribute("tituloPagina", tituloPagina);
+	    
 		boolean edicion=true;
 
 		model.addAttribute("receta", recetaService.buscarReceta(id));
@@ -121,7 +143,11 @@ public class RecetaController {
 	@PostMapping("/modificar/{id}")
 	public String modificarIngrediente(@Valid @ModelAttribute("receta")Receta recetaModificada, BindingResult result,
 			@RequestParam("file")MultipartFile imagen,Model  model) throws IOException {
-
+		// Si en Inicio se selecciona contacto, el header cambiara el titulo por la opcion seleccionada
+	    String tituloPagina = "Recetas"; // Establece el valor por defecto que se vera en el header
+		// Se realiza el cambio de valor de `tituloPagina`
+	    model.addAttribute("tituloPagina", tituloPagina);
+	    
 		if (result.hasErrors()) {
 			model.addAttribute("receta", recetaModificada);
 			model.addAttribute("ingredientes", ingredienteService.obtenerIngredientes());
@@ -132,13 +158,23 @@ public class RecetaController {
 	}
 	
 	@GetMapping("/eliminar/{id}")
-	public String eliminarIngrediente(@PathVariable(value="id")Long id) {
+	public String eliminarIngrediente(@PathVariable(value="id")Long id, Model model) {
+		// Si en Inicio se selecciona contacto, el header cambiara el titulo por la opcion seleccionada
+	    String tituloPagina = "Recetas"; // Establece el valor por defecto que se vera en el header
+		// Se realiza el cambio de valor de `tituloPagina`
+	    model.addAttribute("tituloPagina", tituloPagina);
+	    
 		recetaService.eliminarReceta(id);
 		return "redirect:/receta/gestion";
 	}
 	
 	@GetMapping("/cargar/{imagen}")
-	 public ResponseEntity<Resource> goImage(@PathVariable String imagen){
+	 public ResponseEntity<Resource> goImage(@PathVariable String imagen, Model model){
+		// Si en Inicio se selecciona contacto, el header cambiara el titulo por la opcion seleccionada
+	    String tituloPagina = "Recetas"; // Establece el valor por defecto que se vera en el header
+		// Se realiza el cambio de valor de `tituloPagina`
+	    model.addAttribute("tituloPagina", tituloPagina);
+	    
 		Resource resource = null;
 		try {
 			resource = uploadFile.load(imagen);
@@ -152,7 +188,13 @@ public class RecetaController {
 	}
 	
 	@GetMapping("/ver/{id}")
-	public ModelAndView mostrarReceta(@PathVariable(value = "id")Long id){
+	public ModelAndView mostrarReceta(@PathVariable(value = "id")Long id,  Model model){
+		// Si en Inicio se selecciona contacto, el header cambiara el titulo por la opcion seleccionada
+	    String tituloPagina = "Recetas"; // Establece el valor por defecto que se vera en el header
+		// Se realiza el cambio de valor de `tituloPagina`
+	    model.addAttribute("tituloPagina", tituloPagina);
+		
+		
 		ModelAndView modelAndView = new ModelAndView("receta");
 		modelAndView.addObject("receta", recetaService.buscarReceta(id));
 		modelAndView.addObject("gestion", true);
@@ -163,12 +205,23 @@ public class RecetaController {
 	
 	@GetMapping("/lista")
 	public String mostrarRecetas(Model model) {
+		// Si en Inicio se selecciona contacto, el header cambiara el titulo por la opcion seleccionada
+	    String tituloPagina = "Recetas"; // Establece el valor por defecto que se vera en el header
+	    // Se realiza el cambio de valor de `tituloPagina`
+	    model.addAttribute("tituloPagina", tituloPagina);
+	    
 		model.addAttribute("recetas", recetaService.obtenerRecetas());
 		return "recetas";
 	}
 	
 	@GetMapping("/visualizar/{id}")
-	public ModelAndView verReceta(@PathVariable(value = "id")Long id){
+	public ModelAndView verReceta(@PathVariable(value = "id")Long id,  Model model){
+		// Si en Inicio se selecciona contacto, el header cambiara el titulo por la opcion seleccionada
+	    String tituloPagina = "Recetas"; // Establece el valor por defecto que se vera en el header
+		// Se realiza el cambio de valor de `tituloPagina`
+	    model.addAttribute("tituloPagina", tituloPagina);
+	    
+		
 		ModelAndView modelAndView = new ModelAndView("receta");
 		modelAndView.addObject("receta", recetaService.buscarReceta(id));
 		modelAndView.addObject("gestion", false);

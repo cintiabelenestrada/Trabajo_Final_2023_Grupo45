@@ -34,7 +34,12 @@ public class IngredienteController {
 	 * @return la pagina gestion_datos_ingrediente.html
 	 */
 	@GetMapping("/gestion")
-	public ModelAndView obtenerPaginaGestionIngrediente() {
+	public ModelAndView obtenerPaginaGestionIngrediente(Model model) {
+		// Si en Inicio se selecciona contacto, el header cambiara el titulo por la opcion seleccionada
+	    String tituloPagina = "Ingredientes"; // Establece el valor por defecto que se vera en el header
+		// Se realiza el cambio de valor de `tituloPagina`
+	    model.addAttribute("tituloPagina", tituloPagina);
+	    
 		ModelAndView modelAndView = new ModelAndView("gestion_datos_ingrediente");
 		modelAndView.addObject("ingredientes", ingredienteService.obtenerIngredientes());
 		return modelAndView;
@@ -47,6 +52,11 @@ public class IngredienteController {
 	 */
 	@GetMapping("/nuevo")
 	public String obtenerPaginaNuevoIngrediente(Model model) {
+		// Si en Inicio se selecciona contacto, el header cambiara el titulo por la opcion seleccionada
+	    String tituloPagina = "Ingredientes"; // Establece el valor por defecto que se vera en el header
+		// Se realiza el cambio de valor de `tituloPagina`
+	    model.addAttribute("tituloPagina", tituloPagina);
+	    
 		boolean edicion=false;
 		model.addAttribute("ingrediente", ingredienteService.obtenerIngrediente());
 		model.addAttribute("recetas", recetaService.obtenerRecetas());
@@ -62,7 +72,12 @@ public class IngredienteController {
 	 *  el formularion en caso de capturar errores
 	 */
 	@PostMapping("/guardar")
-	public ModelAndView postGuardarIngredientePage(@Valid @ModelAttribute("ingrediente") Ingrediente ingrediente, BindingResult bindingResult ) {
+	public ModelAndView postGuardarIngredientePage(@Valid @ModelAttribute("ingrediente") Ingrediente ingrediente, BindingResult bindingResult, Model model ) {
+		// Si en Inicio se selecciona contacto, el header cambiara el titulo por la opcion seleccionada
+	    String tituloPagina = "Ingredientes"; // Establece el valor por defecto que se vera en el header
+		// Se realiza el cambio de valor de `tituloPagina`
+	    model.addAttribute("tituloPagina", tituloPagina);
+	    
 		ModelAndView mav = new ModelAndView("redirect:/ingrediente/gestion");
 		
 		if (bindingResult.hasErrors()) {
@@ -84,6 +99,11 @@ public class IngredienteController {
 	 */
 	@GetMapping("/modificar/{id}")
 	public String getModificarIngredientePage(Model model, @PathVariable(value = "id")Long id) {
+		// Si en Inicio se selecciona contacto, el header cambiara el titulo por la opcion seleccionada
+	    String tituloPagina = "Ingredientes"; // Establece el valor por defecto que se vera en el header
+		// Se realiza el cambio de valor de `tituloPagina`
+	    model.addAttribute("tituloPagina", tituloPagina);
+	    
 		boolean edicion=true;
 		Ingrediente ingredienteEncontrado = ingredienteService.buscarIngrediente(id);
 		model.addAttribute("recetas", recetaService.obtenerRecetas());
@@ -102,6 +122,11 @@ public class IngredienteController {
 	 */
 	@PostMapping("/modificar/{id}")
 	public String modificarIngrediente(@Valid @ModelAttribute("ingrediente") Ingrediente ingredienteModificado, BindingResult resultado,Model model) {
+		// Si en Inicio se selecciona contacto, el header cambiara el titulo por la opcion seleccionada
+	    String tituloPagina = "Ingredientes"; // Establece el valor por defecto que se vera en el header
+		// Se realiza el cambio de valor de `tituloPagina`
+	    model.addAttribute("tituloPagina", tituloPagina);
+	    
 		if (resultado.hasErrors()) {
 			model.addAttribute("ingrediente",  ingredienteModificado);
 			model.addAttribute("recetas", recetaService.obtenerRecetas());
@@ -119,7 +144,12 @@ public class IngredienteController {
 	 * @return la pagina gestion de datos de ingrediente
 	 */
 	@GetMapping("/eliminar/{id}")
-	public String eliminarIngrediente(@PathVariable(value="id")Long id) {
+	public String eliminarIngrediente(@PathVariable(value="id")Long id, Model model) {
+		// Si en Inicio se selecciona contacto, el header cambiara el titulo por la opcion seleccionada
+	    String tituloPagina = "Ingredientes"; // Establece el valor por defecto que se vera en el header
+		// Se realiza el cambio de valor de `tituloPagina`
+	    model.addAttribute("tituloPagina", tituloPagina);
+	    
 		Ingrediente ingredienteEncontrado= ingredienteService.buscarIngrediente(id);
 		ingredienteService.eliminarIngrediente(ingredienteEncontrado);
 		return "redirect:/ingrediente/gestion";
@@ -132,6 +162,11 @@ public class IngredienteController {
 	 */
 	@GetMapping("/listado")
 	public String getIngredientePage(Model model) {
+		// Si en Inicio se selecciona contacto, el header cambiara el titulo por la opcion seleccionada
+	    String tituloPagina = "Ingredientes"; // Establece el valor por defecto que se vera en el header
+		// Se realiza el cambio de valor de `tituloPagina`
+	    model.addAttribute("tituloPagina", tituloPagina);
+	    
 		model.addAttribute("ingredientes", ingredienteService.obtenerIngredientes());
 		return "ingredientes";
 	}

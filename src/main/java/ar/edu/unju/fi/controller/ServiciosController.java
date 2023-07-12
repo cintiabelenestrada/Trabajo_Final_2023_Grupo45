@@ -44,8 +44,10 @@ public class ServiciosController {
 	
 	@GetMapping("/datosusuarioimc")
 	public String getCalculoImcPage(@ModelAttribute("usuario") Usuario usuario, Model model) {
-		String tituloPagina = "Calculo IMC";
-		model.addAttribute("tituloPagina", tituloPagina); //obtiene el titulo para el header
+		// Si en Inicio se selecciona esta opcion, el header cambiara el titulo por la opcion seleccionada
+	    String tituloPagina = "Cálculo IMC"; // Establece el valor por defecto que se vera en el header
+	    // Se realiza el cambio de valor de `tituloPagina`
+	    model.addAttribute("tituloPagina", tituloPagina);
 		
 		model.addAttribute("usuario", new Usuario());
 		model.addAttribute("imc", new IndiceMasaCorporal());
@@ -59,8 +61,11 @@ public class ServiciosController {
 	@PostMapping("/datosusuarioimc")
 	public String getCalcuImcPage(@Valid @ModelAttribute("usuario") Usuario usuario,BindingResult usuarioResult, Model model) {
 
+		// Si en Inicio se selecciona esta opcion, el header cambiara el titulo por la opcion seleccionada
+	    String tituloPagina = "Cálculo IMC"; // Establece el valor por defecto que se vera en el header
+	    // Se realiza el cambio de valor de `tituloPagina`
+	    model.addAttribute("tituloPagina", tituloPagina);
 	    if (usuario.getId() == null) {
-			String tituloPagina = "Calculo IMC";
 			model.addAttribute("tituloPagina", tituloPagina);
 			
 	        model.addAttribute("usuario", new Usuario());
@@ -72,13 +77,11 @@ public class ServiciosController {
 	   
 	    Usuario usuarioEncontrado = registroRepository.findById(usuario.getId()).orElse(null);
 	    if (usuarioEncontrado != null) {
-			String tituloPagina = "Calculo IMC";
 			model.addAttribute("tituloPagina", tituloPagina); 
 	        model.addAttribute("usuario", usuarioEncontrado);
 	        model.addAttribute("imc", new IndiceMasaCorporal());
 	        return "calcular_imc";
 	    } else {
-			String tituloPagina = "Calculo IMC";
 			model.addAttribute("tituloPagina", tituloPagina); 
 	        model.addAttribute("usuario", new Usuario());
 	        model.addAttribute("imc", new IndiceMasaCorporal());
@@ -89,10 +92,13 @@ public class ServiciosController {
 
 	@PostMapping("/calcular_imc")
 	public String calcularIMC(@RequestParam(value = "id", required = false) Long id, @RequestParam(value = "pesoActual", required = false) Integer pesoActual, Model model) {
+		// Si en Inicio se selecciona esta opcion, el header cambiara el titulo por la opcion seleccionada
+	    String tituloPagina = "Cálculo IMC"; // Establece el valor por defecto que se vera en el header
+	    // Se realiza el cambio de valor de `tituloPagina`
+	    model.addAttribute("tituloPagina", tituloPagina);
+		
 		LocalDate fechaActual = LocalDate.now();
 		if(pesoActual == null ||pesoActual<0 || id==null) {
-	
-			String tituloPagina = "Calculo IMC";
 			model.addAttribute("tituloPagina", tituloPagina);
 			 model.addAttribute("usuario", new Usuario());
 			 model.addAttribute("imc", new IndiceMasaCorporal());
@@ -120,7 +126,10 @@ public class ServiciosController {
 
 	@GetMapping("/pesoideal")
 	public String getPesoIdealPage(@ModelAttribute("usuario") Usuario usuario, Model model) {
-		String tituloPagina = "Peso Ideal";
+		// Si en Inicio se selecciona esta opcion, el header cambiara el titulo por la opcion seleccionada
+				String tituloPagina = "Peso Ideal"; // Establece el valor por defecto que se vera en el header
+			    // Se realiza el cambio de valor de `tituloPagina`
+			    model.addAttribute("tituloPagina", tituloPagina);
 		model.addAttribute("tituloPagina", tituloPagina);
 		
 		model.addAttribute("usuario", new Usuario());
@@ -131,9 +140,12 @@ public class ServiciosController {
 	
 	@PostMapping("/pesoideal")
 	public String getPesoIPage(@ModelAttribute("usuario") Usuario usuario, Model model) {
+		// Si en Inicio se selecciona esta opcion, el header cambiara el titulo por la opcion seleccionada
+				String tituloPagina = "Peso Ideal"; // Establece el valor por defecto que se vera en el header
+			    // Se realiza el cambio de valor de `tituloPagina`
+			    model.addAttribute("tituloPagina", tituloPagina);
 
 	    if (usuario.getId() == null) {
-			String tituloPagina = "Peso ideal";
 			model.addAttribute("tituloPagina", tituloPagina); 
 	        model.addAttribute("usuario", new Usuario());
 
@@ -147,7 +159,6 @@ public class ServiciosController {
 	    * */
 	    Usuario usuarioEncontrado = registroRepository.findById(usuario.getId()).orElse(null);
 	    if (usuarioEncontrado != null) {
-			String tituloPagina = "Peso ideal";
 			model.addAttribute("tituloPagina", tituloPagina); 
 			model.addAttribute("usuario", usuarioEncontrado);
 			 int edad = Period.between(usuarioEncontrado.getFecha_nacimiento(), LocalDate.now()).getYears();
@@ -161,7 +172,6 @@ public class ServiciosController {
 
 			return "peso_ideal";
 	    } else {
-			String tituloPagina = "Peso ideal";
 			model.addAttribute("tituloPagina", tituloPagina);
 	        model.addAttribute("usuario", new Usuario());
 	    
