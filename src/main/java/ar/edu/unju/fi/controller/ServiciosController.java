@@ -79,25 +79,34 @@ public class ServiciosController {
 	}
 
 	@PostMapping("/calcular_imc")
-	public String calcularIMC(@RequestParam("id") Long id, @RequestParam("pesoActual") int pesoActual, Model model) {
-		LocalDate fechaActual = LocalDate.now(); // Establecer la fecha actual
+	public String calcularIMC(@RequestParam("id") Long id, @RequestParam("pesoActual") Integer pesoActual, Model model) {
+		IndiceMasaCorporal imc = new IndiceMasaCorporal();
+	       Integer pess = imc.getPesoActual();
+	        System.out.println("prueba 3: " + pess);
+	    LocalDate fechaActual = LocalDate.now(); // Establecer la fecha actual
 
-		Usuario usuario = registroRepository.findById(id).orElse(null);
-		if (usuario != null) {
-			
-			model.addAttribute("usuario", usuario);
-			model.addAttribute("imc", new IndiceMasaCorporal());
-			String mensaje = imcPesoService.calcularIMC(usuario, pesoActual, fechaActual);
-			model.addAttribute("mensaje", mensaje);
-
-			  List<IndiceMasaCorporal> imcList = imcPesoRepository.findAllByOrderByFechaImcDesc();
-			    model.addAttribute("imcList", imcList);
-			return "calcular_imc";
-		} else {
-			// Código de usuario no válido, manejar el caso según tus necesidades
-			return "error";
-		}
+	    Usuario usuario = registroRepository.findById(id).orElse(null);
+	    if (usuario != null) {
+	        model.addAttribute("usuario", usuario);
+	        model.addAttribute("imc", new IndiceMasaCorporal());
+	        
+	        
+	        String mensaje = imcPesoService.calcularIMC(usuario, pesoActual, fechaActual);
+	        model.addAttribute("mensaje", mensaje);
+System.out.println("prueba"+pesoActual);
+	        List<IndiceMasaCorporal> imcList = imcPesoRepository.findAllByOrderByFechaImcDesc();
+	        model.addAttribute("imcList", imcList);
+	        return "calcular_imc";
+	        
+	        
+	    } else {
+//	        IndiceMasaCorporal imc = new IndiceMasaCorporal();
+//	       Integer pess = imc.getPesoActual();
+//	        System.out.println("prueba 3: " + pess);
+	        return "error";
+	    }
 	}
+
 
 	@GetMapping("/pesoideal")
 	public String getPesoIdealPage(@ModelAttribute("usuario") Usuario usuario, Model model) {

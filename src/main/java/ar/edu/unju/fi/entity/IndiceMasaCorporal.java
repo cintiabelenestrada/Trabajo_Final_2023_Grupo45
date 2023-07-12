@@ -45,7 +45,7 @@ public class IndiceMasaCorporal {
 	  @NotNull(message="El peso no puede quedar vacio")
 	  @Positive(message = "El peso debe ser mayor a 0")
 	  @Column(name = "imc_peso")
-	  private int pesoActual;
+	  private Integer pesoActual;
 	  
 	  private double imcActual;
 	
@@ -74,7 +74,7 @@ public IndiceMasaCorporal() {
 
 
 
-public IndiceMasaCorporal(Long id, LocalDate fechaImc, int pesoActual,boolean estado, double imcActual,Usuario usuario) {
+public IndiceMasaCorporal(Long id, LocalDate fechaImc, Integer pesoActual,boolean estado, double imcActual,Usuario usuario) {
 		super();
 		this.id = id;
 		this.fechaImc = fechaImc;
@@ -172,12 +172,12 @@ public IndiceMasaCorporal(Long id, LocalDate fechaImc, int pesoActual,boolean es
 	}
 
 
-	public int getPesoActual() {
+	public Integer getPesoActual() {
 		return pesoActual;
 	}
 
 
-	public void setPesoActual(int pesoActual) {
+	public void setPesoActual(Integer pesoActual) {
 		this.pesoActual = pesoActual;
 	}
 

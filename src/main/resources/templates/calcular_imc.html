@@ -173,7 +173,7 @@
 										<div class="mt-4">
 											<p class="fw-bold text-dark" th:text="${mensaje}"></p>
 										</div>
-										<form th:action="@{/calcular_imc}" method="post">
+										<form th:action="@{/calcular_imc}" method="post" >
 											<div></div>
 											<div class="col-12 align-self-center p-5">
 
@@ -196,9 +196,9 @@
 															
 															
 													</div>
-													<p class="form-text text-danger"
-														th:if="${#fields.hasErrors('imc.pesoActual')}"
-														th:errors="*{imc.pesoActual}" />
+<!--													<p class="form-text text-danger"-->
+<!--														th:if="${#fields.hasErrors('imc.pesoActual')}"-->
+<!--														th:errors="*{imc.pesoActual}" />-->
 												</div>
 												<input type="hidden" name="id" th:value="${usuario.id}" />
 											</div>
