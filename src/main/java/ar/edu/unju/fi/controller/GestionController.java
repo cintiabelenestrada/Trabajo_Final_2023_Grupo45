@@ -3,6 +3,7 @@ package ar.edu.unju.fi.controller;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -27,6 +28,7 @@ import ar.edu.unju.fi.repository.IRegistroRepository;
 import ar.edu.unju.fi.repository.IServiciosRepository;
 import ar.edu.unju.fi.service.IIngredienteService;
 import ar.edu.unju.fi.service.IRecetaService;
+import ar.edu.unju.fi.service.IRegistroService;
 import jakarta.validation.Valid;
 
 @Controller
@@ -40,6 +42,9 @@ public class GestionController {
 
 	@Autowired
 	private IRegistroRepository registroRepository;
+	
+	@Autowired
+	private IRegistroService iregisUs;
 
 	@Autowired
 	private IRecetaService recetaService;
@@ -241,5 +246,21 @@ public class GestionController {
 		modelAndView.addObject("listaReceta", true);
 		return modelAndView;
 	}
-
+	
+	@GetMapping("/gestion/usuarios")
+	public String listarUsuariosParamodificar(Model model) {
+		Iterable<Usuario> usuarios = registroRepository.findAll();
+		model.addAttribute("usuarios", usuarios);
+		return "listar_usuarioscrud";
+	}
+	//Metoo ("/gestion/usuarios/{id}/imc")
+	@GetMapping("/gestion/modificar/usuarios/{id}")
+	public String getModificarUsuairo(Model model, @PathVariable(value = "id") Long id) {
+		
+		    	Optional<Usuario>usuario=iregisUs.listarId(id);
+		    	model.addAttribute("usuario", usuario);
+		    	//model.addAttribute("categorias_productos", icateSer.getCategorias());
+		    	return"registro";
+		    
+	}
 }

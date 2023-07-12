@@ -25,7 +25,7 @@ public interface IRegistroService {
 	//List<Usuario> listar();
 
 	public Optional<Usuario> findById(Long id);
-	
+	Optional<Usuario> listarId(Long id);
 	
 	
 }

@@ -29,4 +29,9 @@ public class RegistroServiceMysqlImp implements IRegistroService{
 		return regisRepo.findById(id);
 	
 	}
+	@Override
+	public Optional<Usuario> listarId(Long id) {
+		return regisRepo.findById(id);
+		
+	}
 }

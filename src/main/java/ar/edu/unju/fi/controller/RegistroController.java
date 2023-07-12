@@ -29,7 +29,7 @@ import ar.edu.unju.fi.service.IRegistroService;
  * 
  * 
  * 
- * @author freinicks
+ * @author Federico Nicolas Burgos
  * Esto es el controlador de registrar y posea todos los metodos que recibiran las peticiones que realice vista.
  * @version 1.0.1 date=30/06/2023
  *
@@ -56,7 +56,7 @@ public class RegistroController {
 	    	return "registro";
 	    }
 	    
-	    // Guarda un nuevo producto en la lista
+	    /* Guarda un nuevo producto en la lista*/
 	    @PostMapping("/guardar")
 	    public String getguardarProductoPage(@Valid @ModelAttribute("usuario") Usuario usuario, BindingResult result) {
 	    	
@@ -77,7 +77,7 @@ public class RegistroController {
 	    	}
 	    }   
     @GetMapping("/idusuario/{CD}")
-    // public String getListaProductoPage(Model model) {
+    // muestra un usuario segun
      public String listar(@PathVariable("CD") Long CD,Model model) {
     	Optional<Usuario>usuarios=iregisUs.findById(CD);
         
