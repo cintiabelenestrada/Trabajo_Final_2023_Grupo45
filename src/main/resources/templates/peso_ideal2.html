@@ -4,7 +4,7 @@
 <head>
 
 <meta charset="UTF-8">
-<title>Calcular_IMC</title>
+<title>Peso Ideal</title>
 <meta name="viewport" content="width=device-width, initial-scale-1">
 <link th:rel="stylesheet" type="text/css"
 	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
@@ -36,48 +36,38 @@
 <!-- Customized Bootstrap Stylesheet -->
 <link href="css/style.min.css" rel="stylesheet">
 
+
 </head>
-
-
-
-
 
 <body>
 	<!-- Fragment to Nav -->
 	<nav th:replace="~{layouts/nav :: nav}"></nav>
 
 	<!--  Fragment to Header -->
-	<header th:replace="~{layouts/header :: header}"></header>
+	<!--   	<header th:replace="~{layouts/header :: header}"></header> -->
 
 	<div class="container-fluid m-0 p-0">
 
-		<div class="d-flex row ms-2 me-2">
+		<div class="d-flex row ms-2 me-2 mt-3">
 
-			<section class="col-xl-9 col-lg-9 col-md-12 text-dark">
+			<section class="col-xl-9 col-lg-9 col-md-12 bg-dark text-light">
 
-				<div class="row">
+				<div class="row mt-3">
 
 					<div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
 
 						<div class="d-flex servicios-izquierda-bottom ">
-							<!-- 						<i class="fa-solid fa-user text-light fa-2xl pt-5 ps-5 pe-4"></i> -->
-							<div class="row me-3">
-								<img src="imagen/user-solid.svg" class="card-img-top" alt="..."
-									style="width: 50px" width="50px">
-							</div>
-							<!-- 							<i class="fas fa-user text-dark fa- pt-5 ps-5 pe-4"></i> -->
+							<i class="fa-solid fa-user text-light fa-2xl pt-5 ps-5 pe-4"></i>
 							<div class="row">
 								<p></p>
-								<p class="text-dark mt-4 fw-bold">Tus datos</p>
+								<p class="text-light mt-4 fw-bold">Tus datos</p>
 								<p></p>
 							</div>
 
 
 						</div>
 
-
-						<!-- ... -->
-						<div class="col-12 text-dark ps-4 pt-3  p-3 ">
+						<div class="col-12 text-light ps-4 pt-3  p-3 ">
 							<div class="card-body">
 								<div th:if="${idNulo2}" class="alert alert-danger">
 									<p th:text="${idNulo2}"></p>
@@ -91,12 +81,7 @@
 										<p>Ingrese su código de usuario:</p>
 										<input type="text" th:field="*{usuario.id}" />
 										<button type="submit" class="btn btn-success">Aceptar</button>
-
-										<!-- 										<p class="form-text text-danger" -->
-										<!-- 											th:if="${#fields.hasErrors('usuario.id')}" -->
-										<!-- 											th:errors="*{usuario.id}" /> -->
 									</form>
-
 								</div>
 								<div th:if="${usuario.id != null and usuario.id != ''}">
 									<div class="d-flex">
@@ -130,8 +115,18 @@
 						</div>
 
 
-						<!-- 						DIV PARA CAMPO TUS IMC PANTALLA GRANDE -->
+						<!-- DIV PARA CAMPO TUS IMC PANTALLA GRANDE -->
 						<!-- 						<div class="servicios-izquierda-top d-none d-lg-block d-xl-block "> -->
+
+						<!-- 							<div class="row"> -->
+						<!-- 								<span class="mt-5 ms-5 "></span> -->
+						<!-- 																<p class="text-light mt-3 ms-4 fw-bold">Tus IMC:</p> -->
+						<!-- 								<div> -->
+						<!-- 									COLOCAR AQUI LOS IMC POR FECHA DESCENDENTE -->
+						<!-- 								</div> -->
+
+						<!-- 								<p></p> -->
+						<!-- 							</div> -->
 
 
 
@@ -142,7 +137,8 @@
 
 							<div class="row">
 								<p></p>
-								<p class="text-light mt-3 ms-4 fw-bold">Tus IMC:</p>
+								<span class="mt-5 ms-5 "></span>
+								<!-- 								<p class="text-light mt-3 ms-4 fw-bold">Tus IMC:</p> -->
 								<div>
 									<!-- COLOCAR AQUI LOS IMC POR FECHA DESCENDENTE -->
 								</div>
@@ -161,9 +157,6 @@
 					<div
 						class="col-xl-7 col-lg-7 col-md-12 col-sm-12 text-light servicios-izquierda-left d-none d-lg-block d-xl-block">
 
-						<div class="row">
-						</div>
-
 
 						<div class="row col-12 justify-content-center">
 							<div class="col-lg-3 "></div>
@@ -171,10 +164,10 @@
 							<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 text-center">
 								<div class="container ">
 									<div class="row">
-										<div class="col mt-5 fw-bold text-dark">
+										<div class="col mt-5 fw-bold">
 											<div class="row input-group mb-3"
 												th:if="${usuario.id == null}">
-												<p class="text-center text-dark fw-bold">Por favor
+												<p class="text-center text-light fw-bold">Por favor
 													ingrese con su codigo</p>
 											</div>
 											<div th:if="${usuario.id != null and usuario.id != ''}">
@@ -185,12 +178,9 @@
 												<p>
 													Edad:<span th:text="${edad}"></span> años
 												</p>
-												<p class="text-success">
+												<p>
 													Peso Ideal: <span th:text="${pesoIdeal}"></span> kg
 												</p>
-													 										<p class="form-text text-danger" 
-										 											th:if="${#fields.hasErrors('pesoIdeal')}" 
-										 											th:errors="*{pesoIdeal}" /> 
 											</div>
 
 
@@ -203,6 +193,7 @@
 							<div class="col-lg-3 "></div>
 						</div>
 
+
 					</div>
 					<!-- FIN DIV QUE ENVUELVE TU PESO IDEAL -->
 
@@ -210,37 +201,52 @@
 					<div
 						class="col-xl-7 col-lg-7 col-md-12 col-sm-12 text-light servicios-izquierda-top d-lg-none d-xl-none">
 
-						<!-- VOLVER A COLOCAR LO DE PESO ??? -->
+
+
+						<!-- 					<div class="row col-12 justify-content-center"> -->
+						<!-- 						<div class="col-lg-3  text-center"></div> -->
+
+						<!-- 						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 ctext-center"> -->
+						<!-- 							<div class="container "> -->
+						<!-- 								<div class="row"> -->
+						<!-- 									<div class="col-12 align-self-start p-5"> -->
+						<!-- 										<p class="fs-5 text-center fw-bold">Tu peso ideal es:</p> -->
+						<!-- 									</div> -->
+						<!-- 									<div class="col-12 align-self-center p-5"> -->
+
+						<!-- 										<div class="card"> -->
+						<!-- 											<div class="card-body"> -->
+						<!-- 												<p class="text-center text-dark">Mostrar el peso ideal</p> -->
+						<!-- 											</div> -->
+						<!-- 										</div> -->
+
+
+						<!-- 									</div> -->
+
+
+						<!-- 								</div> -->
+						<!-- 							</div> -->
+						<!-- 						</div> -->
+
+						<!-- 						<div class="col-3 text-center"></div> -->
+						<!-- 					</div> -->
+
 
 					</div>
 					<!-- FIN DIV QUE ENVUELVE TU PESO IDEAL -->
-
 				</div>
 			</section>
 
 			<aside
-				class="col-xl-3 col-lg-3 col-md-12 col-sm-12  text-light servicios-izquierda-left d-none d-lg-block d-xl-block">
-
-
-				<!-- 				<h4 class="text-dark text-center fw-bold mt-2 servicios-izquierda-bottom">Historial de -->
-				<!-- 					IMC</h4> -->
-				<!-- 				<ul class="list-group list-group-flush"> -->
-				<!-- 					<li class="list-group-item  text-dark" -->
-				<!-- 						th:each="imc : ${imcList}" th:reverse="true"><span -->
-				<!-- 						th:with="formattedDate=${#temporals.format(imc.fechaImc, 'dd/MM/yyyy')}" -->
-				<!-- 						th:text="'Fecha: ' + ${formattedDate}"></span> - <span -->
-				<!-- 						th:with="truncatedNumber=${#numbers.formatDecimal(imc.imcActual, 0, 'COMMA', 2, 'POINT')}" -->
-				<!-- 						th:text="'IMC: ' + ${truncatedNumber}"></span></li> -->
-				<!-- 				</ul> -->
-
-
+				class="col-xl-3 col-lg-3 col-md-12 col-sm-12 bg-dark text-light servicios-izquierda-left d-none d-lg-block d-xl-block">
+				<p></p>
 			</aside>
 
 		</div>
 	</div>
 
 
-	<!-- Fragment to Header -->
+	<!-- Fragment to Footer -->
 	<footer th:replace="~{layouts/footer :: footer}"></footer>
 
 
@@ -263,8 +269,15 @@
 	<!-- Template Javascript -->
 	<script src="js/main.js"></script>
 
-
-</body>
-
+	<!-- Scripts utilizados -->
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	<!--<script src="/js/jquery.min.js"></script>-->
+	<script src="/js/popper.js"></script>
+	<script src="/js/main.js"></script>
 </body>
 </html>

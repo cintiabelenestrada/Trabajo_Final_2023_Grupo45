@@ -10,7 +10,7 @@ public interface IServiciosService {
 
 	
 //	void calcularIMC(Long id, double peso, String fechaActual);
-	String calcularIMC(Usuario usuario, int pesoActual, LocalDate fechaActual);
+	String calcularIMC(Usuario usuario, Integer pesoActual, LocalDate fechaActual);
 //	void agregarIndiceMasaCorporal(Usuario usuario, IndiceMasaCorporal imc);
 //	void calcularIMC(String codigoUsuario);
 

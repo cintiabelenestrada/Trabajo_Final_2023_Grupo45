@@ -27,7 +27,7 @@ public class ServiciosServiceMySqlImp implements IServiciosService {
  
 
     @Override
-    public String calcularIMC(Usuario usuario, int pesoActual, LocalDate fechaActual) {
+    public String calcularIMC(Usuario usuario, Integer pesoActual, LocalDate fechaActual) {
         double estaturaMetros = Double.parseDouble(usuario.getEstatura()); 
 
         /**
