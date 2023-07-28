@@ -10,3 +10,7 @@ insert into ingredientes (ingre_nombre,ingre_estado,rec_id) values('Azúcar 100 
 insert into ingredientes (ingre_nombre,ingre_estado,rec_id) values('Chocolate semi-amargo 100 g.',1,3);
 insert into ingredientes (ingre_nombre,ingre_estado,rec_id) values('Chocolate cobertura semi-amargo 400 g.',1,3);
 insert into ingredientes (ingre_nombre,ingre_estado,rec_id) values('1 verde de verdeo picado',1,1);
+
+insert into unidadmedida (nombre,estado) values('gramos',1);
+insert into unidadmedida (nombre,estado) values('kilos',1);
+insert into unidadmedida (nombre,estado) values('tazas',1);
