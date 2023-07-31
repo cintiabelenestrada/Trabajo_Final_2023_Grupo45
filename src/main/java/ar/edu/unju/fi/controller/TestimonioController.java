@@ -121,7 +121,7 @@ public class TestimonioController {
 		} 
 		testimonioService.modificar(testimonio, testimonio.getId());
 		
-		return "testimonios/edicion";
+		return "redirect:/testimonios/edicion";
 	}
 
 	/**
