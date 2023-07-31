@@ -26,9 +26,11 @@ import ar.edu.unju.fi.entity.Usuario;
 import ar.edu.unju.fi.repository.IRecetaRepository;
 import ar.edu.unju.fi.repository.IRegistroRepository;
 import ar.edu.unju.fi.repository.IServiciosRepository;
+import ar.edu.unju.fi.repository.IUnidadMedidaRepository;
 import ar.edu.unju.fi.service.IIngredienteService;
 import ar.edu.unju.fi.service.IRecetaService;
 import ar.edu.unju.fi.service.IRegistroService;
+import ar.edu.unju.fi.service.IUnidadMedidaService;
 import jakarta.validation.Valid;
 
 @Controller
@@ -53,6 +55,12 @@ public class GestionController {
 	private IIngredienteService ingredienteService;
 
 	@Autowired
+	private IUnidadMedidaRepository unidadMedidaRepository;
+
+	@Autowired
+	private IUnidadMedidaService unidadMedidaService;
+
+	@Autowired
 	private UploadFile uploadFile;
 
 	
@@ -67,7 +75,7 @@ public class GestionController {
 		
 		model.addAttribute("usuario", new Usuario());
 		model.addAttribute("recetas", recetaService.obtenerRecetas());
-
+		model.addAttribute("unidadmedidas", unidadMedidaService.obtenerUnidadMedidas());
 		return "gestion_datos";
 	}
 
@@ -82,8 +90,7 @@ public class GestionController {
 		Iterable<Usuario> usuarios = registroRepository.findAll();
 		model.addAttribute("usuarios", usuarios);
 		return "listar_usuarios";
-	}
-	
+	}	
 	
 	@GetMapping("/gestion/usuarios/{id}/imc")
 	public String listarIMCUsuario(@PathVariable Long id, Model model) {
@@ -103,7 +110,6 @@ public class GestionController {
 	        return "error";
 	    }
 	}
-	
 	
 	@GetMapping("/gestion/usuarios/{userId}/imc/{imcId}/eliminar")
 	public String eliminarIMC(@PathVariable Long userId, @PathVariable Long imcId, Model model) {
@@ -292,7 +298,9 @@ public class GestionController {
 
 		return modelAndView;
 	}
-
+	// GGG
+	// Muestra un listado de las recetas, 
+	// por lo tanto se deberia llamar receta/lista o algo asi
 	@GetMapping("/lista")
 	public String mostrarRecetas(Model model) {
 		// Si en Inicio se selecciona contacto, el header cambiara el titulo por la opcion seleccionada
@@ -340,5 +348,14 @@ public class GestionController {
 		    	//model.addAttribute("categorias_productos", icateSer.getCategorias());
 		    	return"registro";
 		    
+	}
+
+	//UNIDAD MEDIDA
+	@GetMapping("/listado")
+	public String mostrarUnidadMedida(Model model){
+		String tituloPagina = "Gestión de Datos"; 
+		model.addAttribute("tituloPagina", tituloPagina);
+		model.addAttribute("unidadmedidas", unidadMedidaService.obtenerUnidadMedidas());
+		return "unidadmedidas";
 	}
 }
