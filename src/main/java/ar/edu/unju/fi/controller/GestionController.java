@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unju.fi.util.UploadFile;
 import ar.edu.unju.fi.entity.IndiceMasaCorporal;
 import ar.edu.unju.fi.entity.Receta;
+import ar.edu.unju.fi.entity.UnidadMedida;
 import ar.edu.unju.fi.entity.Usuario;
 import ar.edu.unju.fi.repository.IRecetaRepository;
 import ar.edu.unju.fi.repository.IRegistroRepository;
@@ -351,11 +352,42 @@ public class GestionController {
 	}
 
 	//UNIDAD MEDIDA
-	@GetMapping("/listado")
+	@GetMapping("gestion/unidadmedida")
 	public String mostrarUnidadMedida(Model model){
 		String tituloPagina = "Gestión de Datos"; 
 		model.addAttribute("tituloPagina", tituloPagina);
 		model.addAttribute("unidadmedidas", unidadMedidaService.obtenerUnidadMedidas());
 		return "unidadmedidas";
 	}
+
+	@GetMapping("/gestionar/nueva/unidadmedida")
+	public String obtenerPaginaNuevaUnidadMedida(Model model) {
+		// Aquí puedes establecer algún valor para el título de la página si lo necesitas
+		String tituloPagina = "Gestión de Datos";
+		model.addAttribute("tituloPagina", tituloPagina);
+	
+		boolean edicion = false;
+		model.addAttribute("unidadmedida", unidadMedidaService.obtenerUnidadMedida());
+		model.addAttribute("edicion", edicion);
+		return "nuevo_unidadmedida";
+	}
+
+	@PostMapping("/gestionar/guardar/unidadmedida")
+	public ModelAndView postGuardarUnidadMedida(@Valid @ModelAttribute("unidadMedida") UnidadMedida unidadMedida, BindingResult result, Model model) {
+		// Aquí puedes establecer algún valor para el título de la página si lo necesitas
+		String tituloPagina = "Gestión de Datos";
+		model.addAttribute("tituloPagina", tituloPagina);
+	
+		// ModelAndView mav = new ModelAndView("redirect:/receta/gestion");
+		ModelAndView mav = new ModelAndView("redirect:/unidadmedida/gestion");
+
+		if (result.hasErrors()) {
+			mav.setViewName("nuevo_unidadmedida");
+			mav.addObject("edicion", false);
+			return mav;
+		}
+		unidadMedidaService.guardarUnidadMedida(unidadMedida);
+		return mav;
+	}
+
 }

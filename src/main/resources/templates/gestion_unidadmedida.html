@@ -28,12 +28,12 @@
 	    <header th:replace="~{layouts/header :: header}"></header>
 
         <div class="container">
-            <!-- <a th:href="@{/receta/gestion}" class="btn btn-primary">Volver Gestion UnidadMedida</a> -->
+            <!-- <a th:href="@{/gestionar}" class="btn btn-primary ">Volver a Inicio</a> -->
             <div class="card " id="card-gestion">
                     <h1 class="card-title text-center">Gestion de Unidades de Medida</h1>
                     <div class="row justify-content-md-center">
                         <div class="col">
-                            <a th:href="@{/unidadmedida/nuevo}" class="btn btn-success fw-bolder py-3">Nueva Unidad Medida</a>
+                            <a th:href="@{/gestionar/nueva/unidadmedida}" class="btn btn-success fw-bolder py-3">Nueva Unidad Medida</a>
                         </div>
                     </div>
                     <div class="card-body">
@@ -54,9 +54,9 @@
                                         <td th:text="${unidadmedida.receta.id}"></td> -->
                                             <td>
                                                 <a class="btn btn-info btn-sm"
-                                                    th:href="@{/unidadmedida/modificar/}+${unidadmedida.id}">Modificar</a>
+                                                    th:href="@{/gestionar/modificar/unidadmedida/}+${unidadmedida.id}">Modificar</a>
                                                 <a class="btn btn-danger btn-sm"
-                                                    th:href="@{/unidadmedida/eliminar/}+${unidadmedida.id}">Eliminar</a>
+                                                    th:href="@{/gestionar/eliminar/unidadmedida/}+${unidadmedida.id}">Eliminar</a>
                                             </td>
                                     </tr>
                                 </tbody>
