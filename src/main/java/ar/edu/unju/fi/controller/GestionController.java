@@ -340,5 +340,16 @@ public class GestionController {
 		    	//model.addAttribute("categorias_productos", icateSer.getCategorias());
 		    	return"registro";
 		    
+		   
+	}
+	@GetMapping("/gestion/eliminar/usuarios/{id}")
+	public String eliminarUsuario(@PathVariable(value = "id") Long id, Model model) {
+		// Si en Inicio se selecciona contacto, el header cambiara el titulo por la opcion seleccionada
+	    String tituloPagina = "Gestión de Datos"; // Establece el valor por defecto que se vera en el header
+	    // Se realiza el cambio de valor de `tituloPagina`
+	    model.addAttribute("tituloPagina", tituloPagina);
+	    
+	    iregisUs.eliminar(id);
+		return "redirect:/gestion/usuarios";
 	}
 }

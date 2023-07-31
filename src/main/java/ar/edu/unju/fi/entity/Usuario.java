@@ -69,7 +69,7 @@ public class Usuario {
 	private String email;
 
 	@NotNull(message = "La fecha no puede estar vacía.")
-	@DateTimeFormat(pattern = "yyyy/MM/dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "user_fechanacimiento")
 	private LocalDate fecha_nacimiento;
 	
