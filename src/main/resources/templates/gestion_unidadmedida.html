@@ -50,8 +50,6 @@
                                     <tr th:each="unidadmedida: ${unidadmedidas}">
                                         <td th:text="${unidadmedida.id}"></td>
                                         <td th:text="${unidadmedida.nombre}"></td>
-                                        <!-- <td th:text="${unidadmedida.receta.nombre}"></td>
-                                        <td th:text="${unidadmedida.receta.id}"></td> -->
                                             <td>
                                                 <a class="btn btn-info btn-sm"
                                                     th:href="@{/gestionar/modificar/unidadmedida/}+${unidadmedida.id}">Modificar</a>

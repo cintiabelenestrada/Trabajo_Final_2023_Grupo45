@@ -27,6 +27,13 @@ public class UnidadMedida {
 	@Column(name = "nombre")
 	private String nombre;
 
+    // @OneToMany(mappedBy = "unidadmedida")
+	// private List<unidadmedida> unidadmedidas;
+
+    // @ManyToOne
+	// @JoinColumn(name = "id_unidadmedida")
+	// private UnidadMedida unidadmedida;
+
     @Column(name = "estado")
 	private boolean estado;
 

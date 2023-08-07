@@ -45,8 +45,8 @@
                             </h3>
                             <div class="card-body">
                                 <!--Formulario de alta/edicion Unidad Medidas -->
-                                <form
-                                th:action="@{/gestionar/guardar/unidadmedida}" th:object="${unidadmedida}" method="post">
+                                <form th:action="@{/gestionar/guardar/unidadmedida}" th:object="${unidadmedida}" method="post">
+                                    <input type="hidden" th:if="${edicion}" th:field="*{id}" />
                                     <div class="form-group">
                                         <label for="nombre" class="form-label">Nombre de la unidad de medida : 
                                         </label> 

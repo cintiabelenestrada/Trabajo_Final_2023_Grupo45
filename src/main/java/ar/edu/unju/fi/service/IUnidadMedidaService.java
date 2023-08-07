@@ -6,10 +6,12 @@ import ar.edu.unju.fi.entity.UnidadMedida;
 
 public interface IUnidadMedidaService {
     public UnidadMedida obtenerUnidadMedida();
+
     public List<UnidadMedida> obtenerUnidadMedidas();
-        // public UnidadMedida obtenerUnidadMedidaPorId(Long id);
-    // public String buscarUnidadMedidaporNombre(UnidadMedida nombre);
+    public UnidadMedida obtenerUnidadMedidaId(Long id);
+    public UnidadMedida buscarUnidadMedidaId(Long id);
+    public String buscarUnidadMedidaporNombre(UnidadMedida nombre);
     public void guardarUnidadMedida(UnidadMedida unidadmedida);
     // public void modificarUnidadMedida(UnidadMedida unidadmedidaModificado);
-    // public void eliminarUnidadMedida(UnidadMedida unidadmedida);
+    public void eliminarUnidadMedida(UnidadMedida unidadmedida);
 }
