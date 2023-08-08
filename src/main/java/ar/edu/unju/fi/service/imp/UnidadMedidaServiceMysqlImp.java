@@ -57,10 +57,11 @@ public class UnidadMedidaServiceMysqlImp implements IUnidadMedidaService{
         unidadmedidaRepository.save(unidadmedidaModificada);
     }
 
-    // @Override
-    // public void eliminarUnidadMedida(UnidadMedida unidadmedida) {
-    //     // Cambiar el estado de la unidad de medida a false en lugar de eliminarla físicamente
-    //     unidadmedida.setEstado(false);
-    //     unidadmedidaRepository.save(unidadmedida);
-    // }
+    @Override
+    public void eliminarUnidadMedida(UnidadMedida unidadmedida) {
+    // Cambiar el estado de la unidad de medida a false en lugar de eliminarla
+    // físicamente
+    unidadmedida.setEstado(false);
+    unidadmedidaRepository.save(unidadmedida);
+    }
 }
