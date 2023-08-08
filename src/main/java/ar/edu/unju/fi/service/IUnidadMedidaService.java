@@ -12,6 +12,6 @@ public interface IUnidadMedidaService {
     public UnidadMedida buscarUnidadMedidaId(Long id);
     public String buscarUnidadMedidaporNombre(UnidadMedida nombre);
     public void guardarUnidadMedida(UnidadMedida unidadmedida);
-    // public void modificarUnidadMedida(UnidadMedida unidadmedidaModificado);
+    public void modificarUnidadMedida(UnidadMedida unidadmedidaModificada);
     public void eliminarUnidadMedida(UnidadMedida unidadmedida);
 }
