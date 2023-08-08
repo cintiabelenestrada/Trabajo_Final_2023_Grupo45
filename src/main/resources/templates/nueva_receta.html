@@ -68,7 +68,25 @@
 											th:if="${#fields.hasErrors('preparacion')}"
 											th:errors="*{preparacion}"></div>
 									</div>
-
+	
+									<div class="form-group"´>
+										<label for="ingre_receta" class="col-sm-3 col-form-label">Ingredientes: </label>
+							  		<div class="col-sm-9">
+							  			<th:block th:each="p: ${ingredientes}">
+							                <label>
+							                    <input type="checkbox" name="ingredientes" th:value="${p.id}"
+							                        th:checked="${receta.ingredientes != null and receta.ingredientes.contains(p)}">
+							                    <span th:text="${p.nombre}"></span>
+							                </label>
+							            </th:block>
+								  		<!--  	<select class="form-select" id="ingre_receta" name="ingre_receta"  th:field="*{ingredientes}" multiple>						
+												<option th:each="p: ${ingredientes}" th:value="${p}" th:text="${p.nombre}" th:selected="${receta.ingredientes != null and receta.ingredientes.contains(p)}"></option>										
+												<!-- se llama a la clase ingrediente para completar el select -->
+										<!--  	</select> -->	
+										<p class="text-danger" th:if="${ingredientes.empty}">Debe agregar ingredientes a la BD de Ingredientes.</p>					  			 
+								  			<div class ="text-danger" th:if="${#fields.hasErrors('ingredientes')}" th:errors="*{ingredientes}"></div>
+								  	</div>					
+									</div>
 
 									<div class="form-group">
 										<label for="idCategoria" class="form-label">Seleccione

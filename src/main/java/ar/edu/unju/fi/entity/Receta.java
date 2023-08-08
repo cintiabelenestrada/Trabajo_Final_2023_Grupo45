@@ -2,11 +2,17 @@ package ar.edu.unju.fi.entity;
 
 import org.springframework.stereotype.Component;
 import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -35,7 +41,11 @@ public class Receta {
 	@Column(name = "rec_categoria", nullable = false)
 	private String categoria;
 	
-	@OneToMany(mappedBy = "receta")
+	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinTable(name="recetas-ingredientes", joinColumns=@JoinColumn(name="receta_id"),
+	inverseJoinColumns=@JoinColumn(name="ingre_id"))
+	@NotEmpty(message="Debe cargarse la lista de ingredientes")
+	@Size(min = 1, message = "Debe seleccionar al menos un ingrediente")
 	private List<Ingrediente> ingredientes;
 	
 	@NotEmpty()

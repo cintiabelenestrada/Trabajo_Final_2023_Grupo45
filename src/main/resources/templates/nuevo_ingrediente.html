@@ -49,23 +49,22 @@
                                 <form
                                     th:action="${edicion}?@{/ingrediente/modificar/}+${ingrediente.id}:@{/ingrediente/guardar}"
                                     th:object="${ingrediente}" method="post">
-                                    <div class="form-group">
-                                        <label for="nombre" class="form-label">Nombre del ingrediente : 
-                                        </label> <input th:field="*{nombre}" class="form-control"
-                                            type="text" name="nombres" id="nombres" placeholder="Nombre">
-                                        <div class="text-danger" th:if="${#fields.hasErrors('nombre')}"
-                                            th:errors="*{nombre}"></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="receta" class="form-label">Receta:</label> <select
-                                            th:field="*{receta}" class="form-control" id="receta">
-                                            <option value="">Selecciona una receta</option>
-                                            <option th:each="receta : ${recetas}" th:value="${receta.id}"
-                                                th:text="${receta.nombre}"></option>
-                                        </select>
-                                        <div class="text-danger" th:if="${#fields.hasErrors('receta')}"
-                                            th:errors="*{receta}"></div>
-                                    </div>
+                                <div class="row mb-3" th:if="${edicion}" >
+    								<label for="id_ingre" class="col-sm-2 col-form-label">ID: </label>
+    								<div class="col-sm-10">
+       									 <input type="text" class="form-control" id="id_ingre" name="id_ingre" th:value="${ingrediente.id}" readonly>
+       									 <input type="hidden" th:field="*{id}"> 
+   									</div>   									
+   									
+							 </div>							 	  
+						 	  <div class="row mb-3">						 	  		
+							  		<label for="nombre_ingre" class="col-sm-2 col-form-label">Nombre: </label>
+							  		<div class="col-sm-10">
+							  			 <input type="text" class="form-control" id="nombre_ingre" placeholder="Nombre Ingrediente" name="nombre_ingre" th:field="*{nombre}">							  			 
+							  			 <div class ="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>							  			 
+							  			 <!-- muestra mensaje de error si existe erorr -->
+							  		</div>					  
+							  </div>
         
                                     <br>
                                     <div class="form-group d-flex justify-content-between">
