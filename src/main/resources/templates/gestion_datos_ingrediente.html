@@ -52,8 +52,6 @@
                                 <tr>
                                     <th>Codigo</th>
                                     <th>Nombre</th>
-                                    <th>Receta</th>
-                                    <th>Id-Receta</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -61,14 +59,12 @@
                                 <tr th:each="ingrediente: ${ingredientes}">
                                     <td th:text="${ingrediente.id}"></td>
                                     <td th:text="${ingrediente.nombre}"></td>
-                                    <td th:text="${ingrediente.receta.nombre}"></td>
-                                    <td th:text="${ingrediente.receta.id}"></td>
-                                        <td>
-                                            <a class="btn btn-info btn-sm"
-                                                th:href="@{/ingrediente/modificar/}+${ingrediente.id}">Modificar</a>
-                                            <a class="btn btn-danger btn-sm"
-                                                th:href="@{/ingrediente/eliminar/}+${ingrediente.id}">Eliminar</a>
-                                        </td>
+                                    <td>
+                                        <a class="btn btn-info btn-sm"
+                                            th:href="@{/ingrediente/modificar/}+${ingrediente.id}">Modificar</a>
+                                        <a class="btn btn-danger btn-sm"
+                                            th:href="@{/ingrediente/eliminar/}+${ingrediente.id}">Eliminar</a>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

@@ -35,9 +35,6 @@ public class Receta {
 	@Column(name = "rec_categoria", nullable = false)
 	private String categoria;
 	
-	@OneToMany(mappedBy = "receta")
-	private List<Ingrediente> ingredientes;
-	
 	@NotEmpty()
 	@Size(min=10)
 	@Column(name = "rec_preparacion", columnDefinition = "TEXT")
@@ -56,12 +53,11 @@ public class Receta {
 	public Receta(Long id,
 			@NotEmpty @Size(min = 6, max = 20) @Pattern(regexp = "[a-z A-ZÀ-ÿ\\u00f1\\u00d1]*") String nombre,
 			@NotEmpty @Size(min = 6, max = 20) @Pattern(regexp = "[a-z A-ZÀ-ÿ\\u00f1\\u00d1]*") String categoria,
-			@NotNull List<Ingrediente> ingredientes, @NotEmpty @Size(min = 60, max = 200) String preparacion,
+			@NotEmpty @Size(min = 60, max = 200) String preparacion,
 			@NotEmpty @Size(min = 20, max = 100) @NotEmpty String imagen, boolean estado) {
 		this.id = id;
 		this.nombre = nombre;
 		this.categoria = categoria;
-		this.ingredientes = ingredientes;
 		this.preparacion = preparacion;
 		this.imagen = imagen;
 		this.estado = estado;
@@ -92,14 +88,6 @@ public class Receta {
 		this.categoria = categoria;
 	}
 
-	public List<Ingrediente> getIngredientes() {
-		return ingredientes;
-	}
-
-	public void setIngredientes(List<Ingrediente> ingredientes) {
-		this.ingredientes = ingredientes;
-	}
-
 	public String getPreparacion() {
 		return preparacion;
 	}
@@ -127,8 +115,7 @@ public class Receta {
 	
 	@Override
 	public String toString() {
-		return "Receta [id=" + id + ", nombre=" + nombre + ", categoria=" + categoria + ", ingredientes=" + ingredientes
-				+ ", preparacion=" + preparacion + ", imagen=" + imagen + ", estado=" + estado
-				+ "]";
+		return "Receta [id=" + id + ", nombre=" + nombre + ", categoria=" + categoria + ", preparacion=" + 
+		preparacion + ", imagen=" + imagen + ", estado=" + estado + "]";
 	}
 }

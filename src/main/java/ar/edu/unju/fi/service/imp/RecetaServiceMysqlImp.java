@@ -37,13 +37,6 @@ public class RecetaServiceMysqlImp implements IRecetaService {
 	private IRecetaRepository recetaRepository;
 	
 	/**
-	 * Inyeccion del service Ingrediente
-	 */
-	@Autowired
-	@Qualifier("ingredienteServiceMysqlImp")
-	private IngredienteServiceMysqlImp ingredienteService;
-	
-	/**
 	 * Metodo que retorna objeto receta.
 	 * @return un objeto de tipo usuario.
 	 */
@@ -56,18 +49,12 @@ public class RecetaServiceMysqlImp implements IRecetaService {
 	 * Metodo que guarda receta
 	 * @param receta representa  objeto de tipo receta
 	 * @param imagen representa la imagen de la receta
-	 * @param idIngredientes representa la lista de ingredientes que se vincula con la receta
 	 */
 	@Override
 	public void guardarReceta(Receta receta, MultipartFile imagen) throws IOException {
-		List<Ingrediente> listaIngrediente = new ArrayList<Ingrediente>();
-		
-		
-		
 		String nombreImagen = uploadFile.copy(imagen);
 		receta.setImagen(nombreImagen);
 		receta.setEstado(true);
-		receta.setIngredientes(listaIngrediente);
 		recetaRepository.save(receta);
 	}
 
@@ -108,7 +95,6 @@ public class RecetaServiceMysqlImp implements IRecetaService {
 	 * Metodo para modificar usuario
 	 * @param recetaModificada representa una receta a modificar.
 	 * @param imagen representa la imagen de la receta que se va modificar
-	 * @param idIngredientes representa la lista de ingredientes que se vincula con la receta
 	 */
 	@Override
 	public void modificarReceta(Receta recetaModificada, MultipartFile imagenModificada) throws IOException {

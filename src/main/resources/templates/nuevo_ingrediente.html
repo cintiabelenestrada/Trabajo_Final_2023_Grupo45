@@ -50,23 +50,12 @@
                                     th:action="${edicion}?@{/ingrediente/modificar/}+${ingrediente.id}:@{/ingrediente/guardar}"
                                     th:object="${ingrediente}" method="post">
                                     <div class="form-group">
-                                        <label for="nombre" class="form-label">Nombre del ingrediente : 
+                                        <label for="nombre" class="form-label"> Ingrediente : 
                                         </label> <input th:field="*{nombre}" class="form-control"
                                             type="text" name="nombres" id="nombres" placeholder="Nombre">
                                         <div class="text-danger" th:if="${#fields.hasErrors('nombre')}"
                                             th:errors="*{nombre}"></div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="receta" class="form-label">Receta:</label> <select
-                                            th:field="*{receta}" class="form-control" id="receta">
-                                            <option value="">Selecciona una receta</option>
-                                            <option th:each="receta : ${recetas}" th:value="${receta.id}"
-                                                th:text="${receta.nombre}"></option>
-                                        </select>
-                                        <div class="text-danger" th:if="${#fields.hasErrors('receta')}"
-                                            th:errors="*{receta}"></div>
-                                    </div>
-        
                                     <br>
                                     <div class="form-group d-flex justify-content-between">
                                         <div class="btn-group btn-group-sm" role="group">

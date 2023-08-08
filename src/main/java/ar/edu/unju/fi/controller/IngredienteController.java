@@ -14,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.entity.Ingrediente;
 import ar.edu.unju.fi.service.IIngredienteService;
-import ar.edu.unju.fi.service.IRecetaService;
 import jakarta.validation.Valid;
 
 @Controller
@@ -24,10 +23,6 @@ public class IngredienteController {
 	@Autowired
 	@Qualifier("ingredienteServiceMysqlImp")
 	private IIngredienteService ingredienteService;
-	
-	@Autowired
-	@Qualifier("recetaServiceMysqlImp")
-	private IRecetaService recetaService;
 	
 	/**
 	 * Metodo que retorna la pagina de gestion de datos de ingredientes
@@ -59,7 +54,6 @@ public class IngredienteController {
 	    
 		boolean edicion=false;
 		model.addAttribute("ingrediente", ingredienteService.obtenerIngrediente());
-		model.addAttribute("recetas", recetaService.obtenerRecetas());
 		model.addAttribute("edicion", edicion);
 		return "nuevo_ingrediente";
 	}
@@ -72,7 +66,8 @@ public class IngredienteController {
 	 *  el formularion en caso de capturar errores
 	 */
 	@PostMapping("/guardar")
-	public ModelAndView postGuardarIngredientePage(@Valid @ModelAttribute("ingrediente") Ingrediente ingrediente, BindingResult bindingResult, Model model ) {
+	public ModelAndView postGuardarIngredientePage(@Valid @ModelAttribute("ingrediente") Ingrediente ingrediente, BindingResult bindingResult, 
+	Model model ) {
 		// Si en Inicio se selecciona contacto, el header cambiara el titulo por la opcion seleccionada
 	    String tituloPagina = "Ingredientes"; // Establece el valor por defecto que se vera en el header
 		// Se realiza el cambio de valor de `tituloPagina`
@@ -82,7 +77,6 @@ public class IngredienteController {
 		
 		if (bindingResult.hasErrors()) {
 			mav.setViewName("nuevo_ingrediente");
-			mav.addObject("recetas", recetaService.obtenerRecetas());
 			mav.addObject("edicion", false);
 			return mav;
 		}
@@ -106,8 +100,6 @@ public class IngredienteController {
 	    
 		boolean edicion=true;
 		Ingrediente ingredienteEncontrado = ingredienteService.buscarIngrediente(id);
-		model.addAttribute("recetas", recetaService.obtenerRecetas());
-
 		model.addAttribute("ingrediente", ingredienteEncontrado);
 		model.addAttribute("edicion", edicion);
 		return "nuevo_ingrediente";
@@ -129,8 +121,6 @@ public class IngredienteController {
 	    
 		if (resultado.hasErrors()) {
 			model.addAttribute("ingrediente",  ingredienteModificado);
-			model.addAttribute("recetas", recetaService.obtenerRecetas());
-
 			return "nuevo_ingrediente";
 		}
 		ingredienteService.modificarIngrediente(ingredienteModificado);
