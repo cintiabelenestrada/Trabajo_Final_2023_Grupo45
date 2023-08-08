@@ -44,27 +44,18 @@
                             <h3 th:text="${edicion}?'Modificar Unidad Medida':'Agregar Unidad Medida'" class="text-center mb-3">
                             </h3>
                             <div class="card-body">
-                                <!--Formulario de alta/edicion Unidad Medidas -->
-                                <form th:action="@{/gestionar/guardar/unidadmedida}" th:object="${unidadmedida}" method="post">
-                                    <input type="hidden" th:if="${edicion}" th:field="*{id}" />
+                                <form 
+									th:action="${edicion}?@{/unidadmedida/modificar/}+${unidadmedida.id}:@{/unidadmedida/guardar}"
+                                    th:object="${unidadmedida}" method="post"
+									enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label for="nombre" class="form-label">Nombre de la unidad de medida : 
-                                        </label> 
-                                            <input th:field="*{nombre}" class="form-control"
+                                        </label>
+                                        <input th:field="*{nombre}" class="form-control"
                                             type="text" name="nombres" id="nombres" placeholder="Nombre">
                                         <div class="text-danger" th:if="${#fields.hasErrors('nombre')}"
                                             th:errors="*{nombre}"></div>
                                     </div>
-                                    <!-- <div class="form-group">
-                                        <label for="receta" class="form-label">Receta:</label> <select
-                                            th:field="*{receta}" class="form-control" id="receta">
-                                            <option value="">Selecciona una receta</option>
-                                            <option th:each="receta : ${recetas}" th:value="${receta.id}"
-                                                th:text="${receta.nombre}"></option>
-                                        </select>
-                                        <div class="text-danger" th:if="${#fields.hasErrors('receta')}"
-                                            th:errors="*{receta}"></div>
-                                    </div> -->
         
                                     <br>
                                     <div class="form-group d-flex justify-content-between">
@@ -83,7 +74,7 @@
                     </div>
                 </div>
             </div>
-        </div>           
+        </div>
         
         <!-- Fragment to Footer -->
    <footer th:replace="~{layouts/footer :: footer}"></footer>

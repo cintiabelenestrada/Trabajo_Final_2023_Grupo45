@@ -51,6 +51,7 @@ public class UnidadMedidaServiceMysqlImp implements IUnidadMedidaService {
     @Override
     public void modificarUnidadMedida(UnidadMedida unidadmedidaModificada) {
         // Modificar la unidad de medida en la base de datos
+        unidadmedidaModificada.setEstado(true);
         unidadmedidaRepository.save(unidadmedidaModificada);
     }
 
