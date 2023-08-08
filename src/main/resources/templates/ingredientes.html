@@ -52,9 +52,9 @@
                     class="table-sm table table-striped table-bordered table-hover">
                     <thead class="bg-secondary text-white">
                         <tr>
-                            <th>id del ingrediente</th>
-                            <th>Nombre del ingrediente</th>
-                            <th>Receta</th>
+                              <th scope="col">#</th>
+							      <th scope="col">Nombre</th>
+							      <th scope="col">Accion</th>		
 
                         </tr>
                     </thead>
@@ -62,7 +62,7 @@
                         <tr th:each="ingrediente: ${ingredientes}">
                             <td th:text="${ingrediente.id}"></td>
                             <td th:text="${ingrediente.nombre}"></td>
-                            <td th:text="${ingrediente.recetas.nombre}"></td>
+                 
                         </tr>
                     </tbody>
                 </table>

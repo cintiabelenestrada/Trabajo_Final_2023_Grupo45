@@ -68,8 +68,7 @@ public class ServiciosController {
 	    if (usuario.getId() == null) {
 			model.addAttribute("tituloPagina", tituloPagina);
 			
-	        model.addAttribute("usuario", new Usuario());
-	        model.addAttribute("imc", new IndiceMasaCorporal());
+	 
 	        model.addAttribute("idNulo", "No puedes dejar este campo vacio");
 	        return "calcular_imc";
 	    }

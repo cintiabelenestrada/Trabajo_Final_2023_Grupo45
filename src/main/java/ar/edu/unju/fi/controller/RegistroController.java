@@ -62,7 +62,7 @@ public class RegistroController {
 	    
 	    /* Guarda un nuevo producto en la lista*/
 	    @PostMapping("/guardar")
-	    public String getguardarProductoPage(@Valid @ModelAttribute("usuario") Usuario usuario, BindingResult result, Model model) {
+	    public String getGuardarUsuarioPage(@Valid @ModelAttribute("usuario") Usuario usuario, BindingResult result, Model model) {
 	    	
 	    	// Si en Inicio se selecciona esta opcion, el header cambiara el titulo por la opcion seleccionada
 		    String tituloPagina = "Registro"; // Establece el valor por defecto que se vera en el header
@@ -86,7 +86,7 @@ public class RegistroController {
 	    }   
     @GetMapping("/idusuario/{CD}")
     // muestra un usuario segun
-     public String listar(@PathVariable("CD") Long CD,Model model) {
+     public String getListarUsuarioPage(@PathVariable("CD") Long CD,Model model) {
     	
     	// Si en Inicio se selecciona esta opcion, el header cambiara el titulo por la opcion seleccionada
 	    String tituloPagina = "Registro"; // Establece el valor por defecto que se vera en el header

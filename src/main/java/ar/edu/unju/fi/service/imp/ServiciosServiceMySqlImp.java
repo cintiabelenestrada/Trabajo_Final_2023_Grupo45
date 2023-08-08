@@ -62,7 +62,7 @@ public class ServiciosServiceMySqlImp implements IServiciosService {
         imc.setFechaImc(fechaActual);
         imc.setPesoActual(pesoActual);
         imc.setImcActual(imcActual);
-        imc.setUsuario(usuario); // Establecer la relación con el usuario
+        imc.setUsuario(usuario);
 
         
         /*
