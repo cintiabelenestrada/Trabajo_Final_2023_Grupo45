@@ -15,3 +15,5 @@ insert into ingredientes (ingre_nombre,ingre_estado,rec_id) values('1 verde de v
 insert into unidadmedida (nombre,estado) values('gramos',1);
 insert into unidadmedida (nombre,estado) values('kilos',1);
 insert into unidadmedida (nombre,estado) values('tazas',1);
+
+insert into ingredientereceta (rec_id, ingre_id, id_unidadmedida, cantidad) values(1, 1, 1, '1');
