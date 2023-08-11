@@ -40,25 +40,99 @@
         <div class="container">
             <div class="container text-center">
                 
-                <div class="page-title">
-                    <h1>Recetas Saludables</h1>
-                </div>
-
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
-                    <div class="col-4" th:each="receta: ${recetas}">
-                        <div class="card card d-flex flex-column h-100" style="width: 18rem;">
-                            <img th:src="@{/imagen/}+${receta.imagen}"
-                                class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h4 class="card-title" th:text="${receta.nombre}"></h4>
-                                <h6 class="card-title"
-                                    th:text="'Recetas de '+${receta.categoria}"></h6>
-                                <a th:href="@{/receta/visualizar/}+${receta.id}"
-                                    class="btn btn-primary">Ver Receta</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+           		<div class="container mb-3"> 
+			<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 my-3">
+				<div class="col">
+					<div class="card h-100" >
+<!--						<img th:src="@{/images/RecetaCarnes.jpg}" class="card-img-top img-fluid" alt="Foto Recetas Carnes">-->
+						<div class="card-body" style="max-height: 180px; overflow: auto;">
+							 <a th:href="@{/receta/listado/CARNES}" class="text-decoration-none">
+								<h4 class="text-success-emphasis">RECETAS DE CARNES</h4>
+							  </a>
+							<p class="card-text">Descubre deliciosas recetas nutritivas de carnes para disfrutar sin culpa. Sabores irresistibles que cuidan de tu bienestar.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card h-100" >
+<!--						<img th:src="@{/images/RecetaBebidas.jpg}" class="card-img-top img-fluid" alt="Foto Recetas Bebidas">-->
+						<div class="card-body" style="max-height: 180px; overflow: auto;">
+							<a th:href="@{/receta/listado/BEBIDAS}" class="text-decoration-none">
+								<h4 class="text-success-emphasis">RECETAS DE BEBIDAS</h4>
+							</a>
+							<p class="card-text">Refresca tu día con nuestras recetas revitalizantes de bebidas. Sabores únicos que aportan bienestar y satisfacen tus antojos.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card h-100" >
+<!--					    <img th:src="@{/images/RecetaDulces.jpg}" class="card-img-top img-fluid" alt="Foto Recetas Dulces">-->
+						<div class="card-body" style="max-height: 180px; overflow: auto;">
+							<a th:href="@{/receta/listado/DULCES}" class="text-decoration-none">
+								<h4 class="text-success-emphasis">RECETAS DE DULCES</h4>
+							</a>
+							
+							<p class="card-text">Endulza tu vida con nuestras recetas equilibradas de postres. Delicias sabrosas que cuidan de tu alimentación y te hacen feliz.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card h-100" >
+<!--						<img th:src="@{/images/RecetaEnsaladas.jpg}" class="card-img-top img-fluid" alt="Foto Recetas Ensaladas">-->
+						<div class="card-body" style="max-height: 180px; overflow: auto;">
+							<a th:href="@{/receta/listado/ENSALADAS}" class="text-decoration-none">
+								<h4 class="text-success-emphasis">RECETAS DE ENSALADAS</h4>
+							</a>							
+							<p class="card-text">Nutre tu cuerpo con nuestras recetas frescas de ensaladas. Combinaciones saludables que te llenan de energía y vitalidad</p>
+						</div>
+					</div>
+				</div>
+				<div class="col ">
+					<div class="card h-100" >
+<!--						<img th:src="@{/images/RecetaLegumbres.jpg}" class="card-img-top img-fluid" alt="Foto Recetas Legumbres y Cereales">-->
+						<div class="card-body" style="max-height: 180px; overflow: auto;">
+							<a th:href="@{/receta/listado/LEGUMBRES-Y-CEREALES}" class="text-decoration-none">
+								<h4 class="text-success-emphasis">RECETAS DE LEGUMBRES Y CEREALES</h4>
+							</a>							
+							<p class="card-text">Explora el poder nutritivo de las legumbres y los cereales en nuestras recetas sabrosas. Opciones balanceadas para una alimentación consciente.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card h-100" >
+<!--					    <img th:src="@{/images/RecetaPescados.jpg}" class="card-img-top img-fluid" alt="Foto Recetas Pesacdos">-->
+						<div class="card-body" style="max-height: 180px; overflow: auto;">
+							<a th:href="@{/receta/listado/PESCADOS}" class="text-decoration-none">
+								<h4 class="text-success-emphasis">RECETAS DE PESCADOS</h4>
+							</a>							
+							<p class="card-text">Sumérgete en nuestras recetas de pescados nutritivos y llenos de sabor. Delicias marinas que cuidan de tu bienestar y te encantan.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card h-100" >
+<!--					    <img th:src="@{/images/RecetaPan.jpg}" class="card-img-top img-fluid" alt="Foto Recetas Pan">-->
+						<div class="card-body" style="max-height: 180px; overflow: auto;">
+							<a th:href="@{/receta/listado/PAN}" class="text-decoration-none">
+								<h4 class="text-success-emphasis">RECETAS DE PAN</h4>
+							</a>							
+							<p class="card-text">Amasa tu bienestar con nuestras recetas caseras de pan. Elaboraciones saludables que deleitan tu paladar y te hacen sentir bien.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card h-100" >
+<!--					    <img th:src="@{/images/RecetaSopa.jpg}" class="card-img-top img-fluid" alt="Foto Recetas Sopas y cremas">-->
+						<div class="card-body" style="max-height: 180px; overflow: auto;">
+							<a th:href="@{/receta/listado/SOPAS-Y-CREMAS}" class="text-decoration-none">
+								<h4 class="text-success-emphasis">RECETAS DE SOPAS Y CREMAS</h4>
+							</a>							
+							<p class="card-text">Calienta tu cuerpo y alma con nuestras recetas reconfortantes de sopas y cremas. Platos reconfortantes que cuidan de tu salud y te satisfacen.</p>
+						</div>
+					</div>
+				</div>				
+			</div>			
+		</div>	
             </div>
         </div>
 

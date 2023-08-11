@@ -89,33 +89,31 @@
 									</div>
 
 									<div class="form-group">
-										<label for="idCategoria" class="form-label">Seleccione
-											categoría de comida:</label> <select class="form-select"
-											id="idCategoria" th:field="*{categoria}" name="categoria">
-											<option value="0" selected>Seleccione una opción...</option>
-											<option value="Carnes">Carnes</option>
-											<option value="Pan">Pan</option>
-											<option value="Dulces">Dulces</option>
-											<option value="Ensaladas">Ensaladas</option>
-											<option value="Legumbres y Cereales">Legumbres y
-												Cereales</option>
-											<option value="Pescados">Pescados</option>
-											
-											<option value="Bebidas">Bebidas</option>
-											<option value="Sopas y Cremas">Sopas y Cremas</option>
-										</select>
-										<div class="text-danger"
-											th:if="${#fields.hasErrors('categoria')}"
-											th:errors="*{categoria}"></div>
+												<label for="categoria_receta" class="col-sm-3 col-form-label">RECETA: </label>
+							  		<div class="col-sm-9">
+							  			<select class="form-control" id="categoria_receta" name="categoria_receta"  th:field="*{categoria}" >						
+											<option value="" selected>Seleccione una opción</option>
+											<option value="CARNES" th:selected="${receta.categoria == 'CARNES'}">CARNES</option>
+											<option value="BEBIDAS" th:selected="${receta.categoria == 'BEBIDAS'}">BEBIDAS</option>
+											<option value="DULCES" th:selected = "${receta.categoria == 'DULCES'}">DULCES</option>
+											<option value="ENSALADAS" th:selected = "${receta.categoria == 'ENSALADAS'}">ENSALADAS</option>
+											<option value="LEGUMBRES-Y-CEREALES" th:selected = "${receta.categoria == 'LEGUMBRES Y CEREALES'}">LEGUMBRES Y CEREALES</option>											
+											<option value="PESCADOS" th:selected = "${receta.categoria == 'PESCADOS'}">PESCADOS</option>
+											<option value="PAN" th:selected = "${receta.categoria == 'PAN'}">PAN</option>
+											<option value="SOPAS-Y-CREMAS" th:selected = "${receta.categoria == 'SOPAS Y CREMAS'}">SOPAS Y CREMAS</option>
+										</select>					  			 
+							  			 <div class ="text-danger" th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}"></div>
+							  			 <!-- muestra mensaje de error si existe erorr -->
+							  		</div>					  
 									</div>
 
-									<div class="form-group">
-										<label for="file" class="form-label">Subir Imagen:</label>
-										<div class="input-group">
-											<input type="file" class="form-control" id="file" name="file"
-												th:text="${receta.imagen}">
-										</div>
-									</div>
+<!--									<div class="form-group">-->
+<!--										<label for="file" class="form-label">Subir Imagen:</label>-->
+<!--										<div class="input-group">-->
+<!--											<input type="file" class="form-control" id="file" name="file"-->
+<!--												th:text="${receta.imagen}">-->
+<!--										</div>-->
+<!--									</div>-->
 
 									<div class="form-group d-flex justify-content-end mt-3">
 										<a class="btn btn-secondary mx-2" th:href="@{/receta/gestion}"

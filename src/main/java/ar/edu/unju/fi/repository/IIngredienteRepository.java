@@ -11,4 +11,6 @@ import java.util.List;
 public interface IIngredienteRepository extends CrudRepository<Ingrediente, Long> {
 	
 	public List<Ingrediente> findByEstado(boolean estado);
+	public List<Ingrediente> findAllById(Iterable<Long> ingredientesIds);
+
 }

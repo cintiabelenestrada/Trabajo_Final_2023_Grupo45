@@ -29,146 +29,85 @@ public class IngredienteController {
 	@Qualifier("recetaServiceMysqlImp")
 	private IRecetaService recetaService;
 	
-	/**
-	 * Metodo que retorna la pagina de gestion de datos de ingredientes
-	 * @return la pagina gestion_datos_ingrediente.html
-	 */
-	@GetMapping("/gestion")
-	public ModelAndView obtenerPaginaGestionIngrediente(Model model) {
-		// Si en Inicio se selecciona contacto, el header cambiara el titulo por la opcion seleccionada
-	    String tituloPagina = "Ingredientes"; // Establece el valor por defecto que se vera en el header
-		// Se realiza el cambio de valor de `tituloPagina`
-	    model.addAttribute("tituloPagina", tituloPagina);
-	    
-		ModelAndView modelAndView = new ModelAndView("gestion_datos_ingrediente");
-		modelAndView.addObject("ingredientes", ingredienteService.obtenerIngredientes());
-		return modelAndView;
-	}
 	
 	/**
-	 * Metodo que retorna la pagina del formulario de para guardar ingrediente
-	 * @param model representa la clase model para enviar las varibles ingrediente,recetas,edicion
-	 * @return la pagina nuevo_ingrediente.html
-	 */
-	@GetMapping("/nuevo")
-	public String obtenerPaginaNuevoIngrediente(Model model) {
-		// Si en Inicio se selecciona contacto, el header cambiara el titulo por la opcion seleccionada
-	    String tituloPagina = "Ingredientes"; // Establece el valor por defecto que se vera en el header
-		// Se realiza el cambio de valor de `tituloPagina`
-	    model.addAttribute("tituloPagina", tituloPagina);
-	    
-		boolean edicion=false;
-		model.addAttribute("ingrediente", ingredienteService.obtenerIngrediente());
-		model.addAttribute("recetas", recetaService.obtenerRecetas());
-		model.addAttribute("edicion", edicion);
-		return "nuevo_ingrediente";
-	}
-	
-	/**
-	 * Metodo que guarda el ingrediente en la base de datos
-	 * @param ingrediente representa el ingrediente que se envio para guardar los datos
-	 * @param bindingResult representa la clase que recibe los errores del formulario
-	 * @return la pagina gestion en caso de no tener errores al cargar el formulario 
-	 *  el formularion en caso de capturar errores
-	 */
-	@PostMapping("/guardar")
-	public ModelAndView postGuardarIngredientePage(@Valid @ModelAttribute("ingrediente") Ingrediente ingrediente, BindingResult bindingResult, Model model ) {
-		// Si en Inicio se selecciona contacto, el header cambiara el titulo por la opcion seleccionada
-	    String tituloPagina = "Ingredientes"; // Establece el valor por defecto que se vera en el header
-		// Se realiza el cambio de valor de `tituloPagina`
-	    model.addAttribute("tituloPagina", tituloPagina);
-	    
-		ModelAndView mav = new ModelAndView("redirect:/ingrediente/gestion");
-		
-		if (bindingResult.hasErrors()) {
-			mav.setViewName("nuevo_ingrediente");
-			mav.addObject("recetas", recetaService.obtenerRecetas());
-			mav.addObject("edicion", false);
-			return mav;
-		}
-		
-		ingredienteService.guardarIngrediente(ingrediente);
-		return mav;
-	}
-	
-	/**
-	 * Metodo que retorna el formulario de ingrediente para modificar los datos
-	 * @param model representa la clase model para enviar recetas, ingrediente, edicion
-	 * @param id representa el id de ingrediente que se va a modificar
-	 * @return la pagina nuevo_ingrediente.html
-	 */
-	@GetMapping("/modificar/{id}")
-	public String getModificarIngredientePage(Model model, @PathVariable(value = "id")Long id) {
-		// Si en Inicio se selecciona contacto, el header cambiara el titulo por la opcion seleccionada
-	    String tituloPagina = "Ingredientes"; // Establece el valor por defecto que se vera en el header
-		// Se realiza el cambio de valor de `tituloPagina`
-	    model.addAttribute("tituloPagina", tituloPagina);
-	    
-		boolean edicion=true;
-		Ingrediente ingredienteEncontrado = ingredienteService.buscarIngrediente(id);
-		model.addAttribute("recetas", recetaService.obtenerRecetas());
-
-		model.addAttribute("ingrediente", ingredienteEncontrado);
-		model.addAttribute("edicion", edicion);
-		return "nuevo_ingrediente";
-	}
-	
-	/**
-	 * Metodo que modifica los datos de ingrediente
-	 * @param ingredienteModificado representa el ingrediente modificado
-	 * @param resultado representa la clase que recibe los errores del formulario
-	 * @param model representa la clase que envia ingrediente, recetas en caso que no se cumpla las validaciones
-	 * @return el formularion en caso que no se cumplan las validaciones, en caso contrario vuelve a la pagina gestion de ingredientes
-	 */
-	@PostMapping("/modificar/{id}")
-	public String modificarIngrediente(@Valid @ModelAttribute("ingrediente") Ingrediente ingredienteModificado, BindingResult resultado,Model model) {
-		// Si en Inicio se selecciona contacto, el header cambiara el titulo por la opcion seleccionada
-	    String tituloPagina = "Ingredientes"; // Establece el valor por defecto que se vera en el header
-		// Se realiza el cambio de valor de `tituloPagina`
-	    model.addAttribute("tituloPagina", tituloPagina);
-	    
-		if (resultado.hasErrors()) {
-			model.addAttribute("ingrediente",  ingredienteModificado);
-			model.addAttribute("recetas", recetaService.obtenerRecetas());
-
-			return "nuevo_ingrediente";
-		}
-		ingredienteService.modificarIngrediente(ingredienteModificado);
-		return "redirect:/ingrediente/gestion";
-		
-	}
-	
-	/**
-	 * Metodo que elimina el ingrediente de la base de datos
-	 * @param id representa el id del ingrediente
-	 * @return la pagina gestion de datos de ingrediente
-	 */
-	@GetMapping("/eliminar/{id}")
-	public String eliminarIngrediente(@PathVariable(value="id")Long id, Model model) {
-		// Si en Inicio se selecciona contacto, el header cambiara el titulo por la opcion seleccionada
-	    String tituloPagina = "Ingredientes"; // Establece el valor por defecto que se vera en el header
-		// Se realiza el cambio de valor de `tituloPagina`
-	    model.addAttribute("tituloPagina", tituloPagina);
-	    
-		Ingrediente ingredienteEncontrado= ingredienteService.buscarIngrediente(id);
-		ingredienteService.eliminarIngrediente(ingredienteEncontrado);
-		return "redirect:/ingrediente/gestion";
-	}
-	
-	/**
-	 * Metodo que devuelve la pagina de gestion de los ingredientes
-	 * @param model representa la clase que envia los ingredientes
-	 * @return la pagina ingredientes.html
+	 * Peticion para ingresarar al listado de ingredientes
+	 * @param model
+	 * @return
 	 */
 	@GetMapping("/listado")
-	public String getIngredientePage(Model model) {
-		// Si en Inicio se selecciona contacto, el header cambiara el titulo por la opcion seleccionada
-	    String tituloPagina = "Ingredientes"; // Establece el valor por defecto que se vera en el header
-		// Se realiza el cambio de valor de `tituloPagina`
-	    model.addAttribute("tituloPagina", tituloPagina);
-	    
-		model.addAttribute("ingredientes", ingredienteService.obtenerIngredientes());
+	public String getListadoIngredientePage(Model model) {		
+		model.addAttribute("ingredientesLista",ingredienteService.getListaIngrediente());	
+		
 		return "ingredientes";
 	}
-
+	
+	/**
+	 * Peticion para guardar un nuevo ingrediten
+	 * @param model: se agrega al modelo un objeto ingrediente y una variable edicion
+	 * @return pagina nuevo_ingrediente 
+	 */
+	@GetMapping("/nuevo")
+	public String getNuevoIngredientePage(Model model) {
+		boolean edicion=false;
+		model.addAttribute("ingrediente", ingredienteService.getIngrediente());		
+		model.addAttribute("edicion", edicion);
+		return "nuevo_ingrediente";
+	}
+	
+	@PostMapping("/guardar")
+	public ModelAndView getGuardarIngredientePage(@Valid @ModelAttribute("ingrediente")Ingrediente ingrediente, BindingResult result) {		
+		ModelAndView modelView = new ModelAndView("ingredientes");
+		if(result.hasErrors()) {
+			modelView.setViewName("nuevo_ingrediente");
+			modelView.addObject("ingrediente", ingrediente);			
+			return modelView;
+		}
+		ingredienteService.guardarIngrediente(ingrediente);
+		modelView.addObject("ingredientesLista",ingredienteService.getListaIngrediente());
+		return modelView;
+	}
+	
+	
+	/**
+	 * Peticion para eliminar un ingrediente
+	 * @param id
+	 * @return
+	 */
+	@GetMapping("/eliminar/{id}")
+	public String getEliminarIngrediente (@PathVariable(value="id") Long id){		
+		Ingrediente ingredienteEncontrado = ingredienteService.findIngredienteById(id);		
+		ingredienteService.eliminar(ingredienteEncontrado);
+		return "redirect:/ingredientes/listado";		
+	}
+	
+	/**
+	 * Peticion para obtener el ingrediente a modificar por su id
+	 * @param model 
+	 * @param id del ingrediente a modificar
+	 * @return la pagina nuevo_ingrediente
+	 */
+	@GetMapping ("/modificar/{id}")
+	public String getModificarIngredientePage(Model model, @PathVariable(value="id") Long id) {
+		Ingrediente ingredienteEncontrado = ingredienteService.findIngredienteById(id);	
+		boolean edicion = true;
+		model.addAttribute("ingrediente",ingredienteEncontrado);		
+		model.addAttribute("edicion",edicion);
+		return "nuevo_ingrediente";
+	}
+	
+	/**
+	 * Peticion para guardar el ingrediente modificado
+	 * @param ingrediente	 
+	 * @return se redirige a la pagina de listado de ingredientes
+	 */
+	@PostMapping("/modificar")
+	public String getModificarIngrediente(@Valid @ModelAttribute("ingrediente") Ingrediente ingrediente, BindingResult result, Model model){
+		if(result.hasErrors()) {
+			model.addAttribute("edicion", true);			
+			return "nuevo_ingrediente";
+		}		
+		ingredienteService.modificar(ingrediente);
+		return "redirect:/ingredientes/listado";
+	}
 }
