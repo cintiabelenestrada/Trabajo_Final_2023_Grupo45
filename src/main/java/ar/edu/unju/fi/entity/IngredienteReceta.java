@@ -59,10 +59,17 @@ public class IngredienteReceta {
     }
 
     // Getters and Setters
+
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Receta getReceta() {
         return receta;
     }
-
     public void setReceta(Receta receta) {
         this.receta = receta;
     }
@@ -70,7 +77,6 @@ public class IngredienteReceta {
     public Ingrediente getIngrediente() {
         return ingrediente;
     }
-
     public void setIngrediente(Ingrediente ingrediente) {
         this.ingrediente = ingrediente;
     }
@@ -78,7 +84,6 @@ public class IngredienteReceta {
     public UnidadMedida getUnidadMedida() {
         return unidadMedida;
     }
-
     public void setUnidadMedida(UnidadMedida unidadMedida) {
         this.unidadMedida = unidadMedida;
     }
@@ -86,7 +91,6 @@ public class IngredienteReceta {
     public String getCantidad() {
         return cantidad;
     }
-
     public void setCantidad(String cantidad) {
         this.cantidad = cantidad;
     }

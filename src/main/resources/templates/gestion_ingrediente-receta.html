@@ -49,18 +49,17 @@
                         <table class="table-sm table table-striped table-bordered table-hover">
                             <thead class="bg-secondary text-white">
                                 <tr>
-                                    <th>ID Receta</th>
-                                    <th>ID Ingrediente</th>
-                                    <th>ID Unidad Medida</th>
+                                    <th>Ingrediente</th>
                                     <th>Cantidad</th>
+                                    <th>Unidad de Medida</th>
+                                    <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr th:each="ingredientereceta: ${ingredienterecetas}">
-                                    <!-- <td th:text="${ingredientereceta.receta.rec_id}"></td>
-                                    <td th:text="${ingredientereceta.ingredientes.ingre_id}"></td>
-                                    <td th:text="${ingredientereceta.unidadmedida.id_unidadmedida}"></td> -->
+                                    <td th:text="${ingredientereceta.ingrediente.nombre}"></td>
                                     <td th:text="${ingredientereceta.cantidad}"></td>
+                                    <td th:text="${ingredientereceta.unidadMedida.nombre}"></td>
                                     <td>
                                         <a class="btn btn-info btn-sm"
                                             th:href="@{/ingredientereceta/modificar/}+${ingredientereceta.id}">Modificar</a>
