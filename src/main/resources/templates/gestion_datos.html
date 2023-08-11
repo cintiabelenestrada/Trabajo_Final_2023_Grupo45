@@ -69,30 +69,30 @@
 						</form>
 
 						<div th:if="${usuario.id != null and usuario.id != '' and usuario.admin == true} ">
-							<h1 class="text-primary display-5 text-center fw-bolder">Bienvenido
+							<h1 class="text-success display-5 text-center fw-bolder">Bienvenido a
 								Gestión de Datos</h1>
-							<p class="fw-bold mt-3 text-center">Aqui podra gestionar los
-								Datos</p>
+<!--							<p class="fw-bold mt-3 text-center">Aqui podra gestionar los-->
+<!--								Datos</p>-->
 							<hr>
-							<p class="text-center">Consulte, cree, actualice o elimine sus
+							<p class="fw-bold text-center">Consulte, cree, actualice o elimine sus
 								diferentes datos de forma facil y segura.</p>
 
 							<div class="p-4 bg-section rounded-shadom text-center mb-4 col-8 mx-auto">
 								<ul class="nav flex-column">
-									<li class="nav-item btn btn-primary m-1 fs-5 text"><a class="nav-link text-white"
+									<li class="nav-item btn btn-success m-1 fs-5 text"><a class="nav-link text-white"
 											th:href="@{/gestionar/nuevo}">Nueva Receta</a>
 									</li>
-									<li class="nav-item btn btn-primary m-1 fs-5 text"><a class="nav-link text-white"
+									<li class="nav-item btn btn-success m-1 fs-5 text"><a class="nav-link text-white"
 											th:href="@{/receta/gestion}">Recetas</a>
 									</li>
-									<li class="nav-item btn btn-primary m-1 fs-5 text"><a class="nav-link text-white"
+									<li class="nav-item btn btn-success m-1 fs-5 text"><a class="nav-link text-white"
 											th:href="@{/gestion/imc}">Indice
 											de Masa Corporal</a></li>
-									<li class="nav-item btn btn-primary m-1 fs-5 text"><a class="nav-link text-white"
+									<li class="nav-item btn btn-success m-1 fs-5 text"><a class="nav-link text-white"
 											th:href="@{/testimonios/edicion}">Testimonio</a>
 									</li>
 									
-									<li class="nav-item btn btn-primary m-1 fs-5 text"><a class="nav-link text-white"
+									<li class="nav-item btn btn-success m-1 fs-5 text"><a class="nav-link text-white"
 											th:href="@{/gestion/usuarios}">Usuarios</a>
 									</li>
 									
