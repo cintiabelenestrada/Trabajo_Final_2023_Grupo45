@@ -1,5 +1,7 @@
 package ar.edu.unju.fi.entity;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import jakarta.persistence.Column;
@@ -7,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+// import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
@@ -21,18 +24,14 @@ public class UnidadMedida {
 	@Column(name = "id_unidadmedida")
 	private Long id;
 
+    // @OneToMany(mappedBy = "unidadmedida")
+    // private List<IngredienteReceta> ingredientereceta;
+
     @NotEmpty()
 	@Size(min=2, max=15)
 	@Pattern(regexp="[a-z A-ZÀ-ÿ\\u00f1\\u00d1]*")
 	@Column(name = "nombre")
 	private String nombre;
-
-    // @OneToMany(mappedBy = "unidadmedida")
-	// private List<unidadmedida> unidadmedidas;
-
-    // @ManyToOne
-	// @JoinColumn(name = "id_unidadmedida")
-	// private UnidadMedida unidadmedida;
 
     @Column(name = "estado")
 	private boolean estado;

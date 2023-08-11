@@ -1,5 +1,7 @@
 package ar.edu.unju.fi.entity;
 
+// import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import jakarta.persistence.Column;
@@ -7,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+// import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
@@ -22,6 +25,9 @@ public class Ingrediente {
 	@Column(name = "ingre_id")
 	private Long id;
 	
+	// @OneToMany(mappedBy = "ingredientes")
+    // private List<IngredienteReceta> ingredientereceta;
+
 	@NotEmpty()
 	@Size(min=2, max=20)
 	@Column(name = "ingre_nombre")

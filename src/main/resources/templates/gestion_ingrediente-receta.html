@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <meta charset="UTF-8">
+	 <title>Gestion de Datos Ingredientes</title>
+	<meta name="viewport" content="width=device-width, initial-scale-1">
+	<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+	<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
+   
+    <meta content="Free Website Template" name="keywords">
+    <meta content="Free Website Template" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.min.css" rel="stylesheet">
+       
+    </head>
+    <body>
+         	<!-- Fragment to Nav -->
+	<nav th:replace="~{layouts/nav :: nav}"></nav>
+
+<!-- 	  Fragment to Header --> 
+	<header th:replace="~{layouts/header :: header}"></header>
+	
+        <div class="container">
+
+		    <div class="card " id="card-gestion">
+			    <h1 class="card-title text-center">Gestion de Ingredientes por Recetas</h1>
+                <div class="row justify-content-md-center">
+                    <div class="col">
+                        <a th:href="@{/ingrediente/nuevo}" class="btn btn-success fw-bolder py-3">Nuevo Ingrediente</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+                        <table class="table-sm table table-striped table-bordered table-hover">
+                            <thead class="bg-secondary text-white">
+                                <tr>
+                                    <th>ID Receta</th>
+                                    <th>ID Ingrediente</th>
+                                    <th>ID Unidad Medida</th>
+                                    <th>Cantidad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="ingredientereceta: ${ingredienterecetas}">
+                                    <!-- <td th:text="${ingredientereceta.receta.rec_id}"></td>
+                                    <td th:text="${ingredientereceta.ingredientes.ingre_id}"></td>
+                                    <td th:text="${ingredientereceta.unidadmedida.id_unidadmedida}"></td> -->
+                                    <td th:text="${ingredientereceta.cantidad}"></td>
+                                    <td>
+                                        <a class="btn btn-info btn-sm"
+                                            th:href="@{/ingredientereceta/modificar/}+${ingredientereceta.id}">Modificar</a>
+                                        <a class="btn btn-danger btn-sm"
+                                            th:href="@{/ingredientereceta/eliminar/}+${ingredientereceta.id}">Eliminar</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <!-- Fragment to Footer -->
+   <footer th:replace="~{layouts/footer :: footer}"></footer>
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+        <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>   
+        
+        <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>    
+    </body>
+</html>
+

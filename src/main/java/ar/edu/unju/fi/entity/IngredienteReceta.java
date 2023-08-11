@@ -35,10 +35,22 @@ public class IngredienteReceta {
     @Column(name = "cantidad")
     private String cantidad;
 
+    @Column(name = "estado")
+	private boolean estado;
+
+    public boolean isEstado() {
+        return estado;
+    }
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+    public IngredienteReceta(boolean estado) {
+        this.estado = estado;
+    }
     //constructores	
 	public IngredienteReceta() {
 	}
-    public IngredienteReceta(Long id, Receta receta, Ingrediente ingrediente, UnidadMedida unidadMedida, String cantidad) {
+    public IngredienteReceta(Long id, Receta receta, Ingrediente ingrediente, UnidadMedida unidadMedida, String cantidad,boolean estado) {
         this.id = id;
         this.receta = receta;
         this.ingrediente = ingrediente;

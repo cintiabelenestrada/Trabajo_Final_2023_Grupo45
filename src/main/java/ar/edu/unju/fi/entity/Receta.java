@@ -1,17 +1,16 @@
 package ar.edu.unju.fi.entity;
 
 import org.springframework.stereotype.Component;
-import java.util.List;
+// import java.util.List;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+// import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
@@ -24,6 +23,9 @@ public class Receta {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "rec_id")
 	private Long id;
+
+	// @OneToMany(mappedBy = "recetas")
+    // private List<IngredienteReceta> ingredientereceta;
 
 	@NotEmpty()
 	@Size(min=6)
