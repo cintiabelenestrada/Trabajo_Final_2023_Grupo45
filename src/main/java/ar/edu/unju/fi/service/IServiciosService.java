@@ -17,6 +17,6 @@ public interface IServiciosService {
 	void guardarImc(IndiceMasaCorporal indiceMasaCorporal);
 	IndiceMasaCorporal getImcById(Long id);
 	double calcularPesoIdeal(Usuario usuario);
-	void eliminarImc(Long id);
+	void eliminarImc(IndiceMasaCorporal indiceMasaCorporal);
 	
 }

@@ -59,15 +59,17 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="imc : ${imcList}">
+				 <tr th:each="imc : ${imcList}" th:if="${imc.estado}">
 						<td th:with="formattedDate=${#temporals.format(imc.fechaImc, 'dd/MM/yyyy')}"
 							th:text="${formattedDate}"></td>
 						<td th:with="truncatedNumber=${#numbers.formatDecimal(imc.imcActual, 0, 'COMMA', 2, 'POINT')}"
 							th:text="${truncatedNumber}"></td>
 
 						<td>
-							<a th:href="@{/gestion/usuarios/{userId}/imc/{imc.id}/eliminar(userId=${usuario.id}, imc.id=${imc.id})}"
+							<a th:href="@{/gestion/usuarios/{userId}/imc/{imcId}/eliminar(userId=${usuario.id}, imcId=${imc.id})}"
+								th:data-userId="${usuario.id}" th:data-imcId="${imc.id}"
 								onclick="return confirm('¿Estás seguro de eliminar este IMC?')">Eliminar</a>
+
 						</td>
 					</tr>
 				</tbody>

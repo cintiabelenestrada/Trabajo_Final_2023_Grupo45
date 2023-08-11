@@ -104,17 +104,17 @@ public class GestionController {
 	    }
 	}
 	
-	
-	@GetMapping("/gestion/usuarios/{userId}/imc/{imcId}/eliminar")
-	public String eliminarIMC(@PathVariable Long userId, @PathVariable Long imcId, Model model) {
-		// Si en Inicio se selecciona contacto, el header cambiara el titulo por la opcion seleccionada
-	    String tituloPagina = "Gestión de Datos"; // Establece el valor por defecto que se vera en el header
-	    // Se realiza el cambio de valor de `tituloPagina`
-	    model.addAttribute("tituloPagina", tituloPagina);
-	    imcPesoRepository.deleteById(imcId);
-	    return "redirect:/gestion/usuarios/" + userId + "/imc";
-	}
-	
+//	
+//	@GetMapping("/gestion/usuarios/{userId}/imc/{imcId}/eliminar")
+//	public String eliminarIMC(@PathVariable Long userId, @PathVariable Long imcId, Model model) {
+//		// Si en Inicio se selecciona contacto, el header cambiara el titulo por la opcion seleccionada
+//	    String tituloPagina = "Gestión de Datos"; // Establece el valor por defecto que se vera en el header
+//	    // Se realiza el cambio de valor de `tituloPagina`
+//	    model.addAttribute("tituloPagina", tituloPagina);
+//	    imcPesoRepository.deleteById(imcId);
+//	    return "redirect:/gestion/usuarios/" + userId + "/imc";
+//	}
+//	
 	/* #######################SECCION RECETAS########################### */
 
 	@PostMapping("/gestionar")
