@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Gestion de Datos Ingredientes</title>
+	<title>Nueva Receta</title>
 	<meta name="viewport" content="width=device-width, initial-scale-1">
 	<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 	<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
@@ -41,42 +41,39 @@
 
 	<div class="container">
 
-		<a th:href="@{/receta/gestion}" class="btn btn-primary">Volver Gestion Receta</a>
-		<div class="card " id="card-gestion">
-			<h1 class="card-title text-center">Gestion de Ingredientes</h1>
-			<div class="row justify-content-md-center">
-				<div class="col">
-					<a th:href="@{/ingrediente/nuevo}" class="btn btn-success fw-bolder py-3">Nuevo Ingrediente</a>
-				</div>
-			</div>
-			<div class="card-body">
-				<div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
-					<table class="table-sm table table-striped table-bordered table-hover">
-						<thead class="bg-secondary text-white">
-							<tr>
-								<th scope="col">#</th>
-								<th scope="col">Nombre</th>
-								<th scope="col">Accion</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr th:each="ingrediente: ${ingredientes}">
-								<td th:text="${ingrediente.id}"></td>
-								<td th:text="${ingrediente.nombre}"></td>
-					
-								<td>
-									<a class="btn btn-info btn-sm"
-										th:href="@{/ingrediente/modificar/}+${ingrediente.id}">Modificar</a>
-									<a class="btn btn-danger btn-sm"
-										th:href="@{/ingrediente/eliminar/}+${ingrediente.id}">Eliminar</a>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+		<div class="form-container">
+			<div class="container">
+				<div class="row">
+					<div th:each="rece, iterStat : ${recetas}" class="col-6 my-3 mx-3">
+						<div class="card h-100">
+							<div class="card-header">
+								<h4 class="text-success-emphasis" th:text="${rece.nombre}"></h4>
+								<a th:if="${edicion}" th:href="@{/recetas/modificar/}+${rece.id}"><button type="button"
+										class="btn btn-success btn-sm">Modificar</button></a>
+								<a th:if="${edicion}" th:href="@{/recetas/eliminar/}+${rece.id}"><button type="button"
+										class="btn btn-success btn-sm">Eliminar</button></a>
+							</div>
+<!--							<img th:src="@{/uploads/} + ${rece.imagen}" class="card-img-top img-fluid"-->
+<!--								alt="Foto Recetas Carnes">-->
+							<div class="card-body" style="max-height: 180px; overflow: auto;">
+								<p class="card-text">
+								<h5 class="text-success-emphasis">Ingredientes</h5>
+								<ul>
+									<li th:each="ingrediente : ${rece.ingredientes}" th:text="${ingrediente.nombre}">
+									</li>
+								</ul>
+								</p>
+								<h5 class="text-success-emphasis">PREPARACION</h5>
+								<p class="card-text" th:text="${rece.preparacion}"></p>
+
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
 
 	<!-- Fragment to Footer -->
 	<footer th:replace="~{layouts/footer :: footer}"></footer>
@@ -102,7 +99,6 @@
 
 	<!-- Template Javascript -->
 	<script src="js/main.js"></script>
-	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 
 	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </body>

@@ -1,15 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
-		<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
-		<title>Nueva Receta</title>
+		<meta charset="UTF-8">
+	<title>Nueva Receta</title>
+	<meta name="viewport" content="width=device-width, initial-scale-1">
+	<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+	<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
+   
+    <meta content="Free Website Template" name="keywords">
+    <meta content="Free Website Template" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.min.css" rel="stylesheet">
+		
 	</head>
 	<body>
+	       	<!-- Fragment to Nav -->
+	<nav th:replace="~{layouts/nav :: nav}"></nav>
+
+<!-- 	  Fragment to Header --> 
+	<header th:replace="~{layouts/header :: header}"></header>
+	
 		<div class="container">
-			
-			<nav th:replace="~{layouts/nav :: nav}"></nav>
 
 			<div class="form-container">
 				<div class="container">
@@ -42,36 +68,52 @@
 											th:if="${#fields.hasErrors('preparacion')}"
 											th:errors="*{preparacion}"></div>
 									</div>
-
-
-									<div class="form-group">
-										<label for="idCategoria" class="form-label">Seleccione
-											categoría de comida:</label> <select class="form-select"
-											id="idCategoria" th:field="*{categoria}" name="categoria">
-											<option value="0" selected>Seleccione una opción...</option>
-											<option value="Carnes">Carnes</option>
-											<option value="Pan">Pan</option>
-											<option value="Dulces">Dulces</option>
-											<option value="Ensaladas">Ensaladas</option>
-											<option value="Legumbres y Cereales">Legumbres y
-												Cereales</option>
-											<option value="Pescados">Pescados</option>
-											
-											<option value="Bebidas">Bebidas</option>
-											<option value="Sopas y Cremas">Sopas y Cremas</option>
-										</select>
-										<div class="text-danger"
-											th:if="${#fields.hasErrors('categoria')}"
-											th:errors="*{categoria}"></div>
+	
+									<div class="form-group"´>
+										<label for="ingre_receta" class="col-sm-3 col-form-label">Ingredientes: </label>
+							  		<div class="col-sm-9">
+							  			<th:block th:each="p: ${ingredientes}">
+							                <label>
+							                    <input type="checkbox" name="ingredientes" th:value="${p.id}"
+							                        th:checked="${receta.ingredientes != null and receta.ingredientes.contains(p)}">
+							                    <span th:text="${p.nombre}"></span>
+							                </label>
+							            </th:block>
+								  		<!--  	<select class="form-select" id="ingre_receta" name="ingre_receta"  th:field="*{ingredientes}" multiple>						
+												<option th:each="p: ${ingredientes}" th:value="${p}" th:text="${p.nombre}" th:selected="${receta.ingredientes != null and receta.ingredientes.contains(p)}"></option>										
+												<!-- se llama a la clase ingrediente para completar el select -->
+										<!--  	</select> -->	
+										<p class="text-danger" th:if="${ingredientes.empty}">Debe agregar ingredientes a la BD de Ingredientes.</p>					  			 
+								  			<div class ="text-danger" th:if="${#fields.hasErrors('ingredientes')}" th:errors="*{ingredientes}"></div>
+								  	</div>					
 									</div>
 
 									<div class="form-group">
-										<label for="file" class="form-label">Subir Imagen:</label>
-										<div class="input-group">
-											<input type="file" class="form-control" id="file" name="file"
-												th:text="${receta.imagen}">
-										</div>
+												<label for="categoria_receta" class="col-sm-3 col-form-label">RECETA: </label>
+							  		<div class="col-sm-9">
+							  			<select class="form-control" id="categoria_receta" name="categoria_receta"  th:field="*{categoria}" >						
+											<option value="" selected>Seleccione una opción</option>
+											<option value="CARNES" th:selected="${receta.categoria == 'CARNES'}">CARNES</option>
+											<option value="BEBIDAS" th:selected="${receta.categoria == 'BEBIDAS'}">BEBIDAS</option>
+											<option value="DULCES" th:selected = "${receta.categoria == 'DULCES'}">DULCES</option>
+											<option value="ENSALADAS" th:selected = "${receta.categoria == 'ENSALADAS'}">ENSALADAS</option>
+											<option value="LEGUMBRES-Y-CEREALES" th:selected = "${receta.categoria == 'LEGUMBRES Y CEREALES'}">LEGUMBRES Y CEREALES</option>											
+											<option value="PESCADOS" th:selected = "${receta.categoria == 'PESCADOS'}">PESCADOS</option>
+											<option value="PAN" th:selected = "${receta.categoria == 'PAN'}">PAN</option>
+											<option value="SOPAS-Y-CREMAS" th:selected = "${receta.categoria == 'SOPAS Y CREMAS'}">SOPAS Y CREMAS</option>
+										</select>					  			 
+							  			 <div class ="text-danger" th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}"></div>
+							  			 <!-- muestra mensaje de error si existe erorr -->
+							  		</div>					  
 									</div>
+
+<!--									<div class="form-group">-->
+<!--										<label for="file" class="form-label">Subir Imagen:</label>-->
+<!--										<div class="input-group">-->
+<!--											<input type="file" class="form-control" id="file" name="file"-->
+<!--												th:text="${receta.imagen}">-->
+<!--										</div>-->
+<!--									</div>-->
 
 									<div class="form-group d-flex justify-content-end mt-3">
 										<a class="btn btn-secondary mx-2" th:href="@{/receta/gestion}"
@@ -87,7 +129,33 @@
 				</div>
 			</div>
 		</div>
-		<footer th:replace="~{layouts/footer :: footer}"></footer>
+		
+		
+		<!-- Fragment to Footer -->
+   <footer th:replace="~{layouts/footer :: footer}"></footer>
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+		
 		<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 	</body>
 </html>

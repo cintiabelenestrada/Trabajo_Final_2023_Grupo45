@@ -33,12 +33,12 @@ author joel rojas araya
     <link href="css/style.min.css" rel="stylesheet">
 </head>
 <body>
-
+<!--  Fragment to Header -->
+  	<header th:replace="~{layouts/header :: header}"></header>
 <!-- Fragment to Nav -->
   <nav th:replace="~{layouts/nav :: nav}"></nav>
   
-   <!--  Fragment to Header -->
-  	<header th:replace="~{layouts/header :: header}"></header>
+   
 
 
 	<!-- Testimonial Start -->
@@ -49,84 +49,72 @@ author joel rojas araya
                 <h1 class="display-4">Nuestros Clientes Dicen</h1>
             </div>
             <div class="owl-carousel testimonial-carousel">
-                <div class="testimonial-item">
-                    <div class="d-flex align-items-center mb-3">
-                        <img class="img-fluid" src="imagenes/testimonio1.jpg" alt="">
-                        <div class="ml-3">
-                            <h4>Analia Naser</h4>
-                            <i>Escritora</i>
-                        </div>
-                    </div>
-                    <p class="m-0">Ademas de todo lo nutritivo que provee la pagina, tiene muy buenos consejos sobre rutinas de ejercicios, yoga, etc. Simplemente me encanta esta pagina.</p>
-                </div>
-                <div class="testimonial-item">
-                    <div class="d-flex align-items-center mb-3">
-                        <img class="img-fluid" src="imagenes/testimonio2.jpg" alt="">
-                        <div class="ml-3">
-                            <h4>Hernan Gutierrez</h4>
-                            <i>Abogado</i>
-                        </div>
-                    </div>
-                    <p class="m-0">El dia a dia me tiene demasiado ocupado en el trabajo, no suelo tener tiempo para cocinar de manera saludable. Gracias a esta pagina he podido cambiar eso, ya que sus recetas son sencillas, nutritivas y no llevan mucho tiempo.</p>
-                </div>
-                <div class="testimonial-item">
-                    <div class="d-flex align-items-center mb-3">
-                        <img class="img-fluid" src="imagenes/testimonio3.jpg" alt="">
-                        <div class="ml-3">
-                            <h4>Romina Calisaya</h4>
-                            <i>Ingeniera Industrial</i>
-                        </div>
-                    </div>
-                    <p class="m-0">Es impresionante la cantidad de contenido que tiene esta pagina. Ofrece una amplia gama de productos, a muy buenos precios. Sin duda de la mejores paginas que he visitado.</p>
-                </div>
-                <div class="testimonial-item">
-                    <div class="d-flex align-items-center mb-3">
-                        <img class="img-fluid" src="imagenes/testimonio4.jpg" alt="">
-                        <div class="ml-3">
-                            <h4>Cesar Montoya</h4>
-                            <i>Contador</i>
-                        </div>
-                    </div>
-                    <p class="m-0">Desde que conozco esta pagina he cambiado todo mi estilo de vida. Sin duda muy buen contenido, lo recomiendo.</p>
-                </div>
+            
+            <h1 class="titulo-testimonio row justify-content-center">TESTIMONIOS</h1>
+			  <div class="container  justify-content-center">
+			<div class="row justify-content-center">
+				<div><h4 class="row justify-content-center p-3">BUSCAR POR FECHA</h4></div>
+				<div class="col-5">				
+				 	<form class="row g-2 needs-validation" th:action="@{/testimonios/buscar}" method="post">					
+						<div class="mb-3 row">
+    						<label for="fecha" class="col-sm-4 col-form-label">Fecha:</label>
+    						<div class="col-sm-8">
+      							<input th:value="${#temporals.format(fecha, 'yyyy-MM-dd')}" type="date" class="form-control" id="fecha" name="fecha" required>
+    						</div>
+  						</div>
+									    
+						   
+						    <div class="col-12">
+								<input type="submit" class="btn btn-success" th:value="'BUSCAR POR FECHA'">
+								<a  class="btn btn-success" th:href="@{/testimonios/listado}" role="button">LISTADO COMPLETO</a><br>
+							</div>						    
+					</form>	<br>	
+				</div>
+			</div>	
+			</div> <a th:unless="${edicion}" th:href="@{/testimonios/nuevo}"><button type="button" class="btn btn-success">AGREGAR NUEVO TESTIMONIO</button></a>
+			    	<a th:if="${edicion}"class="btn btn-success" th:href="@{/}" role="button">SALIR</a><br><br>
+			
+			  <div class="cuerpo-titulo row align-items-start">
+			   
+			   <div class=" cuerpo-titulo row row-cols-1 row-cols-md-3 ">
+					  <div class="col bg-success p-2 text-dark bg-opacity-50">
+			     		<div class="card bg-success p-2 text-dark bg-opacity-50" style="width: 100%;">
+							  <div class="card-body card-body-testimonio" >
+							    <h5 class="card-title card-title-testimonio">HOLA!! COMO ESTAN?</h5>
+							    <p class="card-text card-text-testimonio"> Esperamos que disfrutes de la alimentación saludable tanto como 
+    								nosotros y encuentres los resultados que estes buscando y al mismo tiempo que puedas divertirte cocinando, 
+    								relajarte y desconectarte de todo lo demás! Déjanos tus comentarios porque nos encanta escucharte y siempre
+    								 estamos abiertos a tus sugerencias. </p>
+	  							 <div> <img src="/imagen/correr.jpg" class="card-img-top" alt="fotito">		</div>
+							  </div>
+						</div>
+				</div>
+				<div class="card card-testimonio" style="width: 18rem" th:each="testi: ${testimonio}">
+					  <img src="/imagen/usuario.jpeg" class="card-img-top" alt="logo_usuario">
+					  <div class="card-body bg-success p-2 text-dark bg-opacity-50" >
+					  	    <p  th:text= "'Comentario: '+${testi.comentario}"> </p><br>
+					 	    <ul class="list-group list-group-flush bg-success p-2 text-dark bg-opacity-50 list-group-testimonio">
+					 	   <li class="list-group-item bg-success p-2 text-dark bg-opacity-50" th:text= "'Usuario: '+ ${testi.usuario.nombre}"></li>
+					        <li class="list-group-item bg-success p-2 text-dark bg-opacity-50" th:text = "'Fecha: ' + ${testi.fecha}" ></li>
+	                        </ul><br>
+				   		   <a th:if="${edicion}" class="btn btn-success" th:href="@{/testimonios/modificar/}+${testi.id}" role="button">Editar</a>								
+	                		<a th:if="${edicion}" class="btn btn-success" th:href="@{/testimonios/eliminar/}+${testi.id}" role="button">Eliminar</a>	
+					</div>
+				</div>	
+								   
+			  </div>
+					   		
+			 </div><br>   
+                
+                
+               
             </div>
         </div>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
 
-		
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+       
     </div>
     <!-- Testimonial End -->
     
-    
-  
-
 	<!-- Fragment to Footer -->
    <footer th:replace="~{layouts/footer :: footer}"></footer>
 

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
 
 <head>
+
 	<meta charset="UTF-8">
-	<title>Gestion de Datos Ingredientes</title>
+	<title>Calcular_IMC</title>
 	<meta name="viewport" content="width=device-width, initial-scale-1">
 	<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 	<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
@@ -32,58 +33,41 @@
 
 </head>
 
+
+
+
+
 <body>
+
+	<!--  Fragment to Header -->
+	<header th:replace="~{layouts/header :: header}"></header>
 	<!-- Fragment to Nav -->
 	<nav th:replace="~{layouts/nav :: nav}"></nav>
 
-	<!-- 	  Fragment to Header -->
-	<header th:replace="~{layouts/header :: header}"></header>
+
+
 
 	<div class="container">
-
-		<a th:href="@{/receta/gestion}" class="btn btn-primary">Volver Gestion Receta</a>
-		<div class="card " id="card-gestion">
-			<h1 class="card-title text-center">Gestion de Ingredientes</h1>
-			<div class="row justify-content-md-center">
-				<div class="col">
-					<a th:href="@{/ingrediente/nuevo}" class="btn btn-success fw-bolder py-3">Nuevo Ingrediente</a>
-				</div>
-			</div>
-			<div class="card-body">
-				<div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
-					<table class="table-sm table table-striped table-bordered table-hover">
-						<thead class="bg-secondary text-white">
-							<tr>
-								<th scope="col">#</th>
-								<th scope="col">Nombre</th>
-								<th scope="col">Accion</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr th:each="ingrediente: ${ingredientes}">
-								<td th:text="${ingrediente.id}"></td>
-								<td th:text="${ingrediente.nombre}"></td>
-					
-								<td>
-									<a class="btn btn-info btn-sm"
-										th:href="@{/ingrediente/modificar/}+${ingrediente.id}">Modificar</a>
-									<a class="btn btn-danger btn-sm"
-										th:href="@{/ingrediente/eliminar/}+${ingrediente.id}">Eliminar</a>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+		<h1 class="mt-4 servicios-izquierda-bottom">Lista de Usuarios</h1>
+		<div class="row justify-content-center">
+			<div class="col-md-4" th:each="usuario : ${usuarios}" th:if="${usuario.estado}">
+				<div class="card mb-4">
+					<div class="card-body">
+						<h5 class="card-title" th:text="${usuario.nombre} + ' ' + ${usuario.apellido}"></h5>
+						<h5 class="card-title" th:text="'Estado: '+ ${usuario.estado}"></h5>
+						<!-- Agrega otros detalles relevantes del usuario -->
+						 <a class="btn btn-primary" th:href="@{/gestion/modificar/usuarios/{id}(id=${usuario.id})}">Modificar</a>
+						 <a class="btn btn-primary" th:href="@{/gestion/eliminar/usuarios/{id}(id=${usuario.id})}" th:unless="${usuario.admin}">Eliminar</a>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<!-- Fragment to Footer -->
+
+	<!-- Fragment to Header -->
 	<footer th:replace="~{layouts/footer :: footer}"></footer>
 
-
-	<!-- Back to Top -->
-	<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
 
 	<!-- JavaScript Libraries -->
@@ -102,9 +86,10 @@
 
 	<!-- Template Javascript -->
 	<script src="js/main.js"></script>
-	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 
-	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+</body>
+
 </body>
 
 </html>

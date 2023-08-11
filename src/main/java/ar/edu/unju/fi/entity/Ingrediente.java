@@ -19,66 +19,88 @@ import jakarta.validation.constraints.Size;
 @Table(name = "ingredientes")
 public class Ingrediente {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ingre_id")
-	private Long id;
+	//Atributos de la clase Ingrediente
+	@Id/*clave primaria*/
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="ingre_id")	
+	private Long id; //id de ingrediente
 	
-	@NotEmpty()
-	@Size(min=6, max=60)
-	@Column(name = "ingre_nombre")
-	private String nombre;
+	@NotEmpty(message="El nombre no puede estar vacio")
+	@Size(min=3, message="El nombre debe tener minimo 3 caracteres")
+	@Column(name="ingre_nombre", nullable = false)
+	private String nombre; //nombre de ingrediente
 	
-	@ManyToOne
-	@JoinColumn(name = "rec_id")
-	private Receta receta;
-
-	@Column(name = "ingre_estado")
-	private boolean estado;
+	@Column(name="ingre_estado")
+	private boolean estado; //estado que sirve para la eliminación lógica
 	
-
+	/**
+	 * Constructor por defecto
+	 */
 	public Ingrediente() {
+		// TODO Auto-generated constructor stub
 	}
+
+	
+	/**
+	 * Constructor parametrizado
+	 * @param id del ingrediente
+	 * @param nombre del ingrediente
+	 * @param estado true indica que el ingrediente existe, false no existe
+	 */
+	public Ingrediente(Long id, String nombre, boolean estado) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.estado = estado;
+	}
+
+	/**
+	 * Metodo para obtener el id
+	 * @return id del ingrediente
+	 */
 
 	public Long getId() {
 		return id;
 	}
 
-	public Ingrediente(Long id,
-			@NotEmpty @Size(min = 6, max = 20) @Pattern(regexp = "[a-z A-ZÀ-ÿ\\u00f1\\u00d1]*") String nombre,
-			Receta receta, boolean estado) {
-		this.id = id;
-		this.estado = estado;
-		this.nombre = nombre;
-		this.receta = receta;
-		
-	}
-
-
+	/**
+	 * Metodo para cargar el id del ingrediente
+	 * @param id
+	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 
+	/**
+	 * MEtodo para obtern el nombre del ingrediente
+	 * @return nombre
+	 */
 	public String getNombre() {
 		return nombre;
 	}
 
+	/**
+	 * Metodo para guardar el nombre del ingrediente
+	 * @param nombre
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
-	public Receta getReceta() {
-		return receta;
-	}
-
-	public void setReceta(Receta receta) {
-		this.receta = receta;
-	}
+	/**
+	 * Metodo para conocer el estado del ingrediente
+	 * @return estado
+	 */
 
 	public boolean isEstado() {
 		return estado;
 	}
 
+
+	/**
+	 * Metodo para guardar el estado del ingrediente
+	 * @param estado
+	 */
 	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
