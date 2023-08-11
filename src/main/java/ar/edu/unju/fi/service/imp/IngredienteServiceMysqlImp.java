@@ -8,76 +8,115 @@ import org.springframework.stereotype.Service;
 import ar.edu.unju.fi.entity.Ingrediente;
 import ar.edu.unju.fi.repository.IIngredienteRepository;
 import ar.edu.unju.fi.service.IIngredienteService;
+import jakarta.annotation.PostConstruct;
 
 @Service("ingredienteServiceMysqlImp")
 public class IngredienteServiceMysqlImp implements IIngredienteService {
 
-	@Autowired
-	private Ingrediente ingrediente;
-
+	/**
+	 * Inveccion e instanciado del objeto ingredienteRepository al contenedor
+	 */
 	@Autowired
 	private IIngredienteRepository ingredienteRepository;
-
+	
 	/**
-	 * Metodo que retorna ingrediente
-	 * @return ingrediente
+	 * Inveccion e instaciado del objeto ingrediente al contenedor
+	 */
+	@Autowired
+	private Ingrediente ingrediente;
+	
+/**	@Autowired
+	List<Ingrediente> listaReceta;
+	@Autowired
+	List<Ingrediente> listaAux;**/
+	
+	/**
+	 * Metodo para obtener la lista de ingredientes
 	 */
 	@Override
-	public Ingrediente obtenerIngrediente() {
-		return ingrediente;
-	}
-
-	/**
-	 * Metodo que retorna la lista de ingredientes
-	 * @return la lista de ingredientes
-	 */
-	@Override
-	public List<Ingrediente> obtenerIngredientes() {
+	public List<Ingrediente> getListaIngrediente() {
+		
 		return ingredienteRepository.findByEstado(true);
 	}
 
 	/**
-	 * Metodo que almacena el ingrediente en la base de datos
-	 * @param ingrediente representa el ingrediente que se guardara en la base de datos
+	 * Metodo para obtener un ingrediente
+	 */
+	@Override
+	public Ingrediente getIngrediente() {		
+		return ingrediente;
+	}
+
+	/**
+	 * Metodo para guardar un ingrediente en la base de datos
 	 */
 	@Override
 	public void guardarIngrediente(Ingrediente ingrediente) {
 		ingrediente.setEstado(true);
 		ingredienteRepository.save(ingrediente);
+		
 	}
 
 	/**
-	 * Metodo que modifica el ingrediente 
-	 * @param ingredienteModificado representa el ingrediente modificado
+	 * Metodo para buscar un ingrediente
 	 */
 	@Override
-	public void modificarIngrediente(Ingrediente ingredienteModificado) {
-		ingredienteModificado.setEstado(true);
-		ingredienteRepository.save(ingredienteModificado);
-	}
-
-	/**
-	 * Metodo que busca el ingrediente de acuerdo a su id
-	 * @param id representa el id del ingrediente que se desea buscar
-	 * @return el ingrediente encontrado
-	 */
-	@Override
-	public Ingrediente buscarIngrediente(Long id) {
+	public Ingrediente findIngredienteById(Long id) {
+		
 		return ingredienteRepository.findById(id).get();
 	}
 
 	/**
-	 * Metodo que elimina el ingrediente de la base de datos
-	 * @param ingrediente representa el ingrediente que se desea eliminar
+	 * Metodo para cargar un listado de ingredientes a la base de datos
 	 */
+	@PostConstruct
 	@Override
-	public void eliminarIngrediente(Ingrediente ingrediente) {
-//		Ingrediente unIngrediente = new Ingrediente();
-//		unIngrediente = buscarIngrediente(id);
-//		unIngrediente.setEstado(false);
-//		ingredienteRepository.save(unIngrediente);
-		ingrediente.setEstado(false);
+	public void cargarIngrediente() {
+		ingrediente = new Ingrediente(Long.parseLong("1"), "Sal", true);
 		ingredienteRepository.save(ingrediente);
+		ingrediente = new Ingrediente(Long.parseLong("2"), "Pimienta", true);
+		ingredienteRepository.save(ingrediente);
+		ingrediente = new Ingrediente(Long.parseLong("3"), "Condimentos", true);
+		ingredienteRepository.save(ingrediente);
+		
+	}
+	/**
+	 * Metodo para eliminar un ingrediente por id, la eliminacion es lógica
+	 */
+
+	@Override
+	public void eliminar(Ingrediente ingredienteEncontrado) {
+		ingredienteEncontrado.setEstado(false);
+		ingredienteRepository.save(ingredienteEncontrado);
+		
+	}
+	/**
+	 * Metodo para modificar un ingrediente
+	 */
+
+	@Override
+	public void modificar(Ingrediente ingrediente) {
+		ingrediente.setEstado(true);
+		ingredienteRepository.save(ingrediente);
+		
+	}
+
+	@Override
+	public List<Ingrediente> getIngredientesByIds(List<Long> ingredientesIds) {
+	/**	listaReceta.removeAll(listaReceta);
+		listaAux.removeAll(listaAux);
+		listaAux=ingredienteRepository.findByEstado(true);
+		for(Long id:ingredientesIds) {
+			for(Ingrediente ingre:listaAux) {
+				if(ingre.getId().equals(id)) {
+					listaReceta.add(ingre);
+					break;
+					
+				}
+			}
+			
+		}**/
+		return ingredienteRepository.findAllById(ingredientesIds);
 	}
 
 }

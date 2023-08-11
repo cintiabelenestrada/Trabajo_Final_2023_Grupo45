@@ -17,126 +17,90 @@ import ar.edu.unju.fi.util.UploadFile;
 
 @Service("recetaServiceMysqlImp")
 public class RecetaServiceMysqlImp implements IRecetaService {
-
 	/**
-	 * Inyeccion del objeto Receta
-	 */
-	@Autowired
-	private Receta receta;
-	
-	/**
-	 * Inyeccion del objeto UploadFile
-	 */
-	@Autowired
-	private UploadFile uploadFile;
-	
-	/**
-	 * Inyeccion de la interfaz receta repository
+	 * Inveccion e instanciado del objeto recetaRepository al contenedor
 	 */
 	@Autowired
 	private IRecetaRepository recetaRepository;
 	
 	/**
-	 * Inyeccion del service Ingrediente
+	 * Inveccion e instanciado del objeto receta al contenedor
 	 */
 	@Autowired
-	@Qualifier("ingredienteServiceMysqlImp")
-	private IngredienteServiceMysqlImp ingredienteService;
+	private Receta receta;
 	
+	/**@Autowired
+	List<Receta> recetaFiltrada;**/
 	/**
-	 * Metodo que retorna objeto receta.
-	 * @return un objeto de tipo usuario.
+	 * Metodo que otiene el listado de receta
 	 */
 	@Override
-	public Receta obtenerReceta() {
-		return receta;
-	}
-
-	/**
-	 * Metodo que guarda receta
-	 * @param receta representa  objeto de tipo receta
-	 * @param imagen representa la imagen de la receta
-	 * @param idIngredientes representa la lista de ingredientes que se vincula con la receta
-	 */
-	@Override
-	public void guardarReceta(Receta receta, MultipartFile imagen) throws IOException {
-		List<Ingrediente> listaIngrediente = new ArrayList<Ingrediente>();
-		
-		
-		
-		String nombreImagen = uploadFile.copy(imagen);
-		receta.setImagen(nombreImagen);
-		receta.setEstado(true);
-		receta.setIngredientes(listaIngrediente);
-		recetaRepository.save(receta);
-	}
-
-	/**
-	 * Metodo para obtener la lista de recetas
-	 * cuyo estado sea true (activo).
-	 * @return la lista de recetas cuyo estado sea true.
-	 */
-	@Override
-	public List<Receta> obtenerRecetas() {
+	public List<Receta> getListaReceta() {		
 		return recetaRepository.findByEstado(true);
 	}
 
 	/**
-	 * Eliminacion logica de receta
-	 * cambiando el atributo  estado a falso.
-	 * @param id representa el id de una receta.
+	 * Metodo para guardar una receta
 	 */
 	@Override
-	public void eliminarReceta(Long id) {
-		Receta unaReceta = new Receta();
-		unaReceta = buscarReceta(id);
-		unaReceta.setEstado(false);
-		recetaRepository.save(unaReceta);
+	public void guardar(Receta receta) {
+		receta.setEstado(true);
+		recetaRepository.save(receta);
+		
 	}
 
 	/**
-	 * Metodo que retorna  receta por id
-	 * @param id representa el id de una receta a buscar.
-	 * @return la receta encontrada.
+	 * Metodo para obtener una receta por su id
 	 */
 	@Override
-	public Receta buscarReceta(Long id) {
+	public Receta getBy(Long id) {		
 		return recetaRepository.findById(id).get();
 	}
 
 	/**
-	 * Metodo para modificar usuario
-	 * @param recetaModificada representa una receta a modificar.
-	 * @param imagen representa la imagen de la receta que se va modificar
-	 * @param idIngredientes representa la lista de ingredientes que se vincula con la receta
+	 * Metodo para guardar una receta modificada
 	 */
 	@Override
-	public void modificarReceta(Receta recetaModificada, MultipartFile imagenModificada) throws IOException {
-		recetaModificada.setEstado(true);
-
-		if (!imagenModificada.isEmpty()) {
-			String imagenString = imagenModificada.getOriginalFilename();
-
-			if (imagenString.compareTo(buscarReceta(recetaModificada.getId()).getImagen()) != 0) {
-				uploadFile.delete(buscarReceta(recetaModificada.getId()).getImagen());
-				imagenString = uploadFile.copy(imagenModificada);
-				recetaModificada.setImagen(imagenString);
-			}
-		}else {
-			recetaModificada.setImagen(buscarReceta(recetaModificada.getId()).getImagen());
-		}
+	public void modificar(Receta receta) {
+		receta.setEstado(true);
+		recetaRepository.save(receta);
 		
-		recetaRepository.save(recetaModificada);
-
 	}
 
 	/**
-	 * Metodo que filtra recetas por su categoria
-	 * @param categoria representa la categoria de una receta.
-	 * @return la categoria de una receta.
+	 * Metodo para eliminar una receta
 	 */
 	@Override
-	public List<Receta> filtrarRecetaCategoria(String categoria) {
-		return recetaRepository.findByCategoria(categoria);
+	public void eliminar(Receta recetaEncontrada) {
+		recetaEncontrada.setEstado(false);
+		recetaRepository.save(recetaEncontrada);
+		
 	}
+
+	/**
+	 * Metodo para obtener un objeto tipo Receta
+	 */
+	@Override
+	public Receta getReceta() {		
+		return receta;
+	}
+
+	/**
+	 * Metodo para encontrar una receta por su estado y categoria
+	 */
+	@Override
+	public List<Receta> getListaRecetaFiltrada(String categoria) {
+		/**recetaFiltrada.removeAll(recetaFiltrada);
+		List<Receta> recetas = recetaRepository.findByEstado(true);
+		for(Receta r:recetas) {
+			if (r.getCategoria().equals(categoria)) {
+				recetaFiltrada.add(r);
+			}
+			
+		}
+		
+		return recetaFiltrada;**/  
+		return recetaRepository.findByEstadoAndCategoria(true, categoria);
+	}
+
 }

@@ -9,11 +9,11 @@ import ar.edu.unju.fi.entity.Receta;
 
 public interface IRecetaService {
 
-	public Receta obtenerReceta();
-	public void guardarReceta(Receta receta,MultipartFile imagen) throws IOException;
-	public List<Receta> obtenerRecetas();
-	public void eliminarReceta(Long id);
-	public Receta buscarReceta(Long id);
-	public void modificarReceta(Receta recetaModificada, MultipartFile imagenModificada) throws IOException;
-	public List<Receta> filtrarRecetaCategoria(String categoria);
+	List<Receta> getListaReceta();	
+	void guardar(Receta receta);	
+	Receta getBy(Long id);	
+	void modificar(Receta receta);	
+	void eliminar(Receta recetaEncontrada);	
+	Receta getReceta();	
+	List<Receta> getListaRecetaFiltrada(String categoria);
 }

@@ -10,19 +10,8 @@ import java.util.List;
 @Repository
 public interface IRecetaRepository extends CrudRepository<Receta, Long> {
 
-	/**
-	 * Metodo para obtener todas las recetas por el estado
-	 * @param estado
-	 * @return
-	 */
-  public List<Receta> findByEstado(boolean estado);
-  
-  /**
-   * Metodo para obtener todas las recetas por categoria
-   * @param categoria
-   * @return
-   */
-  public List<Receta> findByCategoria(String categoria);
+	public List <Receta> findByEstado(boolean estado);
+	public List <Receta> findByEstadoAndCategoria(boolean estado, String categoria);
   
 
 	

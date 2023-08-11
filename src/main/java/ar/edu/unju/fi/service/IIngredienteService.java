@@ -6,11 +6,13 @@ import ar.edu.unju.fi.entity.Ingrediente;
 
 public interface IIngredienteService {
 
-	public Ingrediente obtenerIngrediente();
-	public List<Ingrediente> obtenerIngredientes();
-	public void guardarIngrediente(Ingrediente ingrediente);
-	public void modificarIngrediente(Ingrediente ingredienteModificado);
-	public Ingrediente buscarIngrediente(Long id);
-	public void eliminarIngrediente(Ingrediente ingrediente);
+	List<Ingrediente> getListaIngrediente();
+	Ingrediente getIngrediente(); 
+	void guardarIngrediente(Ingrediente ingrediente); 
+	Ingrediente findIngredienteById(Long id); 
+	void eliminar(Ingrediente ingredienteEncontrado);
+	void modificar (Ingrediente ingrediente); 
+	void cargarIngrediente(); 
+	List<Ingrediente> getIngredientesByIds(List<Long> ingredientesIds);
 	
 }
