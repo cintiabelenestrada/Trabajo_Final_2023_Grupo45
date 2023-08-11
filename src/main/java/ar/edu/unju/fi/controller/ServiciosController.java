@@ -180,6 +180,24 @@ public class ServiciosController {
 	}
 	
 	
+	@GetMapping("/gestion/usuarios/{userId}/imc/{imcId}/eliminar")
+	public String eliminacionDeIMC(@PathVariable Long userId, @PathVariable Long imcId) {
+	    Usuario usuario = registroRepository.findById(userId).orElse(null);
+	    
+	    if (usuario == null) {
+	        return "redirect:/";
+	    }
+	    
+	    IndiceMasaCorporal imc = imcPesoRepository.findById(imcId).orElse(null);
+	    
+	    if (imc == null) {
+	        return "redirect:/gestion/imc";
+	    }
+	    
+	    imcPesoService.eliminarImc(imc); 
+	    
+	    return "redirect:/gestion/imc";
+	}
 
 
 }

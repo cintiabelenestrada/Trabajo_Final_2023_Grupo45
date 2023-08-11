@@ -107,14 +107,22 @@ public class ServiciosServiceMySqlImp implements IServiciosService {
         return pesoIdeal;
     }
     
-	@Override
-	public void eliminarImc(Long id) {
-		IndiceMasaCorporal unImc= new IndiceMasaCorporal();
-		unImc = getImcById(id);
-		unImc.setEstado(false);
-		imcRepository.save(unImc);
-	}
+//	@Override
+//	public void eliminarImc(Long id) {
+//		IndiceMasaCorporal unImc= new IndiceMasaCorporal();
+//		unImc = getImcById(id);
+//		unImc.setEstado(false);
+//		imcRepository.save(unImc);
+//	}
 
+	@Override
+	public void eliminarImc(IndiceMasaCorporal indiceMasaCorporal) {
+//		indiceMasaCorporal.getImcActual();
+		indiceMasaCorporal.setEstado(false);
+		imcRepository.save(indiceMasaCorporal);
+
+	}
+ 
 
 }
 
