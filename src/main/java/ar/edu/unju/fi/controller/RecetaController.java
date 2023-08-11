@@ -36,10 +36,6 @@ public class RecetaController {
 	private IRecetaService recetaService;
 	
 	@Autowired
-	@Qualifier("ingredienteServiceMysqlImp")
-	private IIngredienteService ingredienteService;
-	
-	@Autowired
 	private UploadFile uploadFile;
 	
 	/**
@@ -76,7 +72,7 @@ public class RecetaController {
 	    
 		boolean edicion=false;
 		model.addAttribute("receta", recetaService.obtenerReceta());
-		model.addAttribute("ingredientes", ingredienteService.obtenerIngredientes());
+		// model.addAttribute("ingredientes", ingredienteService.obtenerIngredientes());
 		model.addAttribute("edicion", edicion);
 		return "nueva_receta";
 	}
@@ -100,7 +96,7 @@ public class RecetaController {
 		ModelAndView mav = new ModelAndView("redirect:/receta/gestion");
 		if (result.hasErrors()) {
 			mav.setViewName("nueva_receta");
-			mav.addObject("ingredientes", ingredienteService.obtenerIngredientes());
+			// mav.addObject("ingredientes", ingredienteService.obtenerIngredientes());
 			mav.addObject("edicion", false);
 			return mav;
 		}
@@ -125,7 +121,7 @@ public class RecetaController {
 		boolean edicion=true;
 
 		model.addAttribute("receta", recetaService.buscarReceta(id));
-		model.addAttribute("ingredientes",ingredienteService.obtenerIngredientes());
+		// model.addAttribute("ingredientes",ingredienteService.obtenerIngredientes());
 
 		model.addAttribute("edicion", edicion);
 		return "nueva_receta";
@@ -150,7 +146,7 @@ public class RecetaController {
 	    
 		if (result.hasErrors()) {
 			model.addAttribute("receta", recetaModificada);
-			model.addAttribute("ingredientes", ingredienteService.obtenerIngredientes());
+			// model.addAttribute("ingredientes", ingredienteService.obtenerIngredientes());
 			return "nueva_receta";
 		}
 		recetaService.modificarReceta(recetaModificada,imagen);

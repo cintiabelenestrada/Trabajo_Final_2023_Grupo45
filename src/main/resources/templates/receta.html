@@ -49,11 +49,6 @@
                 <img th:src="@{/imagen/}+${receta.imagen}" class="card-img-top" alt="...">
 
                 <div class="card-body">
-                    <h5 class="card-title">Ingredientes:</h5>
-                
-                    <ul class="puntos" >
-                    <li th:each="ingrediente: ${receta.ingredientes}" th:text="${ingrediente.nombre}"></li>
-                    </ul>
                     <h5 class="card-title">Preparacion</h5>
                     <p class="card-text" th:text="${receta.preparacion}">Lorem ipsum dolor sit amet consectetur adipisicing elit. architecto ea ipsam. Minima, vel!.</p>
                 </div>
