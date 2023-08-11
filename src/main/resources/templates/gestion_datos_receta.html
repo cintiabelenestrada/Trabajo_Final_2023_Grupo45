@@ -39,9 +39,6 @@
 	<header th:replace="~{layouts/header :: header}"></header>
 	
         <div class="container">
-     
-
-            <a th:href="@{/gestionar}" class="btn btn-primary ">Volver a Inicio</a>
             <div class="card" id="card-gestion">
                 <h1 class="card-title text-center">Gestion de Recetas</h1>
                 <div class="row justify-content-md-center"  >	
@@ -49,10 +46,6 @@
                         <div class="row align-items-center">
                             <div class="col">
                                 <a th:href="@{/receta/nuevo}" class="btn btn-success fw-bolder py-3">Nueva Receta</a>
-                            </div>
-                            <div class="col">
-                                <a th:href="@{/ingrediente/gestion}"
-                                    class="btn btn-success fw-bolder py-3">Ingredientes</a>
                             </div>
                        </div>
                     </div>
@@ -74,18 +67,20 @@
                                 <td th:text="${receta.id}"></td>
                                 <td th:text="${receta.nombre}"></td>
                                 <td th:text="${receta.categoria}"></td>
-                                <td><a class="btn btn-info btn-sm"
+                                <td>
+                                    <a class="btn btn-info btn-sm"
                                     th:href="@{/receta/modificar/}+${receta.id}">Modificar</a> 
+                                    <a class="btn btn-success btn-sm"
+                                    th:href="@{/ingredientereceta/gestion}">Ingredientes</a>
                                     <a class="btn btn-danger btn-sm"
                                     th:href="@{/receta/eliminar/}+${receta.id}">Eliminar</a>
-                                    <a class="btn btn-success btn-sm"
-                                    th:href="@{/receta/ver/}+${receta.id}">Ver</a>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
+            <a th:href="@{/gestionar}" class="btn btn-primary ">Volver a Inicio</a>
         </div>
         
         
